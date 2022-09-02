@@ -7,8 +7,10 @@ public class TimeManager : MonoBehaviour
 {
     public static float worldTime;
 
-    public float normalTime;
+    [HideInInspector] public float normalTime = 1;
+    [Range(0, 1)]
     public float slowedTime;
+    public float timeChangeSpeed;
 
     PlayerControls controller;
     InputAction slow;
@@ -31,6 +33,22 @@ public class TimeManager : MonoBehaviour
         slow.Disable();
     }
 
+    private void Update()
+    {
+        if(slowing && worldTime != slowedTime)
+        {
+            worldTime = Mathf.Lerp(worldTime, slowedTime, timeChangeSpeed);
+            if (worldTime < 0.05)
+                worldTime = 0;
+        }
+        else if (!slowing && worldTime != normalTime)
+        {
+            worldTime = Mathf.Lerp(worldTime, normalTime, timeChangeSpeed);
+            if (worldTime > 0.95)
+                worldTime = 1;
+        }
+    }
+
     public void SlowTime()
     {
         Debug.Log("Freezing Time");
@@ -49,11 +67,11 @@ public class TimeManager : MonoBehaviour
 
         if(slowing)
         {
-            StartTime();
+            //StartTime();
         }
         else
         {
-            SlowTime();
+            //SlowTime();
         }
     }
 

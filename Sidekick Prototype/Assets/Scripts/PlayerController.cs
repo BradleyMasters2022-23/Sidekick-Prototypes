@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 angleClamp;
 
     public GameObject cam;
+    public CamTarget shootCam;
     public PlayerControls controller;
     private InputAction move;
     private InputAction mouse;
@@ -66,6 +67,8 @@ public class PlayerController : MonoBehaviour
     private void Shoot(InputAction.CallbackContext context)
     {
         Debug.Log("Player shoot");
-        GameObject t = Instantiate(bullet, transform.position, transform.rotation);
+
+        GameObject t = Instantiate(bullet, shootPoint.position, transform.rotation);
+        t.transform.LookAt(shootCam.GetTarget());
     }
 }

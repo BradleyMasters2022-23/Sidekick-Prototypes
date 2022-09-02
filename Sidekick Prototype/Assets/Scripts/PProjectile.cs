@@ -9,28 +9,20 @@ public class PProjectile : MonoBehaviour
     public bool freezePlayerP = false;
     public float freezeSpawnDist;
 
-    float currTime;
+    public float currTime;
 
-    Rigidbody rb;
-
-    public void Prep(Vector3 pos, Vector3 rot)
-    {
-        transform.position = pos;
-        transform.rotation = Quaternion.Euler(rot);
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         currTime = TimeManager.worldTime;
 
-        rb = GetComponent<Rigidbody>();
-
         //rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
 
         if(freezePlayerP && currTime == 0)
         {
-            transform.position += (transform.forward * freezeSpawnDist);
+            transform.position += transform.forward * freezeSpawnDist;
+            Debug.Log("Spawn ahead done");
         }
     }
 
