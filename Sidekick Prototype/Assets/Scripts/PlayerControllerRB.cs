@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerRB : MonoBehaviour
 {
     public float playerSpeed;
     public float lookSpeed;
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController pc;
 
+    private Rigidbody rb;
+
     private Vector3 direction;
 
     [Header("Gravity Stuff")]
@@ -45,7 +47,8 @@ public class PlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        pc = GetComponent<CharacterController>();
+        //pc = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
 
         controller = new PlayerControls();
         move = controller.Player.Move;
@@ -68,13 +71,20 @@ public class PlayerController : MonoBehaviour
         move.Disable();
         mouse.Disable();
         shoot.Disable();
+        jump.Disable();
+    }
+
+    private void FixedUpdate()
+    {
+        direction = transform.right * move.ReadValue<Vector2>().x + transform.forward * move.ReadValue<Vector2>().y;
+        rb.MovePosition(transform.position + direction * playerSpeed * Time.deltaTime);
     }
 
     private void Update()
     {
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
-        RaycastHit hitInfo;
+        //RaycastHit hitInfo;
 
         //if (grounded && Physics.Raycast(transform.position, Vector3.down, out hitInfo, Mathf.Infinity))
         //{
@@ -86,18 +96,18 @@ public class PlayerController : MonoBehaviour
         //}
         //else
         //{
-        //    if(transform.parent != null)
+        //    if (transform.parent != null)
         //    {
         //        transform.SetParent(null, true);
         //        Debug.Log("Clearing parent");
         //    }
         //}
-            
+
 
         // Player movement
-        direction = transform.right * move.ReadValue<Vector2>().x + transform.forward * move.ReadValue<Vector2>().y;
-        pc.Move(direction * playerSpeed * Time.deltaTime);
-        
+        //direction = transform.right * move.ReadValue<Vector2>().x + transform.forward * move.ReadValue<Vector2>().y;
+        //pc.Move(direction * playerSpeed * Time.deltaTime);
+
         // look left and right
         transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSpeed);
 
@@ -106,19 +116,25 @@ public class PlayerController : MonoBehaviour
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, angleClamp.x, angleClamp.y);
         cam.transform.localRotation = Quaternion.Euler(verticalLookRotation, 0f, 0f);
 
-        Gravity();
+        //Gravity();
 
-        pc.Move(velocity * Time.deltaTime);
+        //pc.Move(velocity * Time.deltaTime);
     }
 
     private void Jump(InputAction.CallbackContext c)
     {
-        if (grounded)
+        //if (grounded)
+        //{
+        //    Debug.Log("Jumping");
+        //    grounded = false;
+        //    velocity.y = jumpForce;
+        //    pc.Move(velocity * Time.deltaTime);
+        //}
+
+        if(grounded)
         {
-            Debug.Log("Jumping");
             grounded = false;
-            velocity.y = jumpForce;
-            pc.Move(velocity * Time.deltaTime);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 
@@ -146,4 +162,6 @@ public class PlayerController : MonoBehaviour
         GameObject t = Instantiate(bullet, shootPoint.position, transform.rotation);
         t.transform.LookAt(shootCam.GetTarget());
     }
+
+    
 }

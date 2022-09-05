@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public float t = 0;
     public float currTime = 1;
 
+
+
     [Tooltip("hello val1")]
     [SerializeField] private int testVal1;
 

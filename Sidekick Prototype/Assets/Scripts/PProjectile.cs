@@ -11,6 +11,8 @@ public class PProjectile : MonoBehaviour
 
     public float currTime;
 
+    public float lifeTime;
+    private float t = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -34,5 +36,20 @@ public class PProjectile : MonoBehaviour
             transform.position += transform.forward * projectileSpeed * Time.deltaTime * currTime;
         else
             transform.position += transform.forward * projectileSpeed * Time.deltaTime;
+
+        if(t >= lifeTime)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            t += Time.deltaTime * currTime;
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
     }
 }
