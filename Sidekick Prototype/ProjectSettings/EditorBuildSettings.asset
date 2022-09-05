@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Timestop Prototype.unity
+    guid: 9537bb5c6bac47b4a94c2cc6fb613b76
+  - enabled: 1
+    path: Assets/Scenes/RoomTestScenes/A.unity
+    guid: 5ec19c076ca990a4884c6d189de12f6f
+  - enabled: 1
+    path: Assets/Scenes/RoomTestScenes/B.unity
+    guid: 820f9e25d024863419dea78293b460dd
+  - enabled: 1
+    path: Assets/Scenes/RoomTestScenes/C.unity
+    guid: ab3305181265dad48bc006e2afcaa5be
   m_configObjects: {}
