@@ -16,19 +16,36 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction mouse;
     private InputAction shoot;
+    private InputAction jump;
 
     private float verticalLookRotation = 0f;
 
     public Transform shootPoint;
     public GameObject bullet;
 
-
+    private CharacterController pc;
 
     private Vector3 direction;
 
+    [Header("Gravity Stuff")]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float gravity = -9.8f;
+    [SerializeField] private float gravityMultiplier;
+    [SerializeField] private float maxFallVelocity;
+    [SerializeField] private float landVelocity;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private bool grounded = true;
+    Vector3 velocity;
+
     private void Start()
     {
+        gravity *= gravityMultiplier;
+
         Cursor.lockState = CursorLockMode.Locked;
+
+        pc = GetComponent<CharacterController>();
 
         controller = new PlayerControls();
         move = controller.Player.Move;
@@ -38,6 +55,10 @@ public class PlayerController : MonoBehaviour
         shoot = controller.Player.Shoot;
         shoot.Enable();
         shoot.performed += Shoot;
+        jump = controller.Player.Jump;
+        jump.Enable();
+        jump.performed += Jump;
+
 
         verticalLookRotation = cam.transform.localRotation.x;
     }
@@ -51,9 +72,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
+
         // Player movement
-        direction = new Vector3(move.ReadValue<Vector2>().x, 0, move.ReadValue<Vector2>().y); 
-        transform.Translate(direction * playerSpeed * Time.deltaTime);
+        direction = transform.right * move.ReadValue<Vector2>().x + transform.forward * move.ReadValue<Vector2>().y;
+        pc.Move(direction * playerSpeed * Time.deltaTime);
         
         // look left and right
         transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSpeed);
@@ -62,12 +85,44 @@ public class PlayerController : MonoBehaviour
         verticalLookRotation -= mouse.ReadValue<Vector2>().y * Time.deltaTime * lookSpeed;
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, angleClamp.x, angleClamp.y);
         cam.transform.localRotation = Quaternion.Euler(verticalLookRotation, 0f, 0f);
+
+        Gravity();
+
+        pc.Move(velocity * Time.deltaTime);
     }
 
-    private void Shoot(InputAction.CallbackContext context)
+    private void Jump(InputAction.CallbackContext c)
     {
-        Debug.Log("Player shoot");
+        if (grounded)
+        {
+            Debug.Log("Jumping");
+            grounded = false;
+            velocity.y = jumpForce;
+            pc.Move(velocity * Time.deltaTime);
+        }
+    }
 
+    private void Gravity()
+    {
+        if (grounded && velocity.y != landVelocity)
+        {
+            velocity.y = landVelocity;
+            pc.Move(velocity);
+        }
+        else if (!grounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+            velocity.y = Mathf.Clamp(velocity.y, -maxFallVelocity, maxFallVelocity);
+        }
+    }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Shoot(InputAction.CallbackContext c)
+    {
         GameObject t = Instantiate(bullet, shootPoint.position, transform.rotation);
         t.transform.LookAt(shootCam.GetTarget());
     }

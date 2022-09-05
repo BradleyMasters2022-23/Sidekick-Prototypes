@@ -22,7 +22,6 @@ public class PProjectile : MonoBehaviour
         if(freezePlayerP && currTime == 0)
         {
             transform.position += transform.forward * freezeSpawnDist;
-            Debug.Log("Spawn ahead done");
         }
     }
 
