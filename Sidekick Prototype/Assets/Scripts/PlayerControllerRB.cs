@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerRB : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerControllerRB : MonoBehaviour
     private InputAction mouse;
     private InputAction shoot;
     private InputAction jump;
+    private InputAction debugRestart;
 
     private float verticalLookRotation = 0f;
 
@@ -61,9 +63,16 @@ public class PlayerControllerRB : MonoBehaviour
         jump = controller.Player.Jump;
         jump.Enable();
         jump.performed += Jump;
-
+        debugRestart = controller.Player.RestartSceneDEBUG;
+        debugRestart.performed += DebugRestartScene;
+        debugRestart.Enable();
 
         verticalLookRotation = cam.transform.localRotation.x;
+    }
+
+    public void DebugRestartScene(InputAction.CallbackContext ctx)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnDisable()
@@ -72,6 +81,7 @@ public class PlayerControllerRB : MonoBehaviour
         mouse.Disable();
         shoot.Disable();
         jump.Disable();
+        debugRestart.Disable();
     }
 
     private void FixedUpdate()
