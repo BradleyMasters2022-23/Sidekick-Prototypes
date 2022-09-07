@@ -33,9 +33,9 @@ public class TimeManager : MonoBehaviour
         slow.Disable();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(slowing && worldTime != slowedTime)
+        if (slowing && worldTime != slowedTime)
         {
             worldTime = Mathf.Lerp(worldTime, slowedTime, timeChangeSpeed);
             if (worldTime < 0.05)

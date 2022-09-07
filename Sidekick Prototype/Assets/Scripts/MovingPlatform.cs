@@ -8,7 +8,6 @@ public class MovingPlatform : MonoBehaviour
     public int wpIndex;
     public float speed;
 
-
     public Rigidbody rb;
 
     public Vector3 velocity;
@@ -19,13 +18,6 @@ public class MovingPlatform : MonoBehaviour
         wpIndex = 0;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[wpIndex].position, speed * Time.deltaTime * TimeManager.worldTime);
-        CheckWaypoint();
-    }
 
     public void CheckWaypoint()
     {
@@ -41,26 +33,23 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        velocity = this.GetComponent<Rigidbody>().velocity;
+        transform.position = Vector3.MoveTowards(transform.position, waypoints[wpIndex].position, speed * Time.deltaTime * TimeManager.worldTime);
+        
 
         if (rb != null)
         {
-            Vector3 playerPos = rb.transform.position;
-            Vector3 playerVel = rb.velocity;
-
             // Get the direction its currently going
             Vector3 temp = waypoints[wpIndex].position - transform.position;
 
             // Apply the speed to the player object on front in the direction its moving
-
             rb.position += (temp.normalized * speed * Time.deltaTime * TimeManager.worldTime);
 
-
-
-            //rb.transform.position = Vector3.MoveTowards(rb.transform.position, )
-
         }
+
+        CheckWaypoint();
     }
+
+
 
 
     private void OnCollisionEnter(Collision collision)

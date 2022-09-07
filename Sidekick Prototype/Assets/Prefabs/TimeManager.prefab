@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalTime: 1
   slowedTime: 0
-  timeChangeSpeed: 0.01
+  timeChangeSpeed: 0.095
