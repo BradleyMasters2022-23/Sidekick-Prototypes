@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HoldSlow",
+                    "type": "Button",
+                    "id": "ad12a9a5-e972-4a9c-a888-7b6b7a287d32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -151,7 +160,7 @@
                     "name": "",
                     "id": "76fce65d-1876-4016-8b08-281616395914",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -188,6 +197,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98604400-5619-40b9-8a0b-6b4dfe574649",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldSlow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

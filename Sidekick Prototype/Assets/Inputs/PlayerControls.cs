@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HoldSlow"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad12a9a5-e972-4a9c-a888-7b6b7a287d32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -173,7 +182,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""76fce65d-1876-4016-8b08-281616395914"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shoot"",
@@ -212,6 +221,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98604400-5619-40b9-8a0b-6b4dfe574649"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldSlow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_HoldSlow = m_Player.FindAction("HoldSlow", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_RestartSceneDEBUG;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_HoldSlow;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @HoldSlow => m_Wrapper.m_Player_HoldSlow;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @HoldSlow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
+                @HoldSlow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
+                @HoldSlow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @HoldSlow.started += instance.OnHoldSlow;
+                @HoldSlow.performed += instance.OnHoldSlow;
+                @HoldSlow.canceled += instance.OnHoldSlow;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnRestartSceneDEBUG(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnHoldSlow(InputAction.CallbackContext context);
     }
 }

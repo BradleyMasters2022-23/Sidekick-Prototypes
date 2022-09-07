@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a545594941dabf14d9509303d8962688, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggle: 1
   normalTime: 1
   slowedTime: 0
   timeChangeSpeed: 0.095

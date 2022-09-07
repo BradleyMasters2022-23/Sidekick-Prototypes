@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9121595020474447733}
   - component: {fileID: 9121595020474447732}
   - component: {fileID: 6747254412456594574}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: PlayerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb44db13caa69f478a6cca0c2914ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 50
+  projectileSpeed: 100
+  damage: 20
   freezePlayerP: 1
   freezeSpawnDist: 2
   currTime: 0

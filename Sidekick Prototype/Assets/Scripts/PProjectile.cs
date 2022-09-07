@@ -6,6 +6,8 @@ public class PProjectile : MonoBehaviour
 {
     public float projectileSpeed;
 
+    public int damage;
+
     public bool freezePlayerP = false;
     public float freezeSpawnDist;
 
@@ -50,6 +52,11 @@ public class PProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Enemy"))
+        {
+            other.GetComponent<IDamagable>().TakeDamage(damage);
+        }
+
         Destroy(this.gameObject);
     }
 }

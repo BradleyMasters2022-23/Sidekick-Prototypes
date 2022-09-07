@@ -7,6 +7,8 @@ public class TimeManager : MonoBehaviour
 {
     public static float worldTime;
 
+    public bool toggle;
+
     [HideInInspector] public float normalTime = 1;
     [Range(0, 1)]
     public float slowedTime;
@@ -14,6 +16,7 @@ public class TimeManager : MonoBehaviour
 
     PlayerControls controller;
     InputAction slow;
+    InputAction slowHold;
 
     bool slowing;
     
@@ -23,14 +26,33 @@ public class TimeManager : MonoBehaviour
         slowing = false;
         StartTime();
 
-        slow = controller.Player.SlowTime;
-        slow.performed += ToggleSlow;
-        slow.Enable();
+        if(toggle)
+        {
+            slow = controller.Player.SlowTime;
+            slow.performed += ToggleSlow;
+            slow.Enable();
+        }
+        else
+        {
+            slowHold = controller.Player.HoldSlow;
+            slowHold.started += ToggleSlow;
+            slowHold.canceled += ToggleSlow;
+            slowHold.Enable();
+        }
+        
     }
+
 
     private void OnDisable()
     {
-        slow.Disable();
+        if(toggle)
+        {
+            slow.Disable();
+        }
+        else
+        {
+            slowHold.Disable();
+        }
     }
 
     private void FixedUpdate()
@@ -51,28 +73,19 @@ public class TimeManager : MonoBehaviour
 
     public void SlowTime()
     {
-        Debug.Log("Freezing Time");
+        //Debug.Log("Freezing Time");
         worldTime = slowedTime;
     }
 
     public void StartTime()
     {
-        Debug.Log("Starting Time");
+        //Debug.Log("Starting Time");
         worldTime = normalTime;
     }
 
     private void ToggleSlow(InputAction.CallbackContext ctx)
     {
         slowing = !slowing;
-
-        if(slowing)
-        {
-            //StartTime();
-        }
-        else
-        {
-            //SlowTime();
-        }
     }
 
 }
