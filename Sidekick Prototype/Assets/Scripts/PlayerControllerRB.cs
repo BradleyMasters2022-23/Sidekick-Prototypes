@@ -9,6 +9,8 @@ public class PlayerControllerRB : MonoBehaviour
     public float playerSpeed;
     public float lookSpeed;
 
+    public static PlayerControllerRB instance;
+
     public Vector2 angleClamp;
 
     public GameObject cam;
@@ -28,6 +30,12 @@ public class PlayerControllerRB : MonoBehaviour
 
     private Vector3 direction;
 
+    [Header("Default Stuff")]
+    public int maxJumps = 1;
+    public int remainingJumps = 0;
+    public float jumpCooldown;
+    private float jumpT;
+
     [Header("Gravity Stuff")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravityMultiplier;
@@ -40,6 +48,12 @@ public class PlayerControllerRB : MonoBehaviour
 
     private void Start()
     {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this.gameObject);
+
+
         Cursor.lockState = CursorLockMode.Locked;
 
         rb = GetComponent<Rigidbody>();
@@ -66,6 +80,7 @@ public class PlayerControllerRB : MonoBehaviour
 
     private void OnDisable()
     {
+        instance = null;
         move.Disable();
         mouse.Disable();
         jump.Disable();
@@ -85,6 +100,14 @@ public class PlayerControllerRB : MonoBehaviour
     {
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
+        if(grounded && jumpT >= jumpCooldown)
+        {
+            remainingJumps = maxJumps;
+        }
+
+        if (jumpT < jumpCooldown)
+            jumpT += Time.deltaTime;
+
         // look left and right
         transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSpeed);
 
@@ -100,10 +123,13 @@ public class PlayerControllerRB : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext c)
     {
-
-        if(grounded)
+        if(remainingJumps > 0 && jumpT >= jumpCooldown)
         {
+            jumpT = 0;
             grounded = false;
+            remainingJumps--;
+            // reset vertical velocity before applying jump
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
@@ -111,5 +137,11 @@ public class PlayerControllerRB : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
     }
 }

@@ -17,13 +17,13 @@ public class PProjectile : MonoBehaviour
     private float t = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         currTime = TimeManager.worldTime;
 
         //rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
 
-        if(freezePlayerP && currTime == 0)
+        if(freezePlayerP && currTime == 0 && transform.parent == null)
         {
             transform.position += transform.forward * freezeSpawnDist;
         }

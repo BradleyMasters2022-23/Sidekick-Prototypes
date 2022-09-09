@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerGun : MonoBehaviour
 {
+    public static PlayerGun instance;
+
     private bool firing;
 
     public CamTarget shootCam;
@@ -22,6 +24,17 @@ public class PlayerGun : MonoBehaviour
 
     private void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+
+
         firing = false;
 
         controller = new PlayerControls();
@@ -60,5 +73,20 @@ public class PlayerGun : MonoBehaviour
     {
         GameObject t = Instantiate(bullet, shootPoint.position, transform.rotation);
         t.transform.LookAt(shootCam.GetTarget());
+    }
+
+    /// <summary>
+    /// Replace the players shot projectile
+    /// </summary>
+    /// <param name="p">projectile prefab to fire</param>
+    public void LoadNewProjectile(GameObject p)
+    {
+        bullet = p;
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
     }
 }
