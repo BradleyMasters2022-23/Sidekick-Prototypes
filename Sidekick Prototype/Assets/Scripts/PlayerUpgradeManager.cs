@@ -92,7 +92,12 @@ public class PlayerUpgradeManager : MonoBehaviour
     /// </summary>
     public void DestroyPUM()
     {
-        instance = null;
-        Destroy(this.gameObject);
+        PlayerUpgradeManager.instance = null;
+        Destroy(gameObject);
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelLoad;
     }
 }

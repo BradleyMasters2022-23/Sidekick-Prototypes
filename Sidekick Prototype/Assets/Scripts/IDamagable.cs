@@ -103,7 +103,7 @@ public abstract class IDamagable : MonoBehaviour
 
     public virtual void Die()
     {
-        Debug.Log(this.gameObject.name + " has died! Oh no!");
+        //Debug.Log(this.gameObject.name + " has died! Oh no!");
         Destroy(this.gameObject);
     }
 

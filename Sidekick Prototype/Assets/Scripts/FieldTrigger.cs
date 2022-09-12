@@ -47,7 +47,6 @@ public class FieldTrigger : MonoBehaviour
     public void LockDoor()
     {
         GetComponent<Collider>().isTrigger = false;
-        Debug.Log("Setting lock color");
         GetComponent<Renderer>().material.color = lockColor;
     }
 

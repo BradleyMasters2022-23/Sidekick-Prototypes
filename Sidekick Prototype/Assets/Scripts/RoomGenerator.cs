@@ -68,5 +68,10 @@ public class RoomGenerator : MonoBehaviour
         SceneManager.LoadSceneAsync(currRoom);
     }
 
+    public void DestroyRoomGen()
+    {
+        RoomGenerator.instance = null;
+        Destroy(gameObject);
+    }
 
 }
