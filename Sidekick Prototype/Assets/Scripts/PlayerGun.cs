@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerGun : MonoBehaviour
 {
-    public static PlayerGun instance;
-
     private bool firing;
 
     public CamTarget shootCam;
@@ -24,17 +22,6 @@ public class PlayerGun : MonoBehaviour
 
     private void Start()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-
-
-
         firing = false;
 
         controller = new PlayerControls();
@@ -82,11 +69,5 @@ public class PlayerGun : MonoBehaviour
     public void LoadNewProjectile(GameObject p)
     {
         bullet = p;
-    }
-
-    private void OnDestroy()
-    {
-        if (instance == this)
-            instance = null;
     }
 }

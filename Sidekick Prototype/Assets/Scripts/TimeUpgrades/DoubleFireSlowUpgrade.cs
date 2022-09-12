@@ -21,12 +21,12 @@ public class DoubleFireSlowUpgrade : IUpgrade
     {
         if(loaded)
         {
-            if(TimeManager.worldTime == 0 && !addedFirerate)
+            if(TimeManager.worldTime <= 0.5f && !addedFirerate)
             {
                 addedFirerate = true;
                 gun.fireDelay = (originalFirerate / firerateIncrease);
             }
-            else if (TimeManager.worldTime != 0 && addedFirerate)
+            else if (TimeManager.worldTime > 0.5f && addedFirerate)
             {
                 addedFirerate = false;
                 gun.fireDelay = originalFirerate;

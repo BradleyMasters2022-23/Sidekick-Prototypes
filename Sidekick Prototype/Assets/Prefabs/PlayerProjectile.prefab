@@ -113,6 +113,6 @@ MonoBehaviour:
   projectileSpeed: 100
   damage: 20
   freezePlayerP: 1
-  freezeSpawnDist: 2
+  freezeSpawnDist: 0.5
   currTime: 0
   lifeTime: 15

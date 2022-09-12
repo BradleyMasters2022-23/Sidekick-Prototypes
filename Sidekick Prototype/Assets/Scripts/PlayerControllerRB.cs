@@ -9,8 +9,6 @@ public class PlayerControllerRB : MonoBehaviour
     public float playerSpeed;
     public float lookSpeed;
 
-    public static PlayerControllerRB instance;
-
     public Vector2 angleClamp;
 
     public GameObject cam;
@@ -48,12 +46,6 @@ public class PlayerControllerRB : MonoBehaviour
 
     private void Start()
     {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this.gameObject);
-
-
         Cursor.lockState = CursorLockMode.Locked;
 
         rb = GetComponent<Rigidbody>();
@@ -80,7 +72,6 @@ public class PlayerControllerRB : MonoBehaviour
 
     private void OnDisable()
     {
-        instance = null;
         move.Disable();
         mouse.Disable();
         jump.Disable();
@@ -137,11 +128,5 @@ public class PlayerControllerRB : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void OnDestroy()
-    {
-        if (instance == this)
-            instance = null;
     }
 }

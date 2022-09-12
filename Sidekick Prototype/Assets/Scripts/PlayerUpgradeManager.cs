@@ -27,8 +27,8 @@ public class PlayerUpgradeManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        player = PlayerControllerRB.instance;
-        gun = PlayerGun.instance;
+        player = FindObjectOfType<PlayerControllerRB>();
+        gun = FindObjectOfType<PlayerGun>();
         SceneManager.sceneLoaded += OnLevelLoad;
     }
 
@@ -64,6 +64,7 @@ public class PlayerUpgradeManager : MonoBehaviour
             DestroyPUM();
             return;
         }
+
         int c = 0;
         do
         {
@@ -72,11 +73,9 @@ public class PlayerUpgradeManager : MonoBehaviour
                 break;
 
             player = FindObjectOfType<PlayerControllerRB>();
-
-
         } while (player == null);
-        Debug.Log(c);
-        if(player == null)
+
+        if (player == null)
         {
             Debug.LogError("Trying to load player upgrades, but no player instance found!");
             return;
