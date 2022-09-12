@@ -687,6 +687,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PrototypeUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1986733675195713054, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1986733675195713054, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_Name
+      value: Crosshair
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042314917350610384, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4237af4409d5df43a46293adc83669f, type: 3}
 --- !u!1 &388918282

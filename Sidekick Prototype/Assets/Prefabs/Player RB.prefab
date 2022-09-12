@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  lookSpeed: 60
+  lookSpeed: 25
   angleClamp: {x: -85, y: 85}
   cam: {fileID: 118932248232581742}
   playerBody: {fileID: 8919447734330336906}
