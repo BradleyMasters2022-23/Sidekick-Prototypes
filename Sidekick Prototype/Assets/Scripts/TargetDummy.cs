@@ -8,12 +8,16 @@ public class TargetDummy : IDamagable
     {
         GetComponent<Renderer>().material.color = Color.red;
         base.Awake();
+
+        // If dummy cannot be killed, make sure to remove from pool
+        if(invulnerable)
+            FindObjectOfType<DoorManager>().DestroyEnemy();
     }
 
 
-    // Update is called once per frame
-    void Update()
+    public override void Die()
     {
-        
+        base.Die();
+        FindObjectOfType<DoorManager>().DestroyEnemy();
     }
 }

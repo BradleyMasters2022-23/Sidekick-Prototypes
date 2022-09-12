@@ -8,12 +8,14 @@ public class RoomGenerator : MonoBehaviour
     [SerializeField] private string[] sceneNames;
 
 
-    private string currRoom;
-    private string lastRoom;
+    public string currRoom;
+    public string lastRoom;
 
     public static RoomGenerator instance;
 
     public int count;
+    public int floorLength;
+    public string finalRoom;
 
     private void Start()
     {
@@ -21,7 +23,7 @@ public class RoomGenerator : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(instance);
-            instance.count = 0;
+            instance.count = 1;
         }
         else
         {
@@ -34,6 +36,17 @@ public class RoomGenerator : MonoBehaviour
 
     public void SelectRoom()
     {
+        // If reaching max floor length, load the last room
+        if(count+1 >= floorLength)
+        {
+            lastRoom = currRoom;
+            currRoom = finalRoom;
+            LoadRoom();
+
+            return;
+        }
+
+
         string next = sceneNames[Random.Range(0, sceneNames.Length)];
 
         while(next == currRoom)
@@ -49,6 +62,7 @@ public class RoomGenerator : MonoBehaviour
 
     public void LoadRoom()
     {
+
         instance.count++;
         SceneManager.UnloadSceneAsync(lastRoom);
         SceneManager.LoadSceneAsync(currRoom);

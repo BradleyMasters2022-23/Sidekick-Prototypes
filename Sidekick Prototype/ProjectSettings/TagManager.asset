@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Moving Platform
   - Ground
+  - Enterance
+  - Exit
+  - Door
   layers:
   - Default
   - TransparentFX

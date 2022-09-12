@@ -589,7 +589,7 @@ MonoBehaviour:
   shootCam: {fileID: 118932247851560479}
   shootPoint: {fileID: 8370025894452575537}
   bullet: {fileID: 9121595020474447729, guid: d1af1a3af1fe6294a8dd870e8974dd44, type: 3}
-  fireDelay: 0.2
+  fireDelay: 0.3
 --- !u!1 &8919447734330336906
 GameObject:
   m_ObjectHideFlags: 0
