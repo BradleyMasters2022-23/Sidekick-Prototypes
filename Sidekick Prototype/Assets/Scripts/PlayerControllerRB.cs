@@ -65,6 +65,11 @@ public class PlayerControllerRB : MonoBehaviour
         verticalLookRotation = cam.transform.localRotation.x;
     }
 
+    public Transform GetGroundCheck()
+    {
+        return groundCheck;
+    }
+
     public void DebugRestartScene(InputAction.CallbackContext ctx)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

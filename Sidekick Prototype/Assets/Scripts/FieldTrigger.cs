@@ -20,12 +20,10 @@ public class FieldTrigger : MonoBehaviour
     private void Awake()
     {
         GetComponent<Renderer>().material.color = lockColor;
-
-        // If an enterance, prep it
-        //if(type == FieldType.Entrance)
-        //{
-        //    SetEntrance();
-        //}
+        
+        // If arrow is enabled, automatically disable
+        if(transform.childCount > 0)
+            Destroy(transform.GetChild(0).gameObject);
     }
 
 

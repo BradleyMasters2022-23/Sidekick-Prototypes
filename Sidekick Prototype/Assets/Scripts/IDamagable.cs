@@ -19,11 +19,12 @@ public abstract class IDamagable : MonoBehaviour
     private bool inCombo;
 
     private float t;
+    private bool killed;
 
     protected virtual void Awake()
     {
         health = maxHealth;
-
+        killed = false;
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
@@ -47,8 +48,11 @@ public abstract class IDamagable : MonoBehaviour
         if (health - dmg <= 0 && !invulnerable)
         {
             health = 0;
-            if(!invulnerable)
+            if(!invulnerable && !killed)
+            {
+                killed = true;
                 Die();
+            }
         }
         else
         {

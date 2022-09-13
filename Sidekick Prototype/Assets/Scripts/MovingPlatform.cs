@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform[] waypoints;
-    public int wpIndex;
+    [SerializeField] private PhysicMaterial platformMat;
+    private PhysicMaterial defaultMat;
+    [SerializeField] private Transform[] waypoints;
+    private int wpIndex;
     public float speed;
 
-    public Rigidbody rb;
+    private Rigidbody rb;
 
-    public Vector3 velocity;
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        defaultMat = GetComponent<Collider>().material;
         wpIndex = 0;
     }
 
@@ -34,9 +34,10 @@ public class MovingPlatform : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, waypoints[wpIndex].position, speed * Time.deltaTime * TimeManager.worldTime);
-        
 
-        if (rb != null)
+        float surfacePos = transform.position.y + (transform.localScale.y / 2);
+
+        if (rb != null && rb.GetComponent<PlayerControllerRB>().GetGroundCheck().position.y >= surfacePos)
         {
             // Get the direction its currently going
             Vector3 temp = waypoints[wpIndex].position - transform.position;
@@ -49,29 +50,42 @@ public class MovingPlatform : MonoBehaviour
         CheckWaypoint();
     }
 
-
-
-
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision enter hit");
-
+        //Debug.Log("Collision enter hit");
 
         if (collision.gameObject.CompareTag("Player") && collision.transform.position.y > transform.position.y)
         {
+            GetComponent<Collider>().material = platformMat;
             rb = collision.gameObject.GetComponent<Rigidbody>();
 
         }
     }
 
+
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("Collision exit hit");
+        //Debug.Log("Collision exit hit");
         if (collision.gameObject.CompareTag("Player"))
         {
             rb = null;
-
-
+            GetComponent<Collider>().material = defaultMat;
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player") && other.transform.position.y > transform.position.y)
+    //    {
+    //        rb = other.gameObject.GetComponent<Rigidbody>();
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        rb = null;
+    //    }
+    //}
 }
