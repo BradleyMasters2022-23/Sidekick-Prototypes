@@ -100,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformMat: {fileID: 13400000, guid: 97f40a5f407f6ba4aa18b31a909562b4, type: 2}
   waypoints:
-  - {fileID: 6186325015722897287}
   - {fileID: 6186325016073202001}
+  - {fileID: 6186325015722897287}
   speed: 5
 --- !u!54 &6186325014661157503
 Rigidbody:
