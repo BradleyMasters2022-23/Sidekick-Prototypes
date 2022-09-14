@@ -6,14 +6,13 @@ public class EProjectile : MonoBehaviour
 {
     public float projectileSpeed;
     float currTime;
-    //Rigidbody rb;
+    public float lifeTime;
+    float t = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
         currTime = TimeManager.worldTime;
-        //rb.AddForce(transform.forward * projectileSpeed * TimeManager.worldTime);
     }
 
     // Update is called once per frame
@@ -22,5 +21,14 @@ public class EProjectile : MonoBehaviour
         currTime = TimeManager.worldTime;
 
         transform.position += transform.forward * projectileSpeed * Time.deltaTime * currTime;
+
+        if (t >= lifeTime)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            t += Time.deltaTime * currTime;
+        }
     }
 }
