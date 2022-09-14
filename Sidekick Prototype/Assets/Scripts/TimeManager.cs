@@ -7,16 +7,11 @@ public class TimeManager : MonoBehaviour
 {
     public static float worldTime;
 
-    public bool toggle;
-
-    [HideInInspector] public float normalTime = 1;
-    [Range(0, 1)]
+    public float normalTime;
     public float slowedTime;
-    public float timeChangeSpeed;
 
     PlayerControls controller;
     InputAction slow;
-    InputAction slowHold;
 
     bool slowing;
     
@@ -26,66 +21,40 @@ public class TimeManager : MonoBehaviour
         slowing = false;
         StartTime();
 
-        if(toggle)
-        {
-            slow = controller.Player.SlowTime;
-            slow.performed += ToggleSlow;
-            slow.Enable();
-        }
-        else
-        {
-            slowHold = controller.Player.HoldSlow;
-            slowHold.started += ToggleSlow;
-            slowHold.canceled += ToggleSlow;
-            slowHold.Enable();
-        }
-        
+        slow = controller.Player.SlowTime;
+        slow.performed += ToggleSlow;
+        slow.Enable();
     }
-
 
     private void OnDisable()
     {
-        if(toggle)
-        {
-            slow.Disable();
-        }
-        else
-        {
-            slowHold.Disable();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (slowing && worldTime != slowedTime)
-        {
-            worldTime = Mathf.Lerp(worldTime, slowedTime, timeChangeSpeed);
-            if (worldTime < 0.05)
-                worldTime = 0;
-        }
-        else if (!slowing && worldTime != normalTime)
-        {
-            worldTime = Mathf.Lerp(worldTime, normalTime, timeChangeSpeed);
-            if (worldTime > 0.95)
-                worldTime = 1;
-        }
+        slow.Disable();
     }
 
     public void SlowTime()
     {
-        //Debug.Log("Freezing Time");
+        Debug.Log("Freezing Time");
         worldTime = slowedTime;
     }
 
     public void StartTime()
     {
-        //Debug.Log("Starting Time");
+        Debug.Log("Starting Time");
         worldTime = normalTime;
     }
 
     private void ToggleSlow(InputAction.CallbackContext ctx)
     {
         slowing = !slowing;
+
+        if(slowing)
+        {
+            StartTime();
+        }
+        else
+        {
+            SlowTime();
+        }
     }
 
 }

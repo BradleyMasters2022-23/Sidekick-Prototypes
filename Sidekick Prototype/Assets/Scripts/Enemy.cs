@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// this is enemy lmao
-/// </summary>
 public class Enemy : MonoBehaviour
 {
     public float rotationSpeed;
@@ -15,15 +12,6 @@ public class Enemy : MonoBehaviour
     public float t = 0;
     public float currTime = 1;
 
-
-
-    [Tooltip("hello val1")]
-    [SerializeField] private int testVal1;
-
-    /// <summary>
-    /// hello val2
-    /// </summary>
-    [SerializeField] private int testVal2;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +37,7 @@ public class Enemy : MonoBehaviour
         {
             t += Time.deltaTime * currTime;
         }
-        testVal1 = 2;
+
     }
 
     private void Shoot()

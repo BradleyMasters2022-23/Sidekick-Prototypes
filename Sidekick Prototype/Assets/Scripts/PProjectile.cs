@@ -6,26 +6,31 @@ public class PProjectile : MonoBehaviour
 {
     public float projectileSpeed;
 
-    public int damage;
-
     public bool freezePlayerP = false;
     public float freezeSpawnDist;
 
-    public float currTime;
+    float currTime;
 
-    public float lifeTime;
-    private float t = 0;
+    Rigidbody rb;
+
+    public void Prep(Vector3 pos, Vector3 rot)
+    {
+        transform.position = pos;
+        transform.rotation = Quaternion.Euler(rot);
+    }
 
     // Start is called before the first frame update
-    protected virtual void Start()
+    void Start()
     {
         currTime = TimeManager.worldTime;
 
+        rb = GetComponent<Rigidbody>();
+
         //rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
 
-        if(freezePlayerP && currTime == 0 && transform.parent == null)
+        if(freezePlayerP && currTime == 0)
         {
-            transform.position += transform.forward * freezeSpawnDist;
+            transform.position += (transform.forward * freezeSpawnDist);
         }
     }
 
@@ -38,25 +43,5 @@ public class PProjectile : MonoBehaviour
             transform.position += transform.forward * projectileSpeed * Time.deltaTime * currTime;
         else
             transform.position += transform.forward * projectileSpeed * Time.deltaTime;
-
-        if(t >= lifeTime)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            t += Time.deltaTime * currTime;
-        }
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Enemy"))
-        {
-            other.GetComponent<IDamagable>().TakeDamage(damage);
-        }
-
-        Destroy(this.gameObject);
     }
 }
