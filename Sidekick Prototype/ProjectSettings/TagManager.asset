@@ -5,11 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Moving Platform
+  - Ground
+  - Enterance
+  - Exit
+  - Door
+  - Upgrades
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Enemy
