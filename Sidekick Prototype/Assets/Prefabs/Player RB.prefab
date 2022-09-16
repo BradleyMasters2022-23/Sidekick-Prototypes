@@ -193,6 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4275155895c83140957c3adf418d457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  invulnerable: 0
+  comboTimer: 0
+  healthSlider: {fileID: 0}
+  comboHit: {fileID: 0}
+  comboCount: 0
   playerSpeed: 10
   lookSpeed: 25
   angleClamp: {x: -85, y: 85}
@@ -201,8 +207,8 @@ MonoBehaviour:
   maxJumps: 1
   remainingJumps: 0
   jumpCooldown: 0.2
-  jumpForce: 30
-  gravityMultiplier: 2
+  jumpForce: 40
+  gravityMultiplier: 2.4
   maxFallVelocity: 80
   landVelocity: -2
   groundMask:

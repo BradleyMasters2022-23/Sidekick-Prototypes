@@ -1404,14 +1404,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b55a354a4e73f4fa2510a11cc1ea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  invulnerable: 0
+  comboTimer: 0
+  healthSlider: {fileID: 0}
+  comboHit: {fileID: 0}
+  comboCount: 0
   rotationSpeed: 25
   walkSpeed: 4
   shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
   shootTime: 1
-  t: 0
-  currTime: 1
-  testVal1: 0
-  testVal2: 0
+  attackRange: 0
+  idealRange: 0
+  moveThreshold: 0
 --- !u!54 &1432647839
 Rigidbody:
   m_ObjectHideFlags: 0

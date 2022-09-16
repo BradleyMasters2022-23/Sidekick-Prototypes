@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class PlayerControllerRB : MonoBehaviour
+public class PlayerControllerRB : IDamagable
 {
     public float playerSpeed;
     public float lookSpeed;
@@ -43,12 +43,14 @@ public class PlayerControllerRB : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
     [SerializeField] private bool grounded = true;
+    private float defGrav;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
         rb = GetComponent<Rigidbody>();
+        Physics.gravity *= gravityMultiplier;
 
         controller = new PlayerControls();
         move = controller.Player.Move;
@@ -72,7 +74,9 @@ public class PlayerControllerRB : MonoBehaviour
 
     public void DebugRestartScene(InputAction.CallbackContext ctx)
     {
+        Physics.gravity /= gravityMultiplier;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
     }
 
     private void OnDisable()
@@ -83,13 +87,16 @@ public class PlayerControllerRB : MonoBehaviour
         debugRestart.Disable();
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         // Player Movement
         direction = transform.right * move.ReadValue<Vector2>().x + transform.forward * move.ReadValue<Vector2>().y;
 
         //playerBody.transform.LookAt(transform.position + direction);
         rb.MovePosition(transform.position + direction * playerSpeed * Time.deltaTime);
+
     }
 
     private void Update()
@@ -103,6 +110,7 @@ public class PlayerControllerRB : MonoBehaviour
 
         if (jumpT < jumpCooldown)
             jumpT += Time.deltaTime;
+
 
         // look left and right
         transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSpeed);
@@ -133,5 +141,13 @@ public class PlayerControllerRB : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public override void Die()
+    {
+        Debug.Log("Player dead");
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0;
+        FindObjectOfType<GameOverScreen>().EnableDeathScreen();
     }
 }
