@@ -33,7 +33,6 @@ public class EnemyTurret : IDamagable
     private float time = 0;
     private float currTime = 1;
     private GameObject p;
-    public float overshootMult;
 
     // Start is called before the first frame update
     void Start()
@@ -159,5 +158,22 @@ public class EnemyTurret : IDamagable
     private void Shoot(Transform point)
     {
         GameObject o = Instantiate(shotPrefab, point.transform.position, point.transform.rotation);
+    }
+
+    protected override void Awake()
+    {
+        GetComponent<Renderer>().material.color = Color.red;
+        base.Awake();
+
+        // If dummy cannot be killed, make sure to remove from pool
+        if (invulnerable)
+            FindObjectOfType<DoorManager>().DestroyEnemy();
+    }
+
+
+    public override void Die()
+    {
+        base.Die();
+        FindObjectOfType<DoorManager>().DestroyEnemy();
     }
 }

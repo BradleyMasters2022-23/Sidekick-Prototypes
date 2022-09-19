@@ -180,4 +180,21 @@ public class EnemyRange : IDamagable
         o.transform.LookAt(p.transform);
 
     }
+
+    protected override void Awake()
+    {
+        GetComponent<Renderer>().material.color = Color.red;
+        base.Awake();
+
+        // If dummy cannot be killed, make sure to remove from pool
+        if (invulnerable)
+            FindObjectOfType<DoorManager>().DestroyEnemy();
+    }
+
+
+    public override void Die()
+    {
+        base.Die();
+        FindObjectOfType<DoorManager>().DestroyEnemy();
+    }
 }

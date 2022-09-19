@@ -45,6 +45,12 @@ public class PlayerControllerRB : IDamagable
     [SerializeField] private bool grounded = true;
     private float defGrav;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -65,6 +71,12 @@ public class PlayerControllerRB : IDamagable
         debugRestart.Enable();
 
         verticalLookRotation = cam.transform.localRotation.x;
+
+        if (PlayerUpgradeManager.instance.currHealth != 0)
+        {
+            health = PlayerUpgradeManager.instance.currHealth;
+            UpdateSlider();
+        }
     }
 
     public Transform GetGroundCheck()
@@ -81,6 +93,9 @@ public class PlayerControllerRB : IDamagable
 
     private void OnDisable()
     {
+        PlayerUpgradeManager.instance.currHealth = health;
+
+        Physics.gravity /= gravityMultiplier;
         move.Disable();
         mouse.Disable();
         jump.Disable();

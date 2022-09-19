@@ -73,15 +73,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RestartScene-DEBUG"",
-                    ""type"": ""Button"",
-                    ""id"": ""21715588-ab21-42ea-98ca-50e179668210"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""809f8691-8cfa-4437-87a9-2a5080eb8a46"",
@@ -94,6 +85,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""HoldSlow"",
                     ""type"": ""Button"",
                     ""id"": ""ad12a9a5-e972-4a9c-a888-7b6b7a287d32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RestartScene-DEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""21715588-ab21-42ea-98ca-50e179668210"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleUnlimitedSlow-DEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ae9c858-74d3-4d0c-979a-181c367d80f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleSlow-DEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""3488d54d-076c-4771-a7be-1d2f636e1f94"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -202,17 +220,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6616786f-6333-4e48-8882-88e18ce47102"",
-                    ""path"": ""<Keyboard>/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RestartScene-DEBUG"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""16574209-3354-4bb9-8d79-0d97be1d6335"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -232,6 +239,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""HoldSlow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c726cc3e-e382-41f2-b341-eb1e5c765e11"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleUnlimitedSlow-DEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8613ba7-f04a-460b-bedf-4eee16d68dbd"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleSlow-DEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6616786f-6333-4e48-8882-88e18ce47102"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartScene-DEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -245,9 +285,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_HoldSlow = m_Player.FindAction("HoldSlow", throwIfNotFound: true);
+        m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
+        m_Player_ToggleUnlimitedSlowDEBUG = m_Player.FindAction("ToggleUnlimitedSlow-DEBUG", throwIfNotFound: true);
+        m_Player_ToggleSlowDEBUG = m_Player.FindAction("ToggleSlow-DEBUG", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,9 +354,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_RestartSceneDEBUG;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_HoldSlow;
+    private readonly InputAction m_Player_RestartSceneDEBUG;
+    private readonly InputAction m_Player_ToggleUnlimitedSlowDEBUG;
+    private readonly InputAction m_Player_ToggleSlowDEBUG;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -324,9 +368,11 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @HoldSlow => m_Wrapper.m_Player_HoldSlow;
+        public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
+        public InputAction @ToggleUnlimitedSlowDEBUG => m_Wrapper.m_Player_ToggleUnlimitedSlowDEBUG;
+        public InputAction @ToggleSlowDEBUG => m_Wrapper.m_Player_ToggleSlowDEBUG;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -351,15 +397,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @RestartSceneDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @HoldSlow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
                 @HoldSlow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
                 @HoldSlow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
+                @RestartSceneDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
+                @ToggleUnlimitedSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
+                @ToggleSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -379,15 +431,21 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @RestartSceneDEBUG.started += instance.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.performed += instance.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.canceled += instance.OnRestartSceneDEBUG;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
                 @HoldSlow.started += instance.OnHoldSlow;
                 @HoldSlow.performed += instance.OnHoldSlow;
                 @HoldSlow.canceled += instance.OnHoldSlow;
+                @RestartSceneDEBUG.started += instance.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.performed += instance.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.canceled += instance.OnRestartSceneDEBUG;
+                @ToggleUnlimitedSlowDEBUG.started += instance.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.performed += instance.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.canceled += instance.OnToggleUnlimitedSlowDEBUG;
+                @ToggleSlowDEBUG.started += instance.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.performed += instance.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.canceled += instance.OnToggleSlowDEBUG;
             }
         }
     }
@@ -399,8 +457,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnRestartSceneDEBUG(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnHoldSlow(InputAction.CallbackContext context);
+        void OnRestartSceneDEBUG(InputAction.CallbackContext context);
+        void OnToggleUnlimitedSlowDEBUG(InputAction.CallbackContext context);
+        void OnToggleSlowDEBUG(InputAction.CallbackContext context);
     }
 }

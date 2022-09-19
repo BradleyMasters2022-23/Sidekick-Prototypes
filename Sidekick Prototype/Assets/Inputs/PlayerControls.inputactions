@@ -51,15 +51,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RestartScene-DEBUG",
-                    "type": "Button",
-                    "id": "21715588-ab21-42ea-98ca-50e179668210",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "809f8691-8cfa-4437-87a9-2a5080eb8a46",
@@ -72,6 +63,33 @@
                     "name": "HoldSlow",
                     "type": "Button",
                     "id": "ad12a9a5-e972-4a9c-a888-7b6b7a287d32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RestartScene-DEBUG",
+                    "type": "Button",
+                    "id": "21715588-ab21-42ea-98ca-50e179668210",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleUnlimitedSlow-DEBUG",
+                    "type": "Button",
+                    "id": "7ae9c858-74d3-4d0c-979a-181c367d80f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSlow-DEBUG",
+                    "type": "Button",
+                    "id": "3488d54d-076c-4771-a7be-1d2f636e1f94",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -180,17 +198,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6616786f-6333-4e48-8882-88e18ce47102",
-                    "path": "<Keyboard>/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RestartScene-DEBUG",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "16574209-3354-4bb9-8d79-0d97be1d6335",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -208,6 +215,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "HoldSlow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c726cc3e-e382-41f2-b341-eb1e5c765e11",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleUnlimitedSlow-DEBUG",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8613ba7-f04a-460b-bedf-4eee16d68dbd",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleSlow-DEBUG",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6616786f-6333-4e48-8882-88e18ce47102",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestartScene-DEBUG",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
