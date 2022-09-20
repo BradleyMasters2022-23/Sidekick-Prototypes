@@ -200,7 +200,7 @@ MonoBehaviour:
   comboHit: {fileID: 0}
   comboCount: 0
   playerSpeed: 10
-  lookSpeed: 25
+  lookSpeed: 15
   angleClamp: {x: -85, y: 85}
   cam: {fileID: 118932248232581742}
   playerBody: {fileID: 8919447734330336906}

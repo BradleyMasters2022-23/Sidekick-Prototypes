@@ -56,7 +56,9 @@ public class PlayerControllerRB : IDamagable
         Cursor.lockState = CursorLockMode.Locked;
 
         rb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityMultiplier;
+
+        if(Physics.gravity.y >= -10)
+            Physics.gravity *= gravityMultiplier;
 
         controller = new PlayerControls();
         move = controller.Player.Move;
@@ -86,7 +88,6 @@ public class PlayerControllerRB : IDamagable
 
     public void DebugRestartScene(InputAction.CallbackContext ctx)
     {
-        Physics.gravity /= gravityMultiplier;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
     }
@@ -95,7 +96,6 @@ public class PlayerControllerRB : IDamagable
     {
         PlayerUpgradeManager.instance.currHealth = health;
 
-        Physics.gravity /= gravityMultiplier;
         move.Disable();
         mouse.Disable();
         jump.Disable();
