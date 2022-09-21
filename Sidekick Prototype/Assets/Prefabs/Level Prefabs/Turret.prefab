@@ -193,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3141991338387390362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.40699992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -219,7 +219,7 @@ GameObject:
   m_Layer: 6
   m_Name: Turret
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -319,8 +319,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.57046145, y: 0.80135053, z: 0.6888108}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.57046145, y: 0.8199976, z: 0.6888108}
+  m_Center: {x: 0, y: 0.36358118, z: 0}
 --- !u!114 &3141991338747835020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -997,7 +997,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3141991339437128024}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.407, z: 0}
   m_LocalScale: {x: 0.51112, y: 0.51112, z: 0.51112}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1236,7 +1236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8180870156728812057}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.41, z: 0}
+  m_LocalPosition: {x: 0, y: -0.003000021, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1317,7 +1317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8957862136677503501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.387, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01999998, z: 0}
   m_LocalScale: {x: 0.67867, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

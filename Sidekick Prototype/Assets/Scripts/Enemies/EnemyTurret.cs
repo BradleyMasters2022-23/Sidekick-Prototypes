@@ -79,8 +79,10 @@ public class EnemyTurret : IDamagable
                 }
         }
 
-        // Get direction of player, rotate towards them
-        Vector3 direction = (p.transform.position - transform.position);
+        // Get direction of player, rotate towards them1
+        
+
+        Vector3 direction = (p.transform.position - turretPoint.transform.position);
         Quaternion rot = Quaternion.LookRotation(direction);
 
         float nextXAng = Mathf.LerpAngle(turretPoint.transform.localRotation.eulerAngles.x, rot.eulerAngles.x, rotationSpeed * currTime);
@@ -130,7 +132,7 @@ public class EnemyTurret : IDamagable
     /// <returns>Line of sight</returns>
     public bool LineOfSight(GameObject target)
     {
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = target.transform.position - turretPoint.transform.position;
         
         // Set mask to ignore raycasts and enemy layer
         int lm = LayerMask.NameToLayer("Enemy");
@@ -150,14 +152,14 @@ public class EnemyTurret : IDamagable
 
     private bool InVision()
     {
-        Vector3 temp = (p.transform.position - transform.position).normalized;
+        Vector3 temp = (p.transform.position - turretPoint.transform.position).normalized;
         float angle = Vector3.SignedAngle(temp, transform.forward, Vector3.up);
         return (Mathf.Abs(angle) <= lookRadius);
     }
 
     private void Shoot(Transform point)
     {
-        GameObject o = Instantiate(shotPrefab, point.transform.position, point.transform.rotation);
+        Instantiate(shotPrefab, point.transform.position, point.transform.rotation);
     }
 
     protected override void Awake()
@@ -167,13 +169,13 @@ public class EnemyTurret : IDamagable
 
         // If dummy cannot be killed, make sure to remove from pool
         if (invulnerable)
-            FindObjectOfType<DoorManager>().DestroyEnemy();
+            FindObjectOfType<SpawnManager>().DestroyEnemy();
     }
 
 
     public override void Die()
     {
         base.Die();
-        FindObjectOfType<DoorManager>().DestroyEnemy();
+        FindObjectOfType<SpawnManager>().DestroyEnemy();
     }
 }

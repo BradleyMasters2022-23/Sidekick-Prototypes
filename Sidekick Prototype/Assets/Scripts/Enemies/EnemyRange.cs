@@ -89,7 +89,7 @@ public class EnemyRange : IDamagable
                     {
                         time = 0;
 
-                        Vector3 awayDir = (transform.position - p.transform.position).normalized * walkSpeed/2;
+                        Vector3 awayDir = ((transform.position + Vector3.up) - p.transform.position).normalized * walkSpeed/2;
                         agent.SetDestination(transform.position + awayDir);
                     }
 
@@ -98,7 +98,7 @@ public class EnemyRange : IDamagable
         }
 
         // Get direction of player, rotate towards them
-        Vector3 direction = p.transform.position - transform.position;
+        Vector3 direction = p.transform.position - (transform.position+Vector3.up);
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
         float nextAng = Mathf.LerpAngle(transform.rotation.eulerAngles.y, angle, rotationSpeed * currTime);
         transform.rotation = Quaternion.Euler(0, nextAng, 0);
@@ -123,7 +123,7 @@ public class EnemyRange : IDamagable
                         Vector3 temp = agent.velocity.normalized;
                         temp *= overshootMult;
 
-                        agent.SetDestination(transform.position + temp);
+                        agent.SetDestination((transform.position + Vector3.up) + temp);
                     }
 
                     break;
@@ -149,7 +149,7 @@ public class EnemyRange : IDamagable
     /// <returns>Line of sight</returns>
     public bool LineOfSight(GameObject target)
     {
-        Vector3 direction = target.transform.position - transform.position;
+        Vector3 direction = target.transform.position - (transform.position + Vector3.up);
         
         // Set mask to ignore raycasts and enemy layer
         int lm = LayerMask.NameToLayer("Enemy");
@@ -158,7 +158,7 @@ public class EnemyRange : IDamagable
 
         // Try to get player
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, attackRange, ~lm))
+        if (Physics.Raycast((transform.position + Vector3.up), direction, out hit, attackRange, ~lm))
         {
             if (hit.transform.CompareTag("Player"))
                 return true;
@@ -169,32 +169,33 @@ public class EnemyRange : IDamagable
 
     private bool InVision()
     {
-        Vector3 temp = (p.transform.position - transform.position).normalized;
+        Vector3 temp = (p.transform.position - (transform.position + Vector3.up)).normalized;
         float angle = Vector3.SignedAngle(temp, transform.forward, Vector3.up);
         return (Mathf.Abs(angle) <= lookRadius);
     }
 
     private void Shoot()
     {
-        GameObject o = Instantiate(shotPrefab, transform.position, shotPrefab.transform.rotation);
+        GameObject o = Instantiate(shotPrefab, (transform.position + Vector3.up), shotPrefab.transform.rotation);
         o.transform.LookAt(p.transform);
 
     }
 
     protected override void Awake()
     {
-        GetComponent<Renderer>().material.color = Color.red;
+        //GetComponent<Renderer>().material.color = Color.red;
         base.Awake();
 
         // If dummy cannot be killed, make sure to remove from pool
-        if (invulnerable)
-            FindObjectOfType<DoorManager>().DestroyEnemy();
+        //if (invulnerable)
+        //    FindObjectOfType<DoorManager>().DestroyEnemy();
     }
 
 
     public override void Die()
     {
         base.Die();
-        FindObjectOfType<DoorManager>().DestroyEnemy();
+        //FindObjectOfType<DoorManager>().DestroyEnemy();
+        FindObjectOfType<SpawnManager>().DestroyEnemy();
     }
 }

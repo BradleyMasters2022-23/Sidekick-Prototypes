@@ -11,6 +11,7 @@ TagManager:
   - Exit
   - Door
   - Upgrades
+  - Spawn
   layers:
   - Default
   - TransparentFX

@@ -10,14 +10,12 @@ public class TargetDummy : IDamagable
         base.Awake();
 
         // If dummy cannot be killed, make sure to remove from pool
-        if(invulnerable)
-            FindObjectOfType<DoorManager>().DestroyEnemy();
     }
 
 
     public override void Die()
     {
         base.Die();
-        FindObjectOfType<DoorManager>().DestroyEnemy();
+        FindObjectOfType<SpawnManager>().DestroyEnemy();
     }
 }
