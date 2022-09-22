@@ -17,6 +17,7 @@ public class SpawnManager : MonoBehaviour
     private float targetDelay;
     private bool wait = false;
     private Coroutine spawnRoutine;
+    private Coroutine backupCheckRoutine;
 
     public int diff;
 
@@ -66,6 +67,7 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator SpawnNextWave()
     {
+        Debug.Log("Next wave starting");
         spawning = true;
         // Load the queue for all enemies in this wave
         foreach (GameObject enemy in chosenWave.allWaves[waveIndex].wave)
@@ -99,6 +101,7 @@ public class SpawnManager : MonoBehaviour
             }
         }
         spawning = false;
+        backupCheckRoutine = StartCoroutine(CheckCount());
     }
 
     private void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint)
@@ -128,6 +131,7 @@ public class SpawnManager : MonoBehaviour
     /// </summary>
     private void WaveFinished()
     {
+        Debug.Log("Wave finished");
         spawnRoutine = null;
         waveIndex++;
 
@@ -143,6 +147,7 @@ public class SpawnManager : MonoBehaviour
 
     private void CompleteRoom()
     {
+        Debug.Log("Room complete");
         FindObjectOfType<DoorManager>().UnlockAllDoors();
 
         if(chosenWave != null)
@@ -160,13 +165,24 @@ public class SpawnManager : MonoBehaviour
     {
         enemyCount--;
 
+        CheckWaveFinished();
+        
+    }
 
-        if((enemyCount <= chosenWave.contThreshold && waveIndex < chosenWave.allWaves.Length-1) 
+    public void CheckWaveFinished()
+    {
+        if ((enemyCount <= chosenWave.contThreshold && waveIndex < chosenWave.allWaves.Length - 1)
             || enemyCount <= 0)
         {
+            if(backupCheckRoutine != null)
+            {
+                StopCoroutine(backupCheckRoutine);
+                backupCheckRoutine = null;
+            }
             WaveFinished();
         }
     }
+
     public bool HasSpecialUpgrades()
     {
         if(chosenWave is null)
@@ -180,5 +196,15 @@ public class SpawnManager : MonoBehaviour
             return null;
 
         return chosenWave.specialRewards;
+    }
+
+    private IEnumerator CheckCount()
+    {
+        while(true)
+        {
+            CheckWaveFinished();
+
+            yield return new WaitForSeconds(1f);
+        }
     }
 }

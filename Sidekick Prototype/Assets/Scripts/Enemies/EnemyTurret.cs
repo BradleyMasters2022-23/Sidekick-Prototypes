@@ -27,7 +27,7 @@ public class EnemyTurret : IDamagable
     [Tooltip("Range the enemy can attack from")]
     public float attackRange;
     private float currDist;
-
+    public GameObject lastHit;
     public int lookRadius;
 
     private float time = 0;
@@ -106,7 +106,6 @@ public class EnemyTurret : IDamagable
                     if(LineOfSight(p) && currDist <= attackRange)
                     {
                         state = EnemyState.Attacking;
-
                     }
 
                     break;
@@ -141,8 +140,10 @@ public class EnemyTurret : IDamagable
 
         // Try to get player
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, attackRange, ~lm))
+        
+        if (Physics.Raycast(turretPoint.transform.position, direction, out hit, attackRange, ~lm))
         {
+            lastHit = hit.transform.gameObject;
             if (hit.transform.CompareTag("Player"))
                 return true;
         }
