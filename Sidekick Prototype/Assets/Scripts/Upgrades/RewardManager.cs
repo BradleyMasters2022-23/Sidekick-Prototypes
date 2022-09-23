@@ -22,9 +22,9 @@ public class RewardManager : MonoBehaviour
     {
         // Populate the list
         if (FindObjectOfType<SpawnManager>().HasSpecialUpgrades())
-            upgradeOptions = FindObjectOfType<SpawnManager>().GetSpecialUpgrades();
+            upgradeOptions = new List<UpgradeObject>(FindObjectOfType<SpawnManager>().GetSpecialUpgrades());
         else
-            upgradeOptions = RewardStorage.instance.GetList();
+            upgradeOptions = new List<UpgradeObject>(RewardStorage.instance.GetList());
 
         DetermineUpgrades();
     }
@@ -55,16 +55,23 @@ public class RewardManager : MonoBehaviour
     public void ChooseUpgrades()
     {
         int rewardCount = Random.Range(rewardCountRange.x, rewardCountRange.y);
-        Debug.Log(rewardCount);
         // Choose enough upgrades to reach reward count
         UpgradeObject temp;
         while (chosenUpgrades.Count < rewardCount)
         {
+            // Make sure upgrade options isn't empty
+            if(upgradeOptions.Count <= 0)
+            {
+                Debug.Log($"Reward Manager out of options! Only {chosenUpgrades.Count} options will be offered!");
+                break;
+            }
+
             temp = upgradeOptions[Random.Range(0, upgradeOptions.Count)];
             // Dont choose more than one of each upgrade
             if (!chosenUpgrades.Contains(temp))
             {
                 chosenUpgrades.Add(temp);
+                upgradeOptions.Remove(temp);
             }
         }
     }

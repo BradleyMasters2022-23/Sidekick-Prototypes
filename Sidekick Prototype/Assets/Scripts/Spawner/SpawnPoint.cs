@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     [SerializeField] private bool usable = true;
+    private float backupTime;
+    private float t;
 
     public bool Usable()
     {
@@ -26,6 +28,11 @@ public class SpawnPoint : MonoBehaviour
         usable = false;
     }
     private void OnTriggerExit(Collider other)
+    {
+        usable = true;
+    }
+
+    public void SetUsable()
     {
         usable = true;
     }

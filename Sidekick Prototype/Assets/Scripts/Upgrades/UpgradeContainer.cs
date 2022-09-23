@@ -52,6 +52,8 @@ public class UpgradeContainer : MonoBehaviour
         }
         linkedUpgrades.Clear();
 
-        RewardStorage.instance.RemoveUpgrade(upgrade);
+        // If only allowed once, then remove from reward pool
+        if(!upgrade.reearnable)
+            RewardStorage.instance.RemoveUpgrade(upgrade);
     }
 }

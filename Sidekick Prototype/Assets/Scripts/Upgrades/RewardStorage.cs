@@ -17,6 +17,7 @@ public class RewardStorage : MonoBehaviour
     {
         if (instance == null)
         {
+            transform.parent = null;
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
@@ -24,6 +25,7 @@ public class RewardStorage : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
     }
 
     /// <summary>

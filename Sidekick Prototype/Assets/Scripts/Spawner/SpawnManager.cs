@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
 
     private Queue<GameObject> spawnQueue = new Queue<GameObject>();
     public int maxEnemies = 3;
-    [SerializeField] private int enemyCount = 0;
+    private int enemyCount = 0;
     public Vector2 spawnDelay = new Vector2(0, 1);
     private bool spawning = false;
     private float spawnTimer;
@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     private Coroutine spawnRoutine;
     private Coroutine backupCheckRoutine;
 
-    public int diff;
+    //public int diff;
 
     private SpawnPoint[] spawnPoints;
 
@@ -49,7 +49,6 @@ public class SpawnManager : MonoBehaviour
     {
         if(waveOptions.Length <= 0)
         {
-            Debug.Log("No waves offered, completing room!");
             CompleteRoom();
             return;
         }
@@ -67,7 +66,6 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator SpawnNextWave()
     {
-        Debug.Log("Next wave starting");
         spawning = true;
         // Load the queue for all enemies in this wave
         foreach (GameObject enemy in chosenWave.allWaves[waveIndex].wave)
@@ -77,13 +75,19 @@ public class SpawnManager : MonoBehaviour
         SpawnPoint _spawnPoint;
         while (spawnQueue.Count > 0)
         {
+            int c = 0;
             // Only spawn if not past max
             if (enemyCount < maxEnemies)
             {
                 // Spawn a new enemy with a randomized delay between the range, not choosing same point twice back to back
                 do
                 {
+                    c++;
                     _spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+                    // Backup incase they get stuck
+                    if (c >= 1000)
+                        _spawnPoint.SetUsable();
+
                     yield return null;
 
                 } while (!_spawnPoint.Usable());
@@ -131,7 +135,6 @@ public class SpawnManager : MonoBehaviour
     /// </summary>
     private void WaveFinished()
     {
-        Debug.Log("Wave finished");
         spawnRoutine = null;
         waveIndex++;
 
@@ -147,7 +150,6 @@ public class SpawnManager : MonoBehaviour
 
     private void CompleteRoom()
     {
-        Debug.Log("Room complete");
         FindObjectOfType<DoorManager>().UnlockAllDoors();
 
         if(chosenWave != null)

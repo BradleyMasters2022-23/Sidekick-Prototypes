@@ -10,7 +10,7 @@ public class DoorManager : MonoBehaviour
 
     private bool locked = false;
 
-    private void Awake()
+    private void Start()
     {
         FieldTrigger[] temp = FindObjectsOfType<FieldTrigger>();
 
@@ -29,7 +29,7 @@ public class DoorManager : MonoBehaviour
                 doorways.Add(f);
             }
         }
-
+        
         // If no set enterance found, get one from doorways
         if(entrance == null)
         {
@@ -63,6 +63,12 @@ public class DoorManager : MonoBehaviour
         foreach (FieldTrigger f in exits)
         {
             f.LockDoor();
+        }
+
+        if(GameObject.FindGameObjectWithTag("Spawn") is null)
+        {
+            Debug.Log("No spawn found, unlocking doors");
+            UnlockAllDoors();
         }
     }
 

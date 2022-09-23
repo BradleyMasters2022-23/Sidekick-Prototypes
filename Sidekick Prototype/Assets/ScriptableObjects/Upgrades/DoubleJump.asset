@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DoubleJump
   m_EditorClassIdentifier: 
   displayName: Double Jump
+  reearnable: 1
   upgradeType: 0
   upgradePrefab: {fileID: 5807501379440073531, guid: dad89b15afbd20a458752c0b10b2d93f, type: 3}
   upgradeColor: {r: 0.8666667, g: 0.64599717, b: 0.07843137, a: 0}

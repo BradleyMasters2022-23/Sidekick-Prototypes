@@ -14,7 +14,7 @@ public class UpgradeObject : ScriptableObject
 
     public string displayName;
 
-
+    public bool reearnable = false;
 
     public UpgradeType upgradeType;
 
