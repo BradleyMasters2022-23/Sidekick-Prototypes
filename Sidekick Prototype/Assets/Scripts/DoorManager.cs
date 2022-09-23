@@ -15,7 +15,7 @@ public class DoorManager : MonoBehaviour
     private void Awake()
     {
         FieldTrigger[] temp = FindObjectsOfType<FieldTrigger>();
-        enemies = FindObjectsOfType<TargetDummy>().Length;
+        enemies = FindObjectsOfType<TargetDummy>().Length + FindObjectsOfType<EnemyRange>().Length + FindObjectsOfType<EnemyTurret>().Length;
 
         foreach(FieldTrigger f in temp)
         {

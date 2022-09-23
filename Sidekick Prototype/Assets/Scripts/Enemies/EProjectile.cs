@@ -5,6 +5,7 @@ using UnityEngine;
 public class EProjectile : MonoBehaviour
 {
     public float projectileSpeed;
+    public int damage;
     float currTime;
     public float lifeTime;
     float t = 0;
@@ -30,5 +31,15 @@ public class EProjectile : MonoBehaviour
         {
             t += Time.deltaTime * currTime;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<IDamagable>().TakeDamage(damage);
+        }
+
+        Destroy(this.gameObject);
     }
 }

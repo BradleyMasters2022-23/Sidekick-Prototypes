@@ -48,3 +48,12 @@ MonoBehaviour:
   normalTime: 1
   slowedTime: 0
   timeChangeSpeed: 0.095
+  slider: {fileID: 0}
+  unlimited: 0
+  maxGauge: 250
+  decreaseRate: 1
+  refillRate: 0.6
+  refillDelay: 1
+  emptiedDelay: 5
+  fillImg: {fileID: 0}
+  emptiedColor: {r: 0.9622642, g: 0, b: 0, a: 1}
