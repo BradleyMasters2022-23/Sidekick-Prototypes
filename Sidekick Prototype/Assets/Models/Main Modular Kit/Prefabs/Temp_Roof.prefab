@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6032741762870508929}
   - component: {fileID: 7212305066617762340}
   - component: {fileID: 4896457842259691246}
-  m_Layer: 0
+  - component: {fileID: 7258565331437475291}
+  m_Layer: 3
   m_Name: Temp_Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7258565331437475291
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409548089664677691}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3330614457583186181, guid: 3b32a3d7ae645754ab4904d0ad74d478, type: 3}

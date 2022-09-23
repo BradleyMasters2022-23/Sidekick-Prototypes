@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8312492801089006667}
   - component: {fileID: 4968653173471962094}
   - component: {fileID: 7138421968394065700}
-  m_Layer: 0
+  - component: {fileID: 7942007468163038689}
+  m_Layer: 3
   m_Name: Bot_Temp_Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7942007468163038689
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8651477030817674993}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8006310043984450728, guid: 36f689a5de5301f48a6ef86ab72202f1, type: 3}
