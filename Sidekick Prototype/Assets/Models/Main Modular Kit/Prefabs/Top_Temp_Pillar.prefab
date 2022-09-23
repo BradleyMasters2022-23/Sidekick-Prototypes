@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7207163622693018680}
   - component: {fileID: 6028955082692957085}
   - component: {fileID: 8381148318744700759}
-  m_Layer: 0
+  - component: {fileID: 3549770762119883616}
+  m_Layer: 3
   m_Name: Top_Temp_Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3549770762119883616
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8020679547836712578}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2469039454122881226, guid: e5c466afc6693414dbf213db11a7cc90, type: 3}

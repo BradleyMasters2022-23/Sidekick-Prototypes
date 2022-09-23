@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2397277696105486280}
   - component: {fileID: 1651427742674753645}
   - component: {fileID: 3535320766869040295}
-  m_Layer: 0
+  - component: {fileID: 7200613906832735395}
+  m_Layer: 3
   m_Name: Temp_Fold_Cor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7200613906832735395
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030649808510897522}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 478163392917516780, guid: 6fac0db24b3d6c644aaf60f0588ea990, type: 3}

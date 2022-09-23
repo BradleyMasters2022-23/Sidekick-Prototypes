@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4765241341047407671}
   - component: {fileID: 8470798477850053522}
   - component: {fileID: 5938740599229054808}
-  m_Layer: 0
+  - component: {fileID: 387713325773812566}
+  m_Layer: 3
   m_Name: Mid_Temp_Wall_Rev_Cor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &387713325773812566
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5290139032701066893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1620036899293330617, guid: 1272375c38c7d1749be7e1e4ccf6bc54, type: 3}

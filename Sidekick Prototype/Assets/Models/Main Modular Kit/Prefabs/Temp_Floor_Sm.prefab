@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5869300056102592295}
   - component: {fileID: 7411846196532334722}
   - component: {fileID: 4699749827883508808}
-  m_Layer: 0
+  - component: {fileID: 8657835757391159002}
+  m_Layer: 3
   m_Name: Temp_Floor_Sm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8657835757391159002
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6500983313545332125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2573564620358983849, guid: 00826f38e33562f42838d840387aef23, type: 3}
