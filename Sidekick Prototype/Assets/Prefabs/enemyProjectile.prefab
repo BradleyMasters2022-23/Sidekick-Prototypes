@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 641006163171135009}
   - component: {fileID: 641006163171135008}
   - component: {fileID: 641006163171135023}
-  - component: {fileID: 641006163171135022}
+  - component: {fileID: 1172503258230622763}
   - component: {fileID: -4786856718856575154}
+  - component: {fileID: 2377268864903310227}
   m_Layer: 6
   m_Name: enemyProjectile
   m_TagString: Untagged
@@ -85,8 +86,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &641006163171135022
-SphereCollider:
+--- !u!65 &1172503258230622763
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,7 +97,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.83695745, y: 0.83695745, z: 0.83695745}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-4786856718856575154
 MonoBehaviour:
@@ -113,3 +114,15 @@ MonoBehaviour:
   projectileSpeed: 60
   damage: 5
   lifeTime: 15
+--- !u!114 &2377268864903310227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641006163171135019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d337a0a7a5688894f8e5cff232114fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
