@@ -8,14 +8,11 @@ public class DoorManager : MonoBehaviour
     public List<FieldTrigger> exits;
     public FieldTrigger entrance;
 
-
-    public int enemies;
     private bool locked = false;
 
-    private void Awake()
+    private void Start()
     {
         FieldTrigger[] temp = FindObjectsOfType<FieldTrigger>();
-        enemies = FindObjectsOfType<TargetDummy>().Length + FindObjectsOfType<EnemyRange>().Length + FindObjectsOfType<EnemyTurret>().Length;
 
         foreach(FieldTrigger f in temp)
         {
@@ -32,7 +29,7 @@ public class DoorManager : MonoBehaviour
                 doorways.Add(f);
             }
         }
-
+        
         // If no set enterance found, get one from doorways
         if(entrance == null)
         {
@@ -63,30 +60,23 @@ public class DoorManager : MonoBehaviour
 
 
         locked = true;
-        // If not an empty room, lock the remaining doors
-        if (enemies > 0)
+        foreach (FieldTrigger f in exits)
         {
-            foreach (FieldTrigger f in exits)
-            {
-                f.LockDoor();
-            }
+            f.LockDoor();
+        }
+
+        if(GameObject.FindGameObjectWithTag("Spawn") is null)
+        {
+            Debug.Log("No spawn found, unlocking doors");
+            UnlockAllDoors();
         }
     }
 
-    public void DestroyEnemy()
+    public void UnlockAllDoors()
     {
-        enemies--;
-    }
-
-    private void FixedUpdate()
-    {
-        if(enemies <= 0 && locked)
+        foreach (FieldTrigger f in exits)
         {
-            locked = false;
-            foreach (FieldTrigger f in exits)
-            {
-                f.UnlockDoor();
-            }
+            f.UnlockDoor();
         }
     }
 }

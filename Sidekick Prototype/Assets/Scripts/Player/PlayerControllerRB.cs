@@ -48,14 +48,14 @@ public class PlayerControllerRB : IDamagable
     protected override void Awake()
     {
         base.Awake();
-
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        rb = GetComponent<Rigidbody>();
+       
 
         if(Physics.gravity.y >= -10)
             Physics.gravity *= gravityMultiplier;
@@ -94,7 +94,8 @@ public class PlayerControllerRB : IDamagable
 
     private void OnDisable()
     {
-        PlayerUpgradeManager.instance.currHealth = health;
+        if(PlayerUpgradeManager.instance != null)
+            PlayerUpgradeManager.instance.currHealth = health;
 
         move.Disable();
         mouse.Disable();

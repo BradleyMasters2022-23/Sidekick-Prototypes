@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 9159129410068526745}
   - component: {fileID: 3335381280308917250}
   - component: {fileID: 8280821584857350369}
-  - component: {fileID: 8527936108837820056}
-  - component: {fileID: 7771264794119539194}
+  - component: {fileID: 507248146349259465}
+  - component: {fileID: 3452771121024979335}
+  - component: {fileID: 8473808994961895340}
   m_Layer: 2
   m_Name: Player3Shot
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: abbd567362dd21e47b6a8d2599132e86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,8 +86,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &8527936108837820056
-SphereCollider:
+--- !u!114 &507248146349259465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400302073868961519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5afef1fb95641f429e2b3f390b42c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 80
+  damage: 15
+  freezePlayerP: 1
+  freezeSpawnDist: 1
+  currTime: 0
+  lifeTime: 5
+--- !u!65 &3452771121024979335
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,9 +115,9 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7771264794119539194
+  m_Size: {x: 0.9160843, y: 0.91608423, z: 0.9160843}
+  m_Center: {x: -5.5290194e-15, y: 0, z: 0.0000019073486}
+--- !u!114 &8473808994961895340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,15 +126,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 400302073868961519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb44db13caa69f478a6cca0c2914ec2, type: 3}
+  m_Script: {fileID: 11500000, guid: d337a0a7a5688894f8e5cff232114fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 80
-  damage: 15
-  freezePlayerP: 1
-  freezeSpawnDist: 2
-  currTime: 0
-  lifeTime: 15
 --- !u!1 &4079888703795960117
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,8 +140,9 @@ GameObject:
   - component: {fileID: 6032619345538570625}
   - component: {fileID: 7945413226085306743}
   - component: {fileID: 1472994224871429807}
-  - component: {fileID: 694606294008815124}
-  - component: {fileID: 1750374586821719393}
+  - component: {fileID: 3395139474866606338}
+  - component: {fileID: 5654035424921443432}
+  - component: {fileID: 4922833051141433175}
   m_Layer: 2
   m_Name: Player3Shot (1)
   m_TagString: Untagged
@@ -179,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: abbd567362dd21e47b6a8d2599132e86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,8 +215,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &694606294008815124
-SphereCollider:
+--- !u!114 &3395139474866606338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079888703795960117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5afef1fb95641f429e2b3f390b42c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 80
+  damage: 15
+  freezePlayerP: 1
+  freezeSpawnDist: 1
+  currTime: 0
+  lifeTime: 5
+--- !u!65 &5654035424921443432
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,9 +244,9 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.92451894, y: 0.9245189, z: 0.92451894}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1750374586821719393
+--- !u!114 &4922833051141433175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,15 +255,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4079888703795960117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb44db13caa69f478a6cca0c2914ec2, type: 3}
+  m_Script: {fileID: 11500000, guid: d337a0a7a5688894f8e5cff232114fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 80
-  damage: 15
-  freezePlayerP: 1
-  freezeSpawnDist: 2
-  currTime: 0
-  lifeTime: 15
 --- !u!1 &9121595020474447729
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,8 +269,9 @@ GameObject:
   - component: {fileID: 9121595020474447739}
   - component: {fileID: 9121595020474447738}
   - component: {fileID: 9121595020474447733}
-  - component: {fileID: 9121595020474447732}
   - component: {fileID: 9061309520819921890}
+  - component: {fileID: 5129266212509420641}
+  - component: {fileID: 5489587020147542893}
   m_Layer: 2
   m_Name: Player3Shot
   m_TagString: Untagged
@@ -297,7 +324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: abbd567362dd21e47b6a8d2599132e86, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,19 +346,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9121595020474447732
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9061309520819921890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +361,31 @@ MonoBehaviour:
   projectileSpeed: 80
   damage: 15
   freezePlayerP: 1
-  freezeSpawnDist: 0.5
+  freezeSpawnDist: 1
   currTime: 0
-  lifeTime: 15
+  lifeTime: 5
+--- !u!65 &5129266212509420641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121595020474447729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9364356, y: 0.9364356, z: 0.9364356}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5489587020147542893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9121595020474447729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d337a0a7a5688894f8e5cff232114fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

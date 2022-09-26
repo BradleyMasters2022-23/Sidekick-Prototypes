@@ -7,8 +7,8 @@ public class SplitShot : PProjectile
 
     protected override void Start()
     {
-        base.Start();
         transform.DetachChildren();
+        base.Start();
     }
 
 }
