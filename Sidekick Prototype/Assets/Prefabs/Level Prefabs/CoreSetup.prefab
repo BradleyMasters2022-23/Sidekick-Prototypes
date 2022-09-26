@@ -814,6 +814,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5200506986242498491}
     m_Modifications:
+    - target: {fileID: 871779136243275390, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_text
+      value: "Move - WASD\nJump - Space\nShoot - L Mouse\nFreeze Time - R Mouse \nPause
+        - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite Time - N\nToggle Platform
+        Bullets - B"
+      objectReference: {fileID: 0}
     - target: {fileID: 1986733674641339569, guid: c4237af4409d5df43a46293adc83669f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -917,6 +923,22 @@ PrefabInstance:
     - target: {fileID: 7430602098376367188, guid: c4237af4409d5df43a46293adc83669f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788109236016357170, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 171.7968
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788109236016357170, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 148.5978
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788109236016357170, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -75.14969
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788109236016357170, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -61.145767
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4237af4409d5df43a46293adc83669f, type: 3}
