@@ -21,8 +21,6 @@ public class PProjectile : MonoBehaviour
     {
         currTime = TimeManager.worldTime;
 
-        //rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
-
         if(freezePlayerP && currTime == 0 && transform.parent == null)
         {
             transform.position += transform.forward * freezeSpawnDist;

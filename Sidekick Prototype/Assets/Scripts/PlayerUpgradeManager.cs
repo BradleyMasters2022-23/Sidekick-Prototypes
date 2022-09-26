@@ -15,6 +15,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     public static PlayerUpgradeManager instance;
 
+    public int currHealth;
+
     private void Start()
     {
         if(instance == null)
@@ -27,6 +29,7 @@ public class PlayerUpgradeManager : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        currHealth = 0;
         player = FindObjectOfType<PlayerControllerRB>();
         gun = FindObjectOfType<PlayerGun>();
         SceneManager.sceneLoaded += OnLevelLoad;

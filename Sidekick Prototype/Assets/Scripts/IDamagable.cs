@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public abstract class IDamagable : MonoBehaviour
 {
     public int maxHealth;
-    private int health;
+    protected int health;
     public bool invulnerable;
 
     public float comboTimer;
@@ -109,6 +109,11 @@ public abstract class IDamagable : MonoBehaviour
     {
         //Debug.Log(this.gameObject.name + " has died! Oh no!");
         Destroy(this.gameObject);
+    }
+
+    public void UpdateSlider()
+    {
+        healthSlider.value = health;
     }
 
 }
