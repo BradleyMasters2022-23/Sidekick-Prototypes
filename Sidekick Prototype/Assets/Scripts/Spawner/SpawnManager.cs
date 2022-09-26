@@ -40,6 +40,11 @@ public class SpawnManager : MonoBehaviour
         ActivateSpawner();
     }
 
+    public void AddEnemy()
+    {
+        enemyCount++;
+    }
+
     public void ActivateSpawner()
     {
         ChooseWave();

@@ -48,14 +48,14 @@ public class PlayerControllerRB : IDamagable
     protected override void Awake()
     {
         base.Awake();
-
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        rb = GetComponent<Rigidbody>();
+       
 
         if(Physics.gravity.y >= -10)
             Physics.gravity *= gravityMultiplier;

@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59f4f1d38354085499c7baffc87f4fdc, type: 2}
   - {fileID: 11400000, guid: 9f64988365da37d41aa4d10f157ca25a, type: 2}
   - {fileID: 11400000, guid: 2fc81c8d429052c4ea62f91586049be1, type: 2}
-  currentLuck: 60
+  currentLuck: 100
   luckRange: {x: 0, y: 100}
-  rewardLuckDecrease: 10
-  rewardLuckIncrease: 10
+  rewardLuckDecrease: 0
+  rewardLuckIncrease: 0

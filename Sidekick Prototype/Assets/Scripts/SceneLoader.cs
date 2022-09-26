@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
         // Reset instances
         RoomGenerator rm = RoomGenerator.instance;
         if (rm != null)
-            rm.DestroyRoomGen();
+            rm.ReturnToHub();
 
         PlayerUpgradeManager pum = PlayerUpgradeManager.instance;
         if (pum != null)

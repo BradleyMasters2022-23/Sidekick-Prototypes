@@ -59,4 +59,9 @@ public class RewardStorage : MonoBehaviour
         currentLuck = (int)Mathf.Clamp(currentLuck, luckRange.x, luckRange.y);
     }
 
+    public void DestroyRS()
+    {
+        RewardStorage.instance = null;
+        Destroy(this.gameObject);
+    }
 }

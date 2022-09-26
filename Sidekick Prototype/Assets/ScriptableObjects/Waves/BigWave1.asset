@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allWaves:
   - wave:
-    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
-    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
-    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
-  - wave:
-    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
-    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
-    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
+    - {fileID: 8624538110150094755, guid: 3fee115b68a5624418b122f01ba56017, type: 3}
+    - {fileID: 8624538110150094755, guid: 3fee115b68a5624418b122f01ba56017, type: 3}
     - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
   - wave:
     - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
     - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
     - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
+    - {fileID: 8624538110150094755, guid: 3fee115b68a5624418b122f01ba56017, type: 3}
+  - wave:
     - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
     - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
+    - {fileID: 307714298938917574, guid: aef21077f21726643a8f90d9a96fc0c6, type: 3}
+    - {fileID: 8624538110150094755, guid: 3fee115b68a5624418b122f01ba56017, type: 3}
+    - {fileID: 8624538110150094755, guid: 3fee115b68a5624418b122f01ba56017, type: 3}
   type: 0
   contThreshold: 1
   specialRewards: []

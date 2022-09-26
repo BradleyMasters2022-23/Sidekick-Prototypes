@@ -101,9 +101,9 @@ MonoBehaviour:
   projectileSpeed: 80
   damage: 15
   freezePlayerP: 1
-  freezeSpawnDist: 0.5
+  freezeSpawnDist: 1
   currTime: 0
-  lifeTime: 15
+  lifeTime: 5
 --- !u!65 &3452771121024979335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -230,9 +230,9 @@ MonoBehaviour:
   projectileSpeed: 80
   damage: 15
   freezePlayerP: 1
-  freezeSpawnDist: 0.5
+  freezeSpawnDist: 1
   currTime: 0
-  lifeTime: 15
+  lifeTime: 5
 --- !u!65 &5654035424921443432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -361,9 +361,9 @@ MonoBehaviour:
   projectileSpeed: 80
   damage: 15
   freezePlayerP: 1
-  freezeSpawnDist: 0.5
+  freezeSpawnDist: 1
   currTime: 0
-  lifeTime: 15
+  lifeTime: 5
 --- !u!65 &5129266212509420641
 BoxCollider:
   m_ObjectHideFlags: 0

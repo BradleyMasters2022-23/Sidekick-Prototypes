@@ -10,6 +10,7 @@ public class RoomGenerator : MonoBehaviour
 
     public string currRoom;
     public string lastRoom;
+    public string returnRoom;
 
     public static RoomGenerator instance;
 
@@ -33,11 +34,17 @@ public class RoomGenerator : MonoBehaviour
         currRoom = SceneManager.GetActiveScene().name;
     }
 
-
     public void SelectRoom()
     {
+        // If player just finished the final room, return to 'hub'
+        if (currRoom == finalRoom)
+        {
+            ReturnToHub();
+            return;
+        }
+
         // If reaching max floor length, load the last room
-        if(count+1 >= floorLength)
+        if (count+1 >= floorLength)
         {
             lastRoom = currRoom;
             currRoom = finalRoom;
@@ -45,7 +52,6 @@ public class RoomGenerator : MonoBehaviour
 
             return;
         }
-
 
         string next = sceneNames[Random.Range(0, sceneNames.Length)];
 
@@ -67,10 +73,14 @@ public class RoomGenerator : MonoBehaviour
         SceneManager.LoadSceneAsync(currRoom);
     }
 
-    public void DestroyRoomGen()
+    public void ReturnToHub()
     {
         RoomGenerator.instance = null;
+        PlayerUpgradeManager.instance.DestroyPUM();
+        RewardStorage.instance.DestroyRS();
+        
+        SceneManager.UnloadSceneAsync(currRoom);
+        SceneManager.LoadSceneAsync(returnRoom);
         Destroy(gameObject);
     }
-
 }
