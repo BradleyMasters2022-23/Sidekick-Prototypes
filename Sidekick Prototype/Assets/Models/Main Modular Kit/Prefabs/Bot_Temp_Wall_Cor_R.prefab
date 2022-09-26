@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8119246238067384077}
   - component: {fileID: 5116793941397721256}
   - component: {fileID: 6982399883973043298}
-  m_Layer: 0
+  - component: {fileID: 5936951349678264200}
+  m_Layer: 3
   m_Name: Bot_Temp_Wall_Cor_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5936951349678264200
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8927976981167769015}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1978012226070759814, guid: e4f6f5659fc486c49b5f20163108ca1a, type: 3}
