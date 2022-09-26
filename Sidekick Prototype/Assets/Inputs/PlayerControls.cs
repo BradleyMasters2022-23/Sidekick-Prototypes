@@ -116,6 +116,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TogglePlatforms-DEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""25eca272-0dbc-4b6c-9a9c-83d2e264ea8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""RestartScene-DEBUG"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e4ea0c3-1a91-487d-94d4-e85b54b8f4c3"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TogglePlatforms-DEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +310,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
         m_Player_ToggleUnlimitedSlowDEBUG = m_Player.FindAction("ToggleUnlimitedSlow-DEBUG", throwIfNotFound: true);
         m_Player_ToggleSlowDEBUG = m_Player.FindAction("ToggleSlow-DEBUG", throwIfNotFound: true);
+        m_Player_TogglePlatformsDEBUG = m_Player.FindAction("TogglePlatforms-DEBUG", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,6 +380,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RestartSceneDEBUG;
     private readonly InputAction m_Player_ToggleUnlimitedSlowDEBUG;
     private readonly InputAction m_Player_ToggleSlowDEBUG;
+    private readonly InputAction m_Player_TogglePlatformsDEBUG;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -373,6 +395,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
         public InputAction @ToggleUnlimitedSlowDEBUG => m_Wrapper.m_Player_ToggleUnlimitedSlowDEBUG;
         public InputAction @ToggleSlowDEBUG => m_Wrapper.m_Player_ToggleSlowDEBUG;
+        public InputAction @TogglePlatformsDEBUG => m_Wrapper.m_Player_TogglePlatformsDEBUG;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,6 +435,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @TogglePlatformsDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
+                @TogglePlatformsDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
+                @TogglePlatformsDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -446,6 +472,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleSlowDEBUG.started += instance.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.performed += instance.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.canceled += instance.OnToggleSlowDEBUG;
+                @TogglePlatformsDEBUG.started += instance.OnTogglePlatformsDEBUG;
+                @TogglePlatformsDEBUG.performed += instance.OnTogglePlatformsDEBUG;
+                @TogglePlatformsDEBUG.canceled += instance.OnTogglePlatformsDEBUG;
             }
         }
     }
@@ -462,5 +491,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRestartSceneDEBUG(InputAction.CallbackContext context);
         void OnToggleUnlimitedSlowDEBUG(InputAction.CallbackContext context);
         void OnToggleSlowDEBUG(InputAction.CallbackContext context);
+        void OnTogglePlatformsDEBUG(InputAction.CallbackContext context);
     }
 }

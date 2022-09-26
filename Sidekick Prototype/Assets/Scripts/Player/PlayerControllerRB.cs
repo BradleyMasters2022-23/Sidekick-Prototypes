@@ -94,7 +94,8 @@ public class PlayerControllerRB : IDamagable
 
     private void OnDisable()
     {
-        PlayerUpgradeManager.instance.currHealth = health;
+        if(PlayerUpgradeManager.instance != null)
+            PlayerUpgradeManager.instance.currHealth = health;
 
         move.Disable();
         mouse.Disable();

@@ -207,7 +207,7 @@ MonoBehaviour:
   maxJumps: 1
   remainingJumps: 0
   jumpCooldown: 0.2
-  jumpForce: 20
+  jumpForce: 26
   gravityMultiplier: 2.4
   maxFallVelocity: 80
   landVelocity: -2

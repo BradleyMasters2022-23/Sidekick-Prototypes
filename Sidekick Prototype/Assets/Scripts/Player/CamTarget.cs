@@ -21,7 +21,7 @@ public class CamTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, Mathf.Infinity))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, Mathf.Infinity, LayerMask.NameToLayer("Player")))
         {
             targetPos = hitInfo.point;
             
