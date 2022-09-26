@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class MeleeHitbox : MonoBehaviour
 {
-    private bool hitPlayer;
+    public enum HitboxState
+    {
+        Searching,
+        Damaging
+    }
+    private HitboxState currentState;
+    private bool playerInRange = false;
+    private bool hitPlayer = false;
     private int damage;
 
     public void AssignDamage(int dmg)
@@ -12,24 +19,48 @@ public class MeleeHitbox : MonoBehaviour
         damage = dmg;
     }
 
-    public void Activate()
+    public bool PlayerInRange()
     {
-        hitPlayer = false;
-        GetComponent<Collider>().enabled = true;
+        return playerInRange;
     }
 
-    public void Deactivate()
+    public void Attack()
     {
+        currentState = HitboxState.Damaging;
+        hitPlayer = false;
+    }
+
+    public void AttackEnd()
+    {
+        currentState = HitboxState.Searching;
         hitPlayer = true;
-        GetComponent <Collider>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !hitPlayer)
+        if(other.CompareTag("Player"))
         {
-            Deactivate();
+            playerInRange = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (TimeManager.worldTime == 0)
+            return;
+
+        if (!hitPlayer && currentState == HitboxState.Damaging && other.CompareTag("Player"))
+        {
+            hitPlayer = true;
             other.GetComponent<IDamagable>().TakeDamage(damage);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
         }
     }
 }

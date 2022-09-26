@@ -23,6 +23,7 @@ public class EnemyMelee : IDamagable
     public float walkSpeed;
     public int damage;
     public MeleeHitbox attackHitbox;
+    public float attackWindup;
     public float attackDuration;
     public float attackDelay;
     private float attackTimer;
@@ -99,7 +100,7 @@ public class EnemyMelee : IDamagable
                     }
 
                     // Attack if primed and in vision of player
-                    if(attackPrimed && LineOfSight(p) && currTime != 0)
+                    if(attackPrimed && attackHitbox.PlayerInRange() && currTime != 0)
                     {
                         attackPrimed = false;
                         attacking = true;
@@ -149,7 +150,7 @@ public class EnemyMelee : IDamagable
                 {
                     
                     // Resume moving if outside of attack range or rounded corner, as long as not in an attack
-                    if (!LineOfSight(p) && !attacking && attackPrimed)
+                    if (!attackHitbox.PlayerInRange() && !attacking && attackPrimed)
                     {
                         state = EnemyState.Moving;
                         time = 0;
@@ -167,21 +168,22 @@ public class EnemyMelee : IDamagable
     /// <returns>Line of sight</returns>
     public bool LineOfSight(GameObject target)
     {
-        Vector3 direction = target.transform.position - (transform.position + Vector3.up);
+        return attackHitbox.PlayerInRange();
+        //Vector3 direction = target.transform.position - (transform.position + Vector3.up);
         
-        // Set mask to ignore raycasts and enemy layer
-        int lm = LayerMask.NameToLayer("Enemy");
-        lm = (1 << lm);
-        lm |= (1 << LayerMask.NameToLayer("Ignore Raycast"));
+        //// Set mask to ignore raycasts and enemy layer
+        //int lm = LayerMask.NameToLayer("Enemy");
+        //lm = (1 << lm);
+        //lm |= (1 << LayerMask.NameToLayer("Ignore Raycast"));
 
-        // Try to get player
-        RaycastHit hit;
-        if (Physics.Raycast((transform.position + Vector3.up), direction, out hit, attackRange, ~lm))
-        {
-            if (hit.transform.CompareTag("Player"))
-                return true;
-        }
-        return false;
+        //// Try to get player
+        //RaycastHit hit;
+        //if (Physics.Raycast((transform.position + Vector3.up), direction, out hit, attackRange, ~lm))
+        //{
+        //    if (hit.transform.CompareTag("Player"))
+        //        return true;
+        //}
+        //return false;
     }
 
 
@@ -194,7 +196,22 @@ public class EnemyMelee : IDamagable
 
     private IEnumerator Slash()
     {
-        attackHitbox.Activate();
+        float t = 0;
+        while(true)
+        {
+            if(t >= attackDelay)
+            {
+                break;
+            }
+            else
+            {
+                t += Time.deltaTime * currTime;
+            }
+
+            yield return null;
+        }
+
+        attackHitbox.Attack();
 
         while(attacking)
         {
@@ -211,7 +228,7 @@ public class EnemyMelee : IDamagable
 
             yield return null;
         }
-        attackHitbox.Deactivate();
+        attackHitbox.AttackEnd();
 
         time = 0;
         attackRoutine = null;
