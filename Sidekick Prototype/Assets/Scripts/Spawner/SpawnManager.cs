@@ -98,7 +98,8 @@ public class SpawnManager : MonoBehaviour
                 } while (!_spawnPoint.Usable());
                 //lastSpawn = _spawnPoint;
 
-                SpawnEnemy(spawnQueue.Dequeue(), _spawnPoint.Pos());
+                if(spawnQueue.Count != 0)
+                    SpawnEnemy(spawnQueue.Dequeue(), _spawnPoint.Pos());
             }
 
             // Delay. Done like this to take into account time freeze
