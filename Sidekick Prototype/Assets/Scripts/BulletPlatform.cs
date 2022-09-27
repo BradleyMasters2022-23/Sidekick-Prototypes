@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class BulletPlatform : MonoBehaviour
 {
-    public bool enableBP = false;
+    public bool enableBP;
 
     private Collider c;
     private float currTime;
-    private bool bulletMode = true;
+    private bool bulletMode;
 
     private int defLayer;
     private string platformLayer = "Ground";
@@ -24,14 +24,14 @@ public class BulletPlatform : MonoBehaviour
         toggleBP.performed += ToggleBPTest;
         toggleBP.Enable();
 
-
         c = GetComponent<Collider>();
         defLayer = this.gameObject.layer;
 
-        if (currTime <= 0)
-            PlatformMode();
+        bulletMode = true;
+        enableBP = FindObjectOfType<TimeManager>().enableBP;
 
-        enableBP = false;
+        if (currTime <= 0 && enableBP)
+            PlatformMode();
     }
 
     private void OnDisable()
@@ -39,20 +39,21 @@ public class BulletPlatform : MonoBehaviour
         toggleBP.Disable();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        if (!enableBP && !bulletMode)
+        currTime = TimeManager.worldTime;
+
+        if(!enableBP && !bulletMode)
         {
             BulletMode();
             return;
         }
-        else if (!enableBP)
+
+        if (!enableBP)
             return;
 
-        currTime = TimeManager.worldTime;
 
-        if(currTime <= 0 && bulletMode)
+        if (currTime <= 0 && bulletMode)
         {
             PlatformMode();
         }
@@ -65,7 +66,6 @@ public class BulletPlatform : MonoBehaviour
     private void PlatformMode()
     {
         gameObject.layer = LayerMask.NameToLayer(platformLayer);
-
 
         bulletMode = false;
         c.isTrigger = false;
@@ -81,20 +81,5 @@ public class BulletPlatform : MonoBehaviour
     private void ToggleBPTest(InputAction.CallbackContext ctx)
     {
         enableBP = !enableBP;
-
-        //if (enableBP)
-        //{
-        //    if (testSlowNote != null)
-        //    {
-        //        testSlowNote.text = "Slow mode enabled";
-        //    }
-        //}
-        //else
-        //{
-        //    if (testSlowNote != null)
-        //    {
-        //        testSlowNote.text = "";
-        //    }
-        //}
     }
 }
