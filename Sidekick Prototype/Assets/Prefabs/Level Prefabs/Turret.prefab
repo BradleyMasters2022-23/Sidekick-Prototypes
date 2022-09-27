@@ -305,9 +305,9 @@ MonoBehaviour:
   rotationSpeed: 0.08
   shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
   shootTime: 0.5
-  attackRange: 50
+  attackRange: 100
   lastHit: {fileID: 0}
-  lookRadius: 50
+  lookRadius: 100
 --- !u!1 &3141991338758193916
 GameObject:
   m_ObjectHideFlags: 0
