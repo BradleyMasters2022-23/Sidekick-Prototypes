@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
     InputAction toggleBTest;
     InputAction toggleBP;
 
-    private bool enableBP;
+    public bool enableBP;
 
     bool slowing;
 
