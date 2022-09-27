@@ -914,11 +914,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.size
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: sceneNames.Array.data[0]
+      value: Room1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: sceneNames.Array.data[1]
+      value: Room2
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[2]
-      value: AI Testing
+      value: Room3
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588204, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: m_RootOrder
@@ -1045,6 +1053,10 @@ PrefabInstance:
       value: "Move - WASD\nJump - Space\nShoot - L Mouse\nFreeze Time - R Mouse \nPause
         - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite Time - N\nToggle Platform
         Bullets - B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986733673722458988, guid: c4237af4409d5df43a46293adc83669f, type: 3}
+      propertyPath: m_Name
+      value: Pause Panel
       objectReference: {fileID: 0}
     - target: {fileID: 1986733673722458988, guid: c4237af4409d5df43a46293adc83669f, type: 3}
       propertyPath: m_IsActive
