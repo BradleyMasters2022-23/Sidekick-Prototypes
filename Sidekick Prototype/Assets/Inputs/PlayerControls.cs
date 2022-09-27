@@ -116,6 +116,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CamToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa92f886-28ec-4991-8de4-347e32949727"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""RestartScene-DEBUG"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0af50ef8-0d1a-4e14-b414-1277ae4cf42d"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CamToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +310,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
         m_Player_ToggleUnlimitedSlowDEBUG = m_Player.FindAction("ToggleUnlimitedSlow-DEBUG", throwIfNotFound: true);
         m_Player_ToggleSlowDEBUG = m_Player.FindAction("ToggleSlow-DEBUG", throwIfNotFound: true);
+        m_Player_CamToggle = m_Player.FindAction("CamToggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,6 +380,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RestartSceneDEBUG;
     private readonly InputAction m_Player_ToggleUnlimitedSlowDEBUG;
     private readonly InputAction m_Player_ToggleSlowDEBUG;
+    private readonly InputAction m_Player_CamToggle;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -373,6 +395,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
         public InputAction @ToggleUnlimitedSlowDEBUG => m_Wrapper.m_Player_ToggleUnlimitedSlowDEBUG;
         public InputAction @ToggleSlowDEBUG => m_Wrapper.m_Player_ToggleSlowDEBUG;
+        public InputAction @CamToggle => m_Wrapper.m_Player_CamToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,6 +435,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @CamToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
+                @CamToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
+                @CamToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -446,6 +472,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ToggleSlowDEBUG.started += instance.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.performed += instance.OnToggleSlowDEBUG;
                 @ToggleSlowDEBUG.canceled += instance.OnToggleSlowDEBUG;
+                @CamToggle.started += instance.OnCamToggle;
+                @CamToggle.performed += instance.OnCamToggle;
+                @CamToggle.canceled += instance.OnCamToggle;
             }
         }
     }
@@ -462,5 +491,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnRestartSceneDEBUG(InputAction.CallbackContext context);
         void OnToggleUnlimitedSlowDEBUG(InputAction.CallbackContext context);
         void OnToggleSlowDEBUG(InputAction.CallbackContext context);
+        void OnCamToggle(InputAction.CallbackContext context);
     }
 }

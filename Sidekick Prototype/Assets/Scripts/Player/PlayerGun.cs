@@ -30,6 +30,11 @@ public class PlayerGun : MonoBehaviour
         shoot.started += ToggleTrigger;
         shoot.canceled += ToggleTrigger;
     }
+    private void OnEnable()
+    {
+        if(shoot != null)
+            shoot.Enable();
+    }
 
     private void OnDisable()
     {
