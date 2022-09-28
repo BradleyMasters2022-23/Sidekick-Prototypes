@@ -8,8 +8,11 @@ public class TripleShotUpgrade : IUpgrade
 
     public override void LoadUpgrade(PlayerControllerRB player)
     {
-        FindObjectOfType<PlayerGun>().LoadNewProjectile(projectile);
-    }
+        PlayerGun[] t = FindObjectsOfType<PlayerGun>(true);
 
-    
+        foreach (PlayerGun gun in t)
+        {
+            gun.LoadNewProjectile(projectile);
+        }
+    }
 }

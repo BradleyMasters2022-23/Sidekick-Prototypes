@@ -571,7 +571,7 @@ MonoBehaviour:
   frozenBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
   hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
   fireDelay: 0.3
-  freezeShotThreshold: 0.1
+  freezeShotThreshold: 0.09
   fireOffset: 1
 --- !u!1 &3522438012754261643
 GameObject:
@@ -775,7 +775,7 @@ MonoBehaviour:
   frozenBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
   hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
   fireDelay: 0.3
-  freezeShotThreshold: 0.1
+  freezeShotThreshold: 0.09
   fireOffset: 1
 --- !u!1 &4369019321556968142
 GameObject:

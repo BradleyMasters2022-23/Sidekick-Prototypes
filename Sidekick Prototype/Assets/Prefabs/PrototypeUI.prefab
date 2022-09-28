@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.40135992}
-  m_SizeDelta: {x: 4.9428, y: 5.6488}
+  m_SizeDelta: {x: 3.9391, y: 4.5019}
   m_Pivot: {x: 0.5, y: 0.5931771}
 --- !u!222 &7208059715831043536
 CanvasRenderer:
@@ -112,7 +112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2154759684233149809
@@ -144,7 +144,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Move - WASD\nJump - Space\nShoot - L Mouse\nFreeze Time - R Mouse \nPause
-    - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite Time - N\n"
+    - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite Time - N\nToggle Bullet
+    Platform - B\nToggle Perspective - L\nToggle Hitscan - K\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -171,8 +172,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 18
+  m_fontSize: 9
+  m_fontSizeBase: 9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2973,7 +2974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -2.5613365}
+  m_AnchoredPosition: {x: 0, y: -2.01}
   m_SizeDelta: {x: 36.429626, y: 3.6412964}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6893529411961898389

@@ -22,8 +22,12 @@ public class TimeManager : MonoBehaviour
     InputAction toggleATest;
     InputAction toggleBTest;
     InputAction toggleBP;
+    InputAction togglePerspective;
+    InputAction toggleHitscan;
 
     public bool enableBP;
+    public bool enableFirstPerson;
+    public bool enableHitscan;
 
     bool slowing;
 
@@ -51,6 +55,8 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI testSlowNote;
     public TextMeshProUGUI testUnlimitedNote;
     public TextMeshProUGUI testBPNote;
+    public TextMeshProUGUI testPerspectiveNote;
+    public TextMeshProUGUI testHitscanNote;
 
 
     private void Start()
@@ -89,6 +95,14 @@ public class TimeManager : MonoBehaviour
         toggleBP = controller.Player.TogglePlatformsDEBUG;
         toggleBP.performed += ToggleBPTest;
         toggleBP.Enable();
+
+        togglePerspective = controller.Player.CamToggle;
+        togglePerspective.performed += TogglePerspectiveNote;
+        togglePerspective.Enable();
+
+        toggleHitscan = controller.Player.ShootToggle;
+        toggleHitscan.performed += ToggleHitscanNote;
+        toggleHitscan.Enable();
     }
 
 
@@ -97,6 +111,8 @@ public class TimeManager : MonoBehaviour
         toggleATest.Disable();
         toggleBTest.Disable();
         toggleBP.Disable();
+        togglePerspective.Disable();
+        toggleHitscan.Disable();
         if (toggle)
         {
             slow.Disable();
@@ -285,6 +301,46 @@ public class TimeManager : MonoBehaviour
             if (testBPNote != null)
             {
                 testBPNote.text = "";
+            }
+        }
+    }
+
+    private void TogglePerspectiveNote(InputAction.CallbackContext ctx)
+    {
+        enableFirstPerson = !enableFirstPerson;
+        
+        if (enableFirstPerson)
+        {
+            if (testPerspectiveNote != null)
+            {
+                testPerspectiveNote.text = "First person enabled";
+            }
+        }
+        else
+        {
+            if (testPerspectiveNote != null)
+            {
+                testPerspectiveNote.text = "";
+            }
+        }
+    }
+
+    private void ToggleHitscanNote(InputAction.CallbackContext ctx)
+    {
+        enableHitscan = !enableHitscan;
+        
+        if (enableHitscan)
+        {
+            if (testHitscanNote != null)
+            {
+                testHitscanNote.text = "Hitscan mode enabled";
+            }
+        }
+        else
+        {
+            if (testHitscanNote != null)
+            {
+                testHitscanNote.text = "";
             }
         }
     }
