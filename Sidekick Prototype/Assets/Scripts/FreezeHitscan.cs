@@ -5,15 +5,22 @@ using UnityEngine;
 public class FreezeHitscan : MonoBehaviour
 {
     GameObject hitVFX;
-    RaycastHit shot;
+    //RaycastHit shot;
     int damage;
     float currTime;
     [Tooltip("At what time should this bullet fire"), Range(0.01f, 1)]
     [SerializeField] private float fireThreshold = 0.1f;
+    public LayerMask layersToIgnore;
 
-    public void PrepareBullet(RaycastHit hit, int dmg, GameObject vfx)
+    //public void PrepareBullet(RaycastHit hit, int dmg, GameObject vfx)
+    //{
+    //    shot = hit;
+    //    damage = dmg;
+    //    hitVFX = vfx;
+    //}
+
+    public void PrepareBullet(int dmg, GameObject vfx)
     {
-        shot = hit;
         damage = dmg;
         hitVFX = vfx;
     }
@@ -28,13 +35,26 @@ public class FreezeHitscan : MonoBehaviour
 
     private void Fire()
     {
-        IDamagable target;
+        //IDamagable target;
 
-        if (shot.collider.TryGetComponent<IDamagable>(out target))
-            target.TakeDamage(damage);
+        //if (prepedShot.collider.TryGetComponent<IDamagable>(out target))
+        //    target.TakeDamage(damage);
 
-        if (hitVFX != null)
-            Instantiate(hitVFX, shot.point, Quaternion.identity);
+        //if (hitVFX != null)
+        //    Instantiate(hitVFX, prepedShot.point, Quaternion.identity);
+
+        RaycastHit shot;
+
+        if (Physics.Raycast(transform.position, transform.forward, out shot, Mathf.Infinity, ~layersToIgnore))
+        {
+            IDamagable hitTar;
+
+            if (shot.collider.TryGetComponent<IDamagable>(out hitTar))
+                hitTar.TakeDamage(damage);
+
+            if (hitVFX != null)
+                Instantiate(hitVFX, shot.point, Quaternion.identity);
+        }
 
         Destroy(gameObject);
     }

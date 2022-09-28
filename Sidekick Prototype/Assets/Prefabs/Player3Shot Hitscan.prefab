@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 80
-  hitscan: 0
+  hitscan: 1
   damage: 15
   freezePlayerP: 1
   freezeSpawnDist: 1
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 80
-  hitscan: 0
+  hitscan: 1
   damage: 15
   freezePlayerP: 1
   freezeSpawnDist: 1
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 5129266212509420641}
   - component: {fileID: 5489587020147542893}
   m_Layer: 2
-  m_Name: Player3Shot
+  m_Name: Player3Shot Hitscan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 80
-  hitscan: 0
+  hitscan: 1
   damage: 15
   freezePlayerP: 1
   freezeSpawnDist: 1

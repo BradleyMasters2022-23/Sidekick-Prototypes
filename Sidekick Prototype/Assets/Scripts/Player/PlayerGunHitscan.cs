@@ -87,7 +87,7 @@ public class PlayerGunHitscan : MonoBehaviour
             GameObject t = Instantiate(frozenBullet, shootPoint.position, transform.rotation);
             t.transform.LookAt(shootCam.GetTarget());
             t.transform.position += Vector3.forward * fireOffset;
-            t.GetComponent<FreezeHitscan>().PrepareBullet(hit, damage, hitVFX);
+            //t.GetComponent<FreezeHitscan>().PrepareBullet(hit, damage, hitVFX);
         }
     }
 

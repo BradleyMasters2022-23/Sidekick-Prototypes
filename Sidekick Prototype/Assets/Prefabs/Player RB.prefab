@@ -480,10 +480,10 @@ GameObject:
   - component: {fileID: 3200397797691625127}
   - component: {fileID: 4623912380979272699}
   - component: {fileID: 2313948700735226247}
-  - component: {fileID: 8841551497328777339}
+  - component: {fileID: 2782621423011061972}
   m_Layer: 7
   m_Name: hitscanGun TP
-  m_TagString: Untagged
+  m_TagString: Hitscan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,7 +553,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8841551497328777339
+--- !u!114 &2782621423011061972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -562,17 +562,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 436060234729940838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2217116775273d49a6af3c74f4d0d20, type: 3}
+  m_Script: {fileID: 11500000, guid: f37141bdd5a69f3479957c7aca0db5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootCam: {fileID: 118932247851560479}
-  damage: 20
-  shootPoint: {fileID: 3200397797691625127}
-  frozenBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
-  hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
+  shootPoint: {fileID: 8370025894452575537}
+  bullet: {fileID: 9121595020474447729, guid: dc75bf6a4996146428a1dd87edd33b77, type: 3}
   fireDelay: 0.3
-  freezeShotThreshold: 0.09
-  fireOffset: 1
 --- !u!1 &3522438012754261643
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,10 +680,10 @@ GameObject:
   - component: {fileID: 5908535957131399604}
   - component: {fileID: 5183329702974771989}
   - component: {fileID: 2949826142273874599}
-  - component: {fileID: 2459741469531121514}
+  - component: {fileID: 212674951435546812}
   m_Layer: 7
   m_Name: hitscanGun FP
-  m_TagString: Untagged
+  m_TagString: Hitscan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -757,7 +753,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2459741469531121514
+--- !u!114 &212674951435546812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -766,17 +762,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4076205688012450070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2217116775273d49a6af3c74f4d0d20, type: 3}
+  m_Script: {fileID: 11500000, guid: f37141bdd5a69f3479957c7aca0db5d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shootCam: {fileID: 6899692741204628604}
-  damage: 20
-  shootPoint: {fileID: 5908535957131399604}
-  frozenBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
-  hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
+  shootPoint: {fileID: 5071587788742706500}
+  bullet: {fileID: 9121595020474447729, guid: dc75bf6a4996146428a1dd87edd33b77, type: 3}
   fireDelay: 0.3
-  freezeShotThreshold: 0.09
-  fireOffset: 1
 --- !u!1 &4369019321556968142
 GameObject:
   m_ObjectHideFlags: 0

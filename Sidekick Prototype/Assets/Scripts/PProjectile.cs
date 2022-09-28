@@ -6,10 +6,15 @@ public class PProjectile : MonoBehaviour
 {
     public float projectileSpeed;
 
+    public bool hitscan;
+
     public int damage;
 
     public bool freezePlayerP = false;
     public float freezeSpawnDist;
+
+    public GameObject hitVFX;
+    public GameObject hitscanBullet;
 
     public float currTime;
 
@@ -21,9 +26,16 @@ public class PProjectile : MonoBehaviour
     {
         currTime = TimeManager.worldTime;
 
-        if(freezePlayerP && currTime == 0 && transform.parent == null)
+        if (freezePlayerP && currTime <= .2 && transform.parent == null)
         {
             transform.position += transform.forward * freezeSpawnDist;
+        }
+
+        if (hitscan)
+        {
+            GameObject s = Instantiate(hitscanBullet, transform.position, transform.rotation);
+            s.GetComponent<FreezeHitscan>().PrepareBullet(damage, hitVFX);
+            Destroy(gameObject);
         }
     }
 
@@ -55,6 +67,27 @@ public class PProjectile : MonoBehaviour
             other.GetComponent<IDamagable>().TakeDamage(damage);
         }
 
-        Destroy(this.gameObject);
+        if (hitVFX != null)
+            Instantiate(hitVFX, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
+
+    //private void Fire()
+    //{
+    //    RaycastHit shot; 
+        
+    //    if(Physics.Raycast(transform.position, transform.forward, out shot, Mathf.Infinity, ~layersToIgnore))
+    //    {
+    //        IDamagable hitTar;
+
+    //        if (shot.collider.TryGetComponent<IDamagable>(out hitTar))
+    //            hitTar.TakeDamage(damage);
+
+    //        if (hitVFX != null)
+    //            Instantiate(hitVFX, shot.point, Quaternion.identity);
+    //    }
+
+    //    Destroy(gameObject);
+    //}
 }

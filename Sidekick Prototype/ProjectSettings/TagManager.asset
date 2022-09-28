@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Upgrades
   - Spawn
+  - Hitscan
   layers:
   - Default
   - TransparentFX

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 9121595020474447729, guid: e10169d7932ca6240a3494a69d310cb8, type: 3}
+  projectileHitscan: {fileID: 9121595020474447729, guid: 5db228592ca24ed49aa1f2afb006df7f, type: 3}

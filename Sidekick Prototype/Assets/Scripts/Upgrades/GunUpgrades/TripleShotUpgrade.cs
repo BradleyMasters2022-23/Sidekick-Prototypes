@@ -5,6 +5,7 @@ using UnityEngine;
 public class TripleShotUpgrade : IUpgrade
 {
     public GameObject projectile;
+    public GameObject projectileHitscan;
 
     public override void LoadUpgrade(PlayerControllerRB player)
     {
@@ -12,7 +13,12 @@ public class TripleShotUpgrade : IUpgrade
 
         foreach (PlayerGun gun in t)
         {
-            gun.LoadNewProjectile(projectile);
+            if(gun.CompareTag("Hitscan"))
+            {
+                gun.LoadNewProjectile(projectileHitscan);
+            }
+            else
+                gun.LoadNewProjectile(projectile);
         }
     }
 }

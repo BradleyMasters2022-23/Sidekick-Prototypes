@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8721513615243425969}
   - component: {fileID: 5275824628262048946}
   m_Layer: 2
-  m_Name: PlayerProjectile
+  m_Name: HitScan Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 100
-  hitscan: 0
+  hitscan: 1
   damage: 20
   freezePlayerP: 1
   freezeSpawnDist: 1
