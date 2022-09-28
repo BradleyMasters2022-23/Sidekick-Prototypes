@@ -32,6 +32,10 @@ public class CamTarget : MonoBehaviour
         }
     }
 
+    public RaycastHit GetHit()
+    {
+        return hitInfo;
+    }
     public Vector3 GetTarget()
     {
         return targetPos;

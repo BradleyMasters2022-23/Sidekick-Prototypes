@@ -125,6 +125,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""2308c0f1-d2bf-4f97-be66-de8577c24be0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""CamToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dddd5e08-95bb-4fad-b8bc-33cac4b0708d"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ShootToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_ToggleUnlimitedSlowDEBUG = m_Player.FindAction("ToggleUnlimitedSlow-DEBUG", throwIfNotFound: true);
         m_Player_ToggleSlowDEBUG = m_Player.FindAction("ToggleSlow-DEBUG", throwIfNotFound: true);
         m_Player_CamToggle = m_Player.FindAction("CamToggle", throwIfNotFound: true);
+        m_Player_ShootToggle = m_Player.FindAction("ShootToggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -381,6 +402,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ToggleUnlimitedSlowDEBUG;
     private readonly InputAction m_Player_ToggleSlowDEBUG;
     private readonly InputAction m_Player_CamToggle;
+    private readonly InputAction m_Player_ShootToggle;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -396,6 +418,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @ToggleUnlimitedSlowDEBUG => m_Wrapper.m_Player_ToggleUnlimitedSlowDEBUG;
         public InputAction @ToggleSlowDEBUG => m_Wrapper.m_Player_ToggleSlowDEBUG;
         public InputAction @CamToggle => m_Wrapper.m_Player_CamToggle;
+        public InputAction @ShootToggle => m_Wrapper.m_Player_ShootToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -438,6 +461,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @CamToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
                 @CamToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
                 @CamToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
+                @ShootToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootToggle;
+                @ShootToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootToggle;
+                @ShootToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootToggle;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -475,6 +501,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @CamToggle.started += instance.OnCamToggle;
                 @CamToggle.performed += instance.OnCamToggle;
                 @CamToggle.canceled += instance.OnCamToggle;
+                @ShootToggle.started += instance.OnShootToggle;
+                @ShootToggle.performed += instance.OnShootToggle;
+                @ShootToggle.canceled += instance.OnShootToggle;
             }
         }
     }
@@ -492,5 +521,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnToggleUnlimitedSlowDEBUG(InputAction.CallbackContext context);
         void OnToggleSlowDEBUG(InputAction.CallbackContext context);
         void OnCamToggle(InputAction.CallbackContext context);
+        void OnShootToggle(InputAction.CallbackContext context);
     }
 }

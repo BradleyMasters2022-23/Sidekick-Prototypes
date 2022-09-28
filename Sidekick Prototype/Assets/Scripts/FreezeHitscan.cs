@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FreezeHitscan : MonoBehaviour
+{
+    GameObject hitVFX;
+    RaycastHit shot;
+    int damage;
+    float currTime;
+    [Tooltip("At what time should this bullet fire"), Range(0.01f, 1)]
+    [SerializeField] private float fireThreshold = 0.1f;
+
+    public void PrepareBullet(RaycastHit hit, int dmg, GameObject vfx)
+    {
+        shot = hit;
+        damage = dmg;
+        hitVFX = vfx;
+    }
+
+    void Update()
+    {
+        currTime = TimeManager.worldTime;
+
+        if (currTime >= fireThreshold)
+            Fire();
+    }
+
+    private void Fire()
+    {
+        IDamagable target;
+
+        if (shot.collider.TryGetComponent<IDamagable>(out target))
+            target.TakeDamage(damage);
+
+        if (hitVFX != null)
+            Instantiate(hitVFX, shot.point, Quaternion.identity);
+
+        Destroy(gameObject);
+    }
+}
