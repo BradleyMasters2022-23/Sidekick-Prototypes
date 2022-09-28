@@ -1042,6 +1042,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 563759430020826113, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -27.589966
+      objectReference: {fileID: 0}
     - target: {fileID: 1000892793227481353, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
       propertyPath: waveOptions.Array.size
       value: 3
@@ -1132,6 +1136,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5859597341617329341, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233204650351108759, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

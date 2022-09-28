@@ -21,7 +21,9 @@ public class TimeManager : MonoBehaviour
     InputAction slowHold;
     InputAction toggleATest;
     InputAction toggleBTest;
+    InputAction toggleBP;
 
+    public bool enableBP;
 
     bool slowing;
 
@@ -48,6 +50,7 @@ public class TimeManager : MonoBehaviour
 
     public TextMeshProUGUI testSlowNote;
     public TextMeshProUGUI testUnlimitedNote;
+    public TextMeshProUGUI testBPNote;
 
 
     private void Start()
@@ -83,6 +86,9 @@ public class TimeManager : MonoBehaviour
         toggleBTest.performed += ToggleBTest;
         toggleBTest.Enable();
 
+        toggleBP = controller.Player.TogglePlatformsDEBUG;
+        toggleBP.performed += ToggleBPTest;
+        toggleBP.Enable();
     }
 
 
@@ -90,7 +96,7 @@ public class TimeManager : MonoBehaviour
     {
         toggleATest.Disable();
         toggleBTest.Disable();
-
+        toggleBP.Disable();
         if (toggle)
         {
             slow.Disable();
@@ -259,6 +265,27 @@ public class TimeManager : MonoBehaviour
         else if(testUnlimitedNote != null)
         {
             testUnlimitedNote.text = "";
+        }
+    }
+
+
+    private void ToggleBPTest(InputAction.CallbackContext ctx)
+    {
+        enableBP = !enableBP;
+
+        if (enableBP)
+        {
+            if (testBPNote != null)
+            {
+                testBPNote.text = "Bullet Platforms Enabled";
+            }
+        }
+        else
+        {
+            if (testBPNote != null)
+            {
+                testBPNote.text = "";
+            }
         }
     }
 }

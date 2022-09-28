@@ -1,32 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BulletPlatform : MonoBehaviour
 {
+    public bool enableBP;
 
     private Collider c;
     private float currTime;
-    private bool bulletMode = true;
+    private bool bulletMode;
 
     private int defLayer;
     private string platformLayer = "Ground";
 
+    PlayerControls controller;
+    InputAction toggleBP;
+
     private void Awake()
     {
+        controller = new PlayerControls();
+        toggleBP = controller.Player.TogglePlatformsDEBUG;
+        toggleBP.performed += ToggleBPTest;
+        toggleBP.Enable();
+
         c = GetComponent<Collider>();
         defLayer = this.gameObject.layer;
 
-        if (currTime <= 0)
+        bulletMode = true;
+        enableBP = FindObjectOfType<TimeManager>().enableBP;
+
+        if (currTime <= 0 && enableBP)
             PlatformMode();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
+    {
+        toggleBP.Disable();
+    }
+
+    private void FixedUpdate()
     {
         currTime = TimeManager.worldTime;
 
-        if(currTime <= 0 && bulletMode)
+        if(!enableBP && !bulletMode)
+        {
+            BulletMode();
+            return;
+        }
+
+        if (!enableBP)
+            return;
+
+
+        if (currTime <= 0 && bulletMode)
         {
             PlatformMode();
         }
@@ -40,7 +67,6 @@ public class BulletPlatform : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer(platformLayer);
 
-
         bulletMode = false;
         c.isTrigger = false;
     }
@@ -50,5 +76,10 @@ public class BulletPlatform : MonoBehaviour
         gameObject.layer = defLayer;
         bulletMode = true;
         c.isTrigger = true;
+    }
+
+    private void ToggleBPTest(InputAction.CallbackContext ctx)
+    {
+        enableBP = !enableBP;
     }
 }

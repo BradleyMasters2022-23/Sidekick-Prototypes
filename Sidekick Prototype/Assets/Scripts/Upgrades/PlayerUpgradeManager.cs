@@ -56,6 +56,11 @@ public class PlayerUpgradeManager : MonoBehaviour
         InitializeUpgrade(up);
     }
 
+    public List<UpgradeObject> GetUpgrades()
+    {
+        return new List<UpgradeObject>(upgrades);
+    }
+
     /// <summary>
     /// When a level is loaded, call all upgrades in collection and initialize them. 
     /// </summary>

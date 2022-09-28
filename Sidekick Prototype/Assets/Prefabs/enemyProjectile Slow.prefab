@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 8
-  damage: 8
+  damage: 5
   lifeTime: 15
 --- !u!114 &2377268864903310227
 MonoBehaviour:
@@ -126,3 +126,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d337a0a7a5688894f8e5cff232114fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableBP: 1
