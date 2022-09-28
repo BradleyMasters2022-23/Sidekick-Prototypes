@@ -354,6 +354,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: 0}
   defaultPos: {fileID: 118932246643350538}
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 292
 --- !u!1 &118932248232581742
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +572,7 @@ MonoBehaviour:
   hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
   fireDelay: 0.3
   freezeShotThreshold: 0.1
+  fireOffset: 1
 --- !u!1 &3522438012754261643
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,6 +776,7 @@ MonoBehaviour:
   hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
   fireDelay: 0.3
   freezeShotThreshold: 0.1
+  fireOffset: 1
 --- !u!1 &4369019321556968142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1111,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPos: {x: 0, y: 0, z: 0}
   defaultPos: {fileID: 1089450075306246329}
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 292
 --- !u!1 &8919447734330336906
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,12 +69,13 @@ public class PlayerGunHitscan : MonoBehaviour
     private void Shoot()
     {
         RaycastHit hit = shootCam.GetHit();
+        Debug.Log(hit.collider.name);
 
         if(TimeManager.worldTime > freezeShotThreshold)
         {
             IDamagable target;
 
-            if(hit.collider.TryGetComponent<IDamagable>(out target))
+            if(hit.transform.TryGetComponent<IDamagable>(out target))
             {
                 target.TakeDamage(damage);
             }

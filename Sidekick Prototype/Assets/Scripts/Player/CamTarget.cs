@@ -7,6 +7,8 @@ public class CamTarget : MonoBehaviour
     public Vector3 targetPos;
     public Transform defaultPos;
 
+    public LayerMask layersToIgnore;
+
     RaycastHit hitInfo;
 
     Camera cam;
@@ -21,11 +23,9 @@ public class CamTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, Mathf.Infinity, LayerMask.NameToLayer("Ignore Raycast")))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, Mathf.Infinity, ~layersToIgnore))
         {
             targetPos = hitInfo.point;
-            Debug.Log("Hit target " + hitInfo.collider.name);
-            
         }
         else
         {
