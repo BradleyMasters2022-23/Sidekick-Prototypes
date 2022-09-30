@@ -39,8 +39,21 @@ public class HealthCounter : MonoBehaviour
         else
             text.text = "000";
 
-        healthPickups.text = "Heals: " +
-                storedHeals.GetHealCount().ToString() + " / " + storedHeals.maxHeals.ToString();
+        if(healthPickups.gameObject.activeInHierarchy)
+        {
+            healthPickups.text = "Heals: " +
+                    storedHeals.GetHealCount().ToString() + " / " + storedHeals.maxHeals.ToString();
+
+            if(storedHeals.IsHealing())
+            {
+                healthPickups.color = Color.green;
+            }
+            else
+            {
+                healthPickups.color = Color.black;
+            }
+        }
+            
     }
 
     private void Update()

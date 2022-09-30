@@ -219,9 +219,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move - WASD\nJump - Space\nShoot - L Mouse\nFreeze Time - R Mouse \nPause
-    - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite Time - N\nToggle Bullet
-    Platform - B\nToggle Perspective - L\nToggle Hitscan - K\n"
+  m_text: "Move - WASD\nJump - Space\nShoot - L Mouse\nFreeze Time - R Mouse \nHeal
+    (if available) - Q\nPause - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite
+    Time - N\nToggle Bullet Platform - B\nToggle Perspective - L\nToggle Hitscan
+    - K\nCheat Heal - P\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2349,8 +2350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65.16348, y: -54.63304}
-  m_SizeDelta: {x: 151.8244, y: 135.5723}
+  m_AnchoredPosition: {x: -65.16348, y: -64.707855}
+  m_SizeDelta: {x: 151.8244, y: 155.7219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3190964566830974213
 CanvasRenderer:
@@ -3072,7 +3073,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 5530752701065306345}
+  healthPickups: {fileID: 0}
   healthbar: {fileID: 0}
+  storedHeals: {fileID: 0}
 --- !u!1 &6766882247327756100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,7 +3245,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 3682526301930297717}
+  healthPickups: {fileID: 0}
   healthbar: {fileID: 0}
+  storedHeals: {fileID: 0}
 --- !u!1 &7816683136068021812
 GameObject:
   m_ObjectHideFlags: 0

@@ -114,4 +114,9 @@ public class HealingSystem : MonoBehaviour
     {
         return currHeals;
     }
+
+    public bool IsHealing()
+    {
+        return healing;
+    }
 }
