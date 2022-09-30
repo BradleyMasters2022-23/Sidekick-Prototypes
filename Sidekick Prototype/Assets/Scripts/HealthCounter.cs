@@ -7,7 +7,18 @@ using TMPro;
 public class HealthCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI healthPickups;
     public IDamagable healthbar;
+    public HealingSystem storedHeals;
+
+    private void Start()
+    {
+        if (storedHeals.autoUse)
+            healthPickups.gameObject.SetActive(false);
+        else
+            healthPickups.text = "Heals: " + 
+                storedHeals.startingHeals.ToString() + " / " + storedHeals.maxHeals.ToString();
+    }
 
     public void UpdateCounter()
     {
@@ -28,5 +39,12 @@ public class HealthCounter : MonoBehaviour
         else
             text.text = "000";
 
+        healthPickups.text = "Heals: " +
+                storedHeals.GetHealCount().ToString() + " / " + storedHeals.maxHeals.ToString();
+    }
+
+    private void Update()
+    {
+        UpdateCounter();
     }
 }

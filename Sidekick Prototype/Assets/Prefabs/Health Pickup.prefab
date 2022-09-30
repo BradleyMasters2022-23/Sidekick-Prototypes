@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9121595020474447729
+--- !u!1 &5563763294653847155
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9121595020474447739}
-  - component: {fileID: 9121595020474447738}
-  - component: {fileID: 9121595020474447733}
-  - component: {fileID: 6747254412456594574}
-  - component: {fileID: 8721513615243425969}
-  - component: {fileID: 5275824628262048946}
-  m_Layer: 2
-  m_Name: PlayerProjectile
+  - component: {fileID: 3043720189674782135}
+  - component: {fileID: 2584754681591823926}
+  - component: {fileID: 8253155601249046761}
+  - component: {fileID: 348489328892933328}
+  - component: {fileID: 8814783372983685053}
+  m_Layer: 0
+  m_Name: Health Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9121595020474447739
+--- !u!4 &3043720189674782135
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
+  m_GameObject: {fileID: 5563763294653847155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.6, y: 0.48, z: -14.303928}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 59.6, y: 3.67, z: -15.63}
+  m_LocalScale: {x: 0.71716, y: 0.71716, z: 0.71716}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &9121595020474447738
+--- !u!33 &2584754681591823926
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9121595020474447733
+  m_GameObject: {fileID: 5563763294653847155}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8253155601249046761
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
+  m_GameObject: {fileID: 5563763294653847155}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abbd567362dd21e47b6a8d2599132e86, type: 2}
+  - {fileID: 2100000, guid: 52bd326d78f9a1143b2b53f8ff032fd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,50 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6747254412456594574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb44db13caa69f478a6cca0c2914ec2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpeed: 100
-  hitscan: 0
-  damage: 20
-  freezePlayerP: 1
-  freezeSpawnDist: 1
-  hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
-  hitscanBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
-  currTime: 0
-  lifeTime: 5
---- !u!65 &8721513615243425969
+--- !u!65 &348489328892933328
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
+  m_GameObject: {fileID: 5563763294653847155}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.79780364, y: 0.79780364, z: 0.79780364}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5275824628262048946
+--- !u!114 &8814783372983685053
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9121595020474447729}
+  m_GameObject: {fileID: 5563763294653847155}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d337a0a7a5688894f8e5cff232114fe6, type: 3}
+  m_Script: {fileID: 11500000, guid: bff39d680a1c881429e4bd635fcf1ee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableBP: 0
+  healAmount: 2

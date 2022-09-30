@@ -69,36 +69,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RestartScene-DEBUG",
+                    "name": "HealPlayer",
                     "type": "Button",
-                    "id": "21715588-ab21-42ea-98ca-50e179668210",
+                    "id": "c0f17d82-b584-41de-92f2-c85f0034880c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleUnlimitedSlow-DEBUG",
+                    "name": "TogglePlatformsDEBUG",
                     "type": "Button",
-                    "id": "7ae9c858-74d3-4d0c-979a-181c367d80f9",
+                    "id": "c9f0b839-177a-47fd-a7dc-4f2247c7fc10",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleSlow-DEBUG",
+                    "name": "HealCheat",
                     "type": "Button",
-                    "id": "3488d54d-076c-4771-a7be-1d2f636e1f94",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CamToggle",
-                    "type": "Button",
-                    "id": "fa92f886-28ec-4991-8de4-347e32949727",
+                    "id": "b602a078-23ae-4ec5-91d7-4fde0c163c1c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -114,9 +105,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TogglePlatformsDEBUG",
+                    "name": "CamToggle",
                     "type": "Button",
-                    "id": "c9f0b839-177a-47fd-a7dc-4f2247c7fc10",
+                    "id": "fa92f886-28ec-4991-8de4-347e32949727",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSlow-DEBUG",
+                    "type": "Button",
+                    "id": "3488d54d-076c-4771-a7be-1d2f636e1f94",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleUnlimitedSlow-DEBUG",
+                    "type": "Button",
+                    "id": "7ae9c858-74d3-4d0c-979a-181c367d80f9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RestartScene-DEBUG",
+                    "type": "Button",
+                    "id": "21715588-ab21-42ea-98ca-50e179668210",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -247,6 +265,50 @@
                 },
                 {
                     "name": "",
+                    "id": "2f8a6de1-2d4f-4030-b5fe-7e7a3855935c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealPlayer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c6d2927-80a1-4f31-acc2-136c7ae4415f",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HealCheat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4a88e36-815c-4fd4-9e5a-f8c12a6298bc",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TogglePlatformsDEBUG",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6616786f-6333-4e48-8882-88e18ce47102",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestartScene-DEBUG",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c726cc3e-e382-41f2-b341-eb1e5c765e11",
                     "path": "<Keyboard>/n",
                     "interactions": "",
@@ -269,17 +331,6 @@
                 },
                 {
                     "name": "",
-                    "id": "6616786f-6333-4e48-8882-88e18ce47102",
-                    "path": "<Keyboard>/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RestartScene-DEBUG",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0af50ef8-0d1a-4e14-b414-1277ae4cf42d",
                     "path": "<Keyboard>/l",
                     "interactions": "",
@@ -297,17 +348,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShootToggle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d4a88e36-815c-4fd4-9e5a-f8c12a6298bc",
-                    "path": "<Keyboard>/b",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TogglePlatformsDEBUG",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

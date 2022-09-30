@@ -138,6 +138,33 @@ public abstract class IDamagable : MonoBehaviour
         }
     }
 
+    private void HealSection(int amount)
+    {
+        for(int i = 0; i < amount; i++)
+        {
+            sections[sectionIndex].value = healthPerSection;
+            health = (sectionIndex+1) * healthPerSection;
+            if (sectionIndex+1 == sections.Count)
+                return;
+            else
+                sectionIndex++;
+        }
+    }
+    private void HealPool(int amount)
+    {
+        health += amount;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        UpdateSlider();
+    }
+
+    public void Heal(int amount)
+    {
+        if (sectionedHealth)
+            HealSection(amount);
+        else
+            HealPool(amount);
+    }
+
     protected virtual void FixedUpdate()
     {
         // Don't track combo system if not applicable
