@@ -7,11 +7,11 @@ using TMPro;
 public class HealthCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
-    public Slider healthbar;
+    public IDamagable healthbar;
 
     public void UpdateCounter()
     {
-        int i = (int)healthbar.value;
+        int i = (int)healthbar.GetHealth();
 
         if(i == 100)
         {
@@ -21,10 +21,12 @@ public class HealthCounter : MonoBehaviour
         {
             text.text = "0" + i.ToString();
         }
-        else
+        else if (i >= 0)
         {
             text.text = "00" + i.ToString();
         }
+        else
+            text.text = "000";
 
     }
 }

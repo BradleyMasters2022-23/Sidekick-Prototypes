@@ -20,16 +20,44 @@ public abstract class IDamagable : MonoBehaviour
 
     private float t;
     private bool killed;
+    
+    public bool sectionedHealth;
+    public int healthPerSection;
+    public int numOfSections;
+    private int sectionIndex;
+    public List<Slider> sections;
 
     protected virtual void Awake()
     {
-        health = maxHealth;
-        killed = false;
-        if (healthSlider != null)
+        if(!sectionedHealth)
         {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = maxHealth;
+            health = maxHealth;
+            killed = false;
+            if (healthSlider != null)
+            {
+                healthSlider.maxValue = maxHealth;
+                healthSlider.value = maxHealth;
+            }
         }
+        else
+        {
+            maxHealth = health = healthPerSection * numOfSections;
+            if (sections[0] != null)
+            {
+                sections[0].maxValue = healthPerSection;
+                sections[0].value = healthPerSection;
+                float spacing = sections[0].gameObject.GetComponent<RectTransform>().sizeDelta.x;
+                for (int i = 1; i < numOfSections; i++)
+                {
+                    GameObject t = Instantiate(sections[i-1].gameObject, sections[i-1].transform);
+                    t.name = "HealthSection" + i;
+                    t.GetComponent<RectTransform>().localPosition = Vector3.zero + Vector3.right * spacing + Vector3.right;
+                    sections.Add(t.GetComponent<Slider>());
+                }
+                sectionIndex = sections.Count-1;
+            }
+        }
+        
 
         t = 0;
         inCombo = false;
@@ -44,6 +72,51 @@ public abstract class IDamagable : MonoBehaviour
         comboCount++;
         inCombo = true;
         t = 0;
+
+        if(sectionedHealth)
+        {
+            if (sections[sectionIndex].value - dmg == 0)
+            {
+                health -= dmg;
+                sections[sectionIndex].value = 0;
+
+                if (sectionIndex == 0)
+                {
+                    killed = true;
+                    Die();
+                }
+                else
+                {
+                    sectionIndex--;
+                }
+            }
+            else if(sections[sectionIndex].value - dmg < 0)
+            {
+                float overflow = -1 * (sections[sectionIndex].value - dmg);
+                health -= dmg;
+                sections[sectionIndex].value = 0;
+
+                if (sectionIndex == 0)
+                {
+                    killed = true;
+                    Die();
+                }
+                else
+                {
+                    sectionIndex--;
+                    sections[sectionIndex].value -= overflow;
+                }
+            }
+            else
+            {
+                health -= dmg;
+                sections[sectionIndex].value -= dmg;
+            }
+
+            return;
+        }
+
+
 
         if (health - dmg <= 0 && !invulnerable)
         {
@@ -115,5 +188,8 @@ public abstract class IDamagable : MonoBehaviour
     {
         healthSlider.value = health;
     }
-
+    public int GetHealth()
+    {
+        return health;
+    }
 }

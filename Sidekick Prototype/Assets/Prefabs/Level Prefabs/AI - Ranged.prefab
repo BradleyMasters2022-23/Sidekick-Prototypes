@@ -658,6 +658,10 @@ MonoBehaviour:
   healthSlider: {fileID: 307714298731810434}
   comboHit: {fileID: 307714298819025477}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sections: []
   state: 0
   rotationSpeed: 0.1
   walkSpeed: 8

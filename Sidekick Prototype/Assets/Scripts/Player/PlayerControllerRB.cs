@@ -74,10 +74,29 @@ public class PlayerControllerRB : IDamagable
 
         verticalLookRotation = cam.transform.localRotation.x;
 
-        if (PlayerUpgradeManager.instance.currHealth != 0)
+        if (!sectionedHealth && PlayerUpgradeManager.instance.currHealth != 0)
         {
             health = PlayerUpgradeManager.instance.currHealth;
             UpdateSlider();
+        }
+        else if(PlayerUpgradeManager.instance.currHealth != 0)
+        {
+            LoadSectionedHealth();
+        }
+    }
+
+    private void LoadSectionedHealth()
+    {
+        health = PlayerUpgradeManager.instance.currHealth;
+        int sectionToHeal = (int)Mathf.Ceil(health / healthPerSection);
+        health = sectionToHeal * healthPerSection;
+        for(int i = 0; i <= sectionToHeal; i++)
+        {
+            sections[i].value = healthPerSection;
+        }
+        for(int i = sectionToHeal+1; i < numOfSections; i++)
+        {
+            sections[i].value = 0;
         }
     }
 
@@ -89,6 +108,9 @@ public class PlayerControllerRB : IDamagable
     public void DebugRestartScene(InputAction.CallbackContext ctx)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        health = maxHealth;
+        if(sectionedHealth)
+            LoadSectionedHealth();
         Time.timeScale = 1;
     }
 
@@ -162,6 +184,8 @@ public class PlayerControllerRB : IDamagable
     public override void Die()
     {
         Debug.Log("Player dead");
+        if (invulnerable)
+            return;
         Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 0;
         FindObjectOfType<GameOverScreen>().EnableDeathScreen();

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 100
   hitscan: 0
-  damage: 20
+  damage: 999
   freezePlayerP: 1
   freezeSpawnDist: 1
   hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
