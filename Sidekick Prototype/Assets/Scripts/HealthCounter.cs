@@ -12,6 +12,11 @@ public class HealthCounter : MonoBehaviour
     public HealingSystem storedHeals;
     private Color originalColor;
 
+    private void Awake()
+    {
+        originalColor = healthPickups.color;
+    }
+
     private void Start()
     {
         if (storedHeals.autoUse)
@@ -20,7 +25,7 @@ public class HealthCounter : MonoBehaviour
             healthPickups.text = "Heals: " + 
                 storedHeals.startingHeals.ToString() + " / " + storedHeals.maxHeals.ToString();
 
-        originalColor = healthPickups.color;
+        
     }
 
     public void UpdateCounter()
