@@ -296,6 +296,11 @@ MonoBehaviour:
   healthSlider: {fileID: 3141991338758193914}
   comboHit: {fileID: 3141991339081854235}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sectionIndex: 0
+  sections: []
   state: 0
   turretPoint: {fileID: 8247517746467512097}
   shootPoints:
@@ -305,7 +310,7 @@ MonoBehaviour:
   rotationSpeed: 0.08
   shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
   shootTime: 0.5
-  attackRange: 100
+  attackRange: 999
   lastHit: {fileID: 0}
   lookRadius: 100
 --- !u!1 &3141991338758193916
