@@ -661,7 +661,9 @@ MonoBehaviour:
   sectionedHealth: 0
   healthPerSection: 0
   numOfSections: 0
+  sectionIndex: 0
   sections: []
+  sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
   state: 0
   rotationSpeed: 0.1
   walkSpeed: 8

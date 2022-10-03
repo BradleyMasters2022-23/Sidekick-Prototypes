@@ -27,6 +27,9 @@ public abstract class IDamagable : MonoBehaviour
     [SerializeField] protected int sectionIndex;
     public List<Slider> sections;
 
+    private AudioSource s;
+    public AudioClip sound;
+
     protected virtual void Awake()
     {
         if(!sectionedHealth)
@@ -208,6 +211,8 @@ public abstract class IDamagable : MonoBehaviour
     public virtual void Die()
     {
         //Debug.Log(this.gameObject.name + " has died! Oh no!");
+        if (sound != null)
+            AudioSource.PlayClipAtPoint(sound, transform.position);
         Destroy(this.gameObject);
     }
 

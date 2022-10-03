@@ -21,6 +21,9 @@ public class SpawnManager : MonoBehaviour
 
     //public int diff;
 
+    private AudioSource s;
+    public AudioClip sound;
+
     private SpawnPoint[] spawnPoints;
 
     private float currTime;
@@ -38,6 +41,7 @@ public class SpawnManager : MonoBehaviour
             return;
         }
         ActivateSpawner();
+        s = gameObject.AddComponent<AudioSource>();
     }
 
     public void AddEnemy()
@@ -156,6 +160,9 @@ public class SpawnManager : MonoBehaviour
 
     private void CompleteRoom()
     {
+        if (sound != null)
+            s.PlayOneShot(sound);
+
         FindObjectOfType<DoorManager>().UnlockAllDoors();
 
         if(chosenWave != null)

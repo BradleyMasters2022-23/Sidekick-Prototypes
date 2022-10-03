@@ -14,6 +14,8 @@ public class PlayerGun : MonoBehaviour
     public Transform shootPoint;
     public GameObject bullet;
 
+    private AudioSource s;
+    public AudioClip shootSound;
 
     [Tooltip("Time it takes between each shot")]
     public float fireDelay;
@@ -29,6 +31,8 @@ public class PlayerGun : MonoBehaviour
         shoot.Enable();
         shoot.started += ToggleTrigger;
         shoot.canceled += ToggleTrigger;
+
+        s = gameObject.AddComponent<AudioSource>();
     }
     private void OnEnable()
     {
@@ -63,6 +67,8 @@ public class PlayerGun : MonoBehaviour
 
     private void Shoot()
     {
+        if(shootSound != null)
+            s.PlayOneShot(shootSound, 0.7f);
         GameObject t = Instantiate(bullet, shootPoint.position, transform.rotation);
         t.transform.LookAt(shootCam.GetTarget());
     }

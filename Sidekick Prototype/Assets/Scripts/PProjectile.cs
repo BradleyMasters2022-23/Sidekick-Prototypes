@@ -21,11 +21,14 @@ public class PProjectile : MonoBehaviour
     public float lifeTime;
     private float t = 0;
 
+    private AudioSource s;
+    public AudioClip sound;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         currTime = TimeManager.worldTime;
-
+        s = gameObject.AddComponent<AudioSource>();
         if (freezePlayerP && currTime <= .2 && transform.parent == null)
         {
             transform.position += transform.forward * freezeSpawnDist;
@@ -65,6 +68,8 @@ public class PProjectile : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             other.GetComponent<IDamagable>().TakeDamage(damage);
+            if (sound != null)
+                AudioSource.PlayClipAtPoint(sound, FindObjectOfType<PlayerControllerRB>().transform.position, 2.5f);
         }
 
         if (hitVFX != null)

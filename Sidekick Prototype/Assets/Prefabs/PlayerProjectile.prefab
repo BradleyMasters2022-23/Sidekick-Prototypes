@@ -107,6 +107,7 @@ MonoBehaviour:
   hitscanBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
   currTime: 0
   lifeTime: 5
+  sound: {fileID: 8300000, guid: dd08412aa7a4dbd418c55a8194cf2a4e, type: 3}
 --- !u!65 &8721513615243425969
 BoxCollider:
   m_ObjectHideFlags: 0

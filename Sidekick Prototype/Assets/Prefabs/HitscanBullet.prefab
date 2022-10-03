@@ -112,6 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireThreshold: 0.09
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 0
+  sound: {fileID: 8300000, guid: dd08412aa7a4dbd418c55a8194cf2a4e, type: 3}
 --- !u!114 &7318545775515822693
 MonoBehaviour:
   m_ObjectHideFlags: 0

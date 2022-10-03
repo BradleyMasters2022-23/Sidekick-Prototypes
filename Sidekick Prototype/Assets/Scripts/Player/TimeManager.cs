@@ -58,9 +58,14 @@ public class TimeManager : MonoBehaviour
     public TextMeshProUGUI testPerspectiveNote;
     public TextMeshProUGUI testHitscanNote;
 
+    private AudioSource s;
+    public AudioClip stopSFX;
+    public AudioClip startSFX;
 
     private void Start()
     {
+        s = gameObject.AddComponent<AudioSource>();
+
         controller = new PlayerControls();
         slowing = false;
 
@@ -202,6 +207,13 @@ public class TimeManager : MonoBehaviour
         if(!emptied)
         {
             slowing = !slowing;
+
+            if (slowing)
+                s.PlayOneShot(stopSFX, 0.7f);
+            else
+            {
+                s.PlayOneShot(startSFX);
+            }
         }
     }
 
@@ -217,6 +229,7 @@ public class TimeManager : MonoBehaviour
             emptied = true;
             fillImg.color = emptiedColor;
             slowHold.Disable();
+            s.PlayOneShot(startSFX);
         }
         else
         {

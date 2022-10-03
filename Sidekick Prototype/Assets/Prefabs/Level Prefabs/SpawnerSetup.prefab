@@ -195,6 +195,7 @@ MonoBehaviour:
   waveOptions: []
   maxEnemies: 12
   spawnDelay: {x: 0, y: 1}
+  sound: {fileID: 8300000, guid: 11e08638eba817b48a3e4d5bc2c3b47e, type: 3}
 --- !u!1 &3732362047767017939
 GameObject:
   m_ObjectHideFlags: 0

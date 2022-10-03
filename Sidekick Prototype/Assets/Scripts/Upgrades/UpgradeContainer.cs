@@ -10,6 +10,9 @@ public class UpgradeContainer : MonoBehaviour
     public TextMeshProUGUI nameText;
     private List<GameObject> linkedUpgrades = new List<GameObject>();
 
+    private AudioSource s;
+    public AudioClip sound;
+
     private void Start()
     {
         if (upgrade is null)
@@ -17,6 +20,8 @@ public class UpgradeContainer : MonoBehaviour
 
         if(upgrade != null)
             SetUp(upgrade);
+
+        s = gameObject.AddComponent<AudioSource>();
     }
 
     public void SetUp(UpgradeObject obj)
@@ -39,6 +44,8 @@ public class UpgradeContainer : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             UpgradeSelected();
+            if(sound!= null)
+                AudioSource.PlayClipAtPoint(sound, transform.position);
             PlayerUpgradeManager.instance.AddUpgrade(upgrade);
             Destroy(this.gameObject);
         }

@@ -521,6 +521,12 @@ MonoBehaviour:
   healthSlider: {fileID: 2290914486727934365}
   comboHit: {fileID: 2290914487117393532}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sectionIndex: 0
+  sections: []
+  sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
   state: 0
   turretPoint: {fileID: 134370354893473322}
   shootPoints:

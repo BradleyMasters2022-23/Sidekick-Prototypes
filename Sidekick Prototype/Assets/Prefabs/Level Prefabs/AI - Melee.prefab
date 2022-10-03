@@ -850,6 +850,12 @@ MonoBehaviour:
   healthSlider: {fileID: 8624538108751733735}
   comboHit: {fileID: 8624538110273402656}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sectionIndex: 0
+  sections: []
+  sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
   state: 0
   rotationSpeed: 0.1
   walkSpeed: 9.5

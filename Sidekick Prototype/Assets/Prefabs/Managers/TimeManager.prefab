@@ -48,6 +48,9 @@ MonoBehaviour:
   normalTime: 1
   slowedTime: 0
   timeChangeSpeed: 0.095
+  enableBP: 0
+  enableFirstPerson: 0
+  enableHitscan: 0
   slider: {fileID: 0}
   unlimited: 0
   maxGauge: 250
@@ -57,3 +60,10 @@ MonoBehaviour:
   emptiedDelay: 5
   fillImg: {fileID: 0}
   emptiedColor: {r: 0.9622642, g: 0, b: 0, a: 1}
+  testSlowNote: {fileID: 0}
+  testUnlimitedNote: {fileID: 0}
+  testBPNote: {fileID: 0}
+  testPerspectiveNote: {fileID: 0}
+  testHitscanNote: {fileID: 0}
+  stopSFX: {fileID: 8300000, guid: f38779b135eeca54d9f772f3756de836, type: 3}
+  startSFX: {fileID: 8300000, guid: 07b2e6e81a4b7b049b528502728f3c14, type: 3}

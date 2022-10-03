@@ -12,12 +12,13 @@ public class FreezeHitscan : MonoBehaviour
     [SerializeField] private float fireThreshold = 0.1f;
     public LayerMask layersToIgnore;
 
-    //public void PrepareBullet(RaycastHit hit, int dmg, GameObject vfx)
-    //{
-    //    shot = hit;
-    //    damage = dmg;
-    //    hitVFX = vfx;
-    //}
+    private AudioSource s;
+    public AudioClip sound;
+
+    private void Start()
+    {
+        s = gameObject.AddComponent<AudioSource>();
+    }
 
     public void PrepareBullet(int dmg, GameObject vfx)
     {
@@ -50,7 +51,12 @@ public class FreezeHitscan : MonoBehaviour
             IDamagable hitTar;
 
             if (shot.collider.TryGetComponent<IDamagable>(out hitTar))
+            {
+                if (sound != null)
+                    AudioSource.PlayClipAtPoint(sound, transform.position);
                 hitTar.TakeDamage(damage);
+            }
+                
 
             if (hitVFX != null)
                 Instantiate(hitVFX, shot.point, Quaternion.identity);
