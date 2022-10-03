@@ -34,12 +34,21 @@ public class EnemyTurret : IDamagable
     private float currTime = 1;
     private GameObject p;
 
+    private AudioSource audipPlayer;
+    public AudioClip davidSound;
+
     // Start is called before the first frame update
     void Start()
     {
         currTime = TimeManager.worldTime;
         p = FindObjectOfType<PlayerControllerRB>().gameObject;
-        
+
+        if (davidSound == null)
+            return;
+        audipPlayer = gameObject.AddComponent<AudioSource>();
+        audipPlayer.loop = true;
+        audipPlayer.clip = davidSound;
+        audipPlayer.Play();
     }
 
     protected override void FixedUpdate()
@@ -90,6 +99,20 @@ public class EnemyTurret : IDamagable
 
         turretPoint.transform.localRotation = Quaternion.Euler(nextXAng, 0, 0);
         transform.rotation = Quaternion.Euler(0, nextYAng, 0);
+    }
+
+    private void Update()
+    {
+
+        if (Time.timeScale == 0)
+        {
+            audipPlayer.Pause();
+        }
+        else
+        {
+            audipPlayer.UnPause();
+        }
+
     }
 
     /// <summary>

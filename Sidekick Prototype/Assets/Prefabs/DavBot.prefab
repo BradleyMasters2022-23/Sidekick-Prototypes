@@ -539,6 +539,7 @@ MonoBehaviour:
   attackRange: 999
   lastHit: {fileID: 0}
   lookRadius: 999
+  davidSound: {fileID: 8300000, guid: f7c49131b7b323a40be83692a5cad77e, type: 3}
 --- !u!1 &2290914487117393533
 GameObject:
   m_ObjectHideFlags: 0
