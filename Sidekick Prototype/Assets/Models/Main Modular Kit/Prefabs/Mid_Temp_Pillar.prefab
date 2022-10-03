@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 6569146118305991449}
   - component: {fileID: 8993333172159856595}
   - component: {fileID: 3177701234467484940}
+  - component: {fileID: 4470414385575385570}
   m_Layer: 3
   m_Name: Mid_Temp_Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7819814673733960892
 Transform:
@@ -98,3 +99,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4269274911017950572, guid: c281105b9f14f1d498bf8aaad4ce933d, type: 3}
+--- !u!54 &4470414385575385570
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7479987152143293958}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
