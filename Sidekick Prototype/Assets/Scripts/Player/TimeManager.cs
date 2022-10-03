@@ -326,7 +326,7 @@ public class TimeManager : MonoBehaviour
         {
             if (testPerspectiveNote != null)
             {
-                testPerspectiveNote.text = "First person enabled";
+                testPerspectiveNote.text = "Alt angle enabled";
             }
         }
         else

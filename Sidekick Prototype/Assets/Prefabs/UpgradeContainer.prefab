@@ -363,3 +363,4 @@ MonoBehaviour:
   upgrade: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   nameText: {fileID: 3119434187951831255}
+  sound: {fileID: 8300000, guid: bc969951e0b954449acf004dcedc34dc, type: 3}

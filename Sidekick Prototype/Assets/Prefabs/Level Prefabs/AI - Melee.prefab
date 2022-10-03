@@ -856,6 +856,7 @@ MonoBehaviour:
   sectionIndex: 0
   sections: []
   sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
+  deathVFX: {fileID: 8273445605695135385, guid: 62af963b4eaafd748a03b8ccb4313dd2, type: 3}
   state: 0
   rotationSpeed: 0.1
   walkSpeed: 9.5

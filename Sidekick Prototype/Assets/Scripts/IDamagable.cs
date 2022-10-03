@@ -30,6 +30,8 @@ public abstract class IDamagable : MonoBehaviour
     private AudioSource s;
     public AudioClip sound;
 
+    public GameObject deathVFX;
+
     protected virtual void Awake()
     {
         if(!sectionedHealth)
@@ -213,6 +215,10 @@ public abstract class IDamagable : MonoBehaviour
         //Debug.Log(this.gameObject.name + " has died! Oh no!");
         if (sound != null)
             AudioSource.PlayClipAtPoint(sound, transform.position);
+
+        if (deathVFX != null)
+            Instantiate(deathVFX, transform.position + Vector3.up * (transform.localScale.y/2), transform.rotation);
+
         Destroy(this.gameObject);
     }
 

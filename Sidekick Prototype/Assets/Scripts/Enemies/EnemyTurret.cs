@@ -90,7 +90,6 @@ public class EnemyTurret : IDamagable
 
         // Get direction of player, rotate towards them1
         
-
         Vector3 direction = (p.transform.position - turretPoint.transform.position);
         Quaternion rot = Quaternion.LookRotation(direction);
 
@@ -103,16 +102,17 @@ public class EnemyTurret : IDamagable
 
     private void Update()
     {
-
-        if (Time.timeScale == 0)
+        if(audipPlayer != null)
         {
-            audipPlayer.Pause();
+            if (Time.timeScale == 0)
+            {
+                audipPlayer.Pause();
+            }
+            else
+            {
+                audipPlayer.UnPause();
+            }
         }
-        else
-        {
-            audipPlayer.UnPause();
-        }
-
     }
 
     /// <summary>

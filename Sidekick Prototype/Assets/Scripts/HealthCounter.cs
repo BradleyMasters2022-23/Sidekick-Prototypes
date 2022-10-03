@@ -10,6 +10,7 @@ public class HealthCounter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthPickups;
     public IDamagable healthbar;
     public HealingSystem storedHeals;
+    private Color originalColor;
 
     private void Start()
     {
@@ -18,6 +19,8 @@ public class HealthCounter : MonoBehaviour
         else
             healthPickups.text = "Heals: " + 
                 storedHeals.startingHeals.ToString() + " / " + storedHeals.maxHeals.ToString();
+
+        originalColor = healthPickups.color;
     }
 
     public void UpdateCounter()
@@ -50,7 +53,7 @@ public class HealthCounter : MonoBehaviour
             }
             else
             {
-                healthPickups.color = Color.black;
+                healthPickups.color = originalColor;
             }
         }
             

@@ -18,8 +18,12 @@ public class EProjectile : MonoBehaviour
     {
         currTime = TimeManager.worldTime;
         s = gameObject.AddComponent<AudioSource>();
+
+        Vector3 dir = (FindObjectOfType<PlayerControllerRB>().transform.position - transform.position).normalized;
+        dir += Vector3.forward * (Vector3.Distance(FindObjectOfType<PlayerControllerRB>().transform.position, transform.position) / 2);
+
         if (sound != null)
-            s.PlayOneShot(sound, 0.5f);
+            AudioSource.PlayClipAtPoint(sound, dir, 2f);
     }
 
     // Update is called once per frame

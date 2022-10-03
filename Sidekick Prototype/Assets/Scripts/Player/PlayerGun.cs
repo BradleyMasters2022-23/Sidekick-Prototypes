@@ -21,6 +21,7 @@ public class PlayerGun : MonoBehaviour
     public float fireDelay;
     private float t;
 
+    public GameObject shootVFX;
 
     private void Start()
     {
@@ -71,6 +72,8 @@ public class PlayerGun : MonoBehaviour
             s.PlayOneShot(shootSound, 0.7f);
         GameObject t = Instantiate(bullet, shootPoint.position, transform.rotation);
         t.transform.LookAt(shootCam.GetTarget());
+        if(shootVFX != null)
+            Instantiate(shootVFX, shootPoint.position, transform.rotation);
     }
 
     /// <summary>
