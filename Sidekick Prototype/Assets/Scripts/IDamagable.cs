@@ -24,7 +24,7 @@ public abstract class IDamagable : MonoBehaviour
     public bool sectionedHealth;
     public int healthPerSection;
     public int numOfSections;
-    private int sectionIndex;
+    [SerializeField] protected int sectionIndex;
     public List<Slider> sections;
 
     protected virtual void Awake()

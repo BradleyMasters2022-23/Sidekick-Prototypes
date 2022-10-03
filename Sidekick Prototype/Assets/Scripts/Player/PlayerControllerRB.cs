@@ -55,7 +55,6 @@ public class PlayerControllerRB : IDamagable
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-       
 
         if(Physics.gravity.y >= -10)
             Physics.gravity *= gravityMultiplier;
@@ -88,13 +87,12 @@ public class PlayerControllerRB : IDamagable
     private void LoadSectionedHealth()
     {
         health = PlayerUpgradeManager.instance.currHealth;
-        int sectionToHeal = (int)Mathf.Ceil(health / healthPerSection);
+        int sectionToHeal = (int)Mathf.Ceil(health / (float)healthPerSection);
         health = sectionToHeal * healthPerSection;
-        for(int i = 0; i <= sectionToHeal; i++)
-        {
-            sections[i].value = healthPerSection;
-        }
-        for(int i = sectionToHeal+1; i < numOfSections; i++)
+
+        sectionIndex = sectionToHeal-1;
+
+        for (int i  = numOfSections-1; i >= sectionToHeal; i--)
         {
             sections[i].value = 0;
         }

@@ -37,12 +37,22 @@ public class HealingSystem : MonoBehaviour
     private void Start()
     {
         player = GetComponent<IDamagable>();
-        currHeals = startingHeals;
+
+        if (PlayerUpgradeManager.instance != null && PlayerUpgradeManager.instance.currHealthPacks != startingHeals)
+            currHeals = PlayerUpgradeManager.instance.currHealthPacks;
+        else
+            currHeals = startingHeals;
+
         healing = false;
     }
 
     private void OnDisable()
     {
+        if(PlayerUpgradeManager.instance != null)
+        {
+            PlayerUpgradeManager.instance.currHealthPacks = currHeals;
+        }
+
         heal.Disable();
         cheatHeal.Disable();
         if (healingRoutine != null)
