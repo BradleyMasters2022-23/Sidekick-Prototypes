@@ -141,12 +141,14 @@ public class SpawnManager : MonoBehaviour
     /// </summary>
     private void WaveFinished()
     {
+        Debug.Log("Wave Finished");
         spawnRoutine = null;
         waveIndex++;
 
         if(waveIndex >= chosenWave.allWaves.Length)
         {
             CompleteRoom();
+            spawnQueue.Clear();
         }
         else
         {
@@ -179,6 +181,9 @@ public class SpawnManager : MonoBehaviour
 
     public void CheckWaveFinished()
     {
+        if (spawning)
+            return;
+
         if ((enemyCount <= chosenWave.contThreshold && waveIndex < chosenWave.allWaves.Length - 1)
             || enemyCount <= 0)
         {

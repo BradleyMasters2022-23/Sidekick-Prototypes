@@ -203,6 +203,7 @@ MonoBehaviour:
   sectionedHealth: 0
   healthPerSection: 0
   numOfSections: 0
+  sectionIndex: 0
   sections: []
   playerSpeed: 10
   lookSpeed: 15
@@ -212,7 +213,7 @@ MonoBehaviour:
   maxJumps: 1
   remainingJumps: 0
   jumpCooldown: 0.2
-  jumpForce: 20
+  jumpForce: 25
   gravityMultiplier: 2.4
   maxFallVelocity: 80
   landVelocity: -2
@@ -238,6 +239,7 @@ MonoBehaviour:
   autoUse: 0
   startingHeals: 0
   healDelay: 1
+  currHeals: 0
 --- !u!1 &118932247851560548
 GameObject:
   m_ObjectHideFlags: 0
