@@ -968,6 +968,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5200506986242498491}
     m_Modifications:
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: jumpForce
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 5859597341533200091}
@@ -1167,7 +1171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[0]
@@ -1180,6 +1184,18 @@ PrefabInstance:
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[2]
       value: Room3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: sceneNames.Array.data[4]
+      value: Room 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: sceneNames.Array.data[5]
+      value: Room 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: sceneNames.Array.data[6]
+      value: Room 4
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588204, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: m_RootOrder
