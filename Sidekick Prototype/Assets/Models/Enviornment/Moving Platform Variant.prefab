@@ -59,5 +59,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moving Platform Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cebe0f407660503408bf6f6955d42a91, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cebe0f407660503408bf6f6955d42a91, type: 3}
+--- !u!1 &5298665299204919063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cebe0f407660503408bf6f6955d42a91, type: 3}
+  m_PrefabInstance: {fileID: 4992747980835615302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-2386793700002457382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5298665299204919063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.3039142, z: 1}
+  m_Center: {x: 0, y: 0.08902419, z: 0}
