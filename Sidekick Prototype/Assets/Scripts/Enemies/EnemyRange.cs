@@ -6,13 +6,8 @@ using UnityEngine.AI;
 /// <summary>
 /// this is enemy lmao
 /// </summary>
-public class EnemyRange : IDamagable
+public class EnemyRange : EnemyBase
 {
-    public enum EnemyState
-    {
-        Moving,
-        Attacking
-    }
 
     [SerializeField] private EnemyState state; 
 
@@ -48,6 +43,7 @@ public class EnemyRange : IDamagable
         
         agent.speed = walkSpeed;
         agent.updateRotation = false;
+        state = EnemyState.Moving;
     }
 
     protected override void FixedUpdate()

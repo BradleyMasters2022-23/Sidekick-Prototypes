@@ -8,10 +8,13 @@ public class SpawnManager : MonoBehaviour
     private WaveSO chosenWave;
     private int waveIndex;
 
+    [Tooltip("How many seconds to wait before starting the wave?")]
+    [SerializeField] private float startDelay;
+
     private Queue<GameObject> spawnQueue = new Queue<GameObject>();
     public int maxEnemies = 3;
     private int enemyCount = 0;
-    [SerializeField] private int waitingEnemies = 0;
+    private int waitingEnemies = 0;
     public Vector2 spawnDelay = new Vector2(0, 1);
     private bool spawning = false;
     private float spawnTimer;
@@ -50,7 +53,7 @@ public class SpawnManager : MonoBehaviour
 
     public IEnumerator ActivateSpawner()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(startDelay);
         ChooseWave();
     }
 
@@ -84,6 +87,7 @@ public class SpawnManager : MonoBehaviour
         SpawnPoint _spawnPoint;
         while (spawnQueue.Count > 0 || waitingEnemies > 0)
         {
+            
             int c = 0;
             // Only spawn if not past max
             if ((enemyCount+waitingEnemies) < maxEnemies)
@@ -99,7 +103,7 @@ public class SpawnManager : MonoBehaviour
 
                     yield return null;
 
-                } while (!_spawnPoint.Open());
+                } while (spawnQueue.Count != 0 && !_spawnPoint.Open(spawnQueue.Peek()));
                 //lastSpawn = _spawnPoint;
 
                 if(spawnQueue.Count != 0)

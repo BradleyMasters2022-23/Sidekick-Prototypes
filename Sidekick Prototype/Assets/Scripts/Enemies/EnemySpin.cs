@@ -6,7 +6,7 @@ using UnityEngine.AI;
 /// <summary>
 /// this is enemy lmao
 /// </summary>
-public class EnemySpin : IDamagable
+public class EnemySpin : EnemyBase
 {
     public Transform[] shootPoints;
     private Animator a;

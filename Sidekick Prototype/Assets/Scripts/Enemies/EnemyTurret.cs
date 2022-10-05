@@ -6,13 +6,8 @@ using UnityEngine.AI;
 /// <summary>
 /// this is enemy lmao
 /// </summary>
-public class EnemyTurret : IDamagable
+public class EnemyTurret : EnemyBase
 {
-    public enum EnemyState
-    {
-        Idle,
-        Attacking
-    }
 
     [SerializeField] private EnemyState state;
 

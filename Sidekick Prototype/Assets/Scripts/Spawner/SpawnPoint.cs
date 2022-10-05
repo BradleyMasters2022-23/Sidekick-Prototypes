@@ -48,6 +48,9 @@ public class SpawnPoint : MonoBehaviour
     private AudioSource s;
     [SerializeField] private AudioClip spawnSound;
 
+    [Tooltip("What enemies are allowed to spawn on this spawnpoint. Drag enemy prefabs here.")]
+    [SerializeField] private GameObject[] enemyWhitelist;
+
     private void Awake()
     {
         p = FindObjectOfType<PlayerControllerRB>().transform;
@@ -77,9 +80,27 @@ public class SpawnPoint : MonoBehaviour
         }
     }
 
-    public bool Open()
+    public bool Open(GameObject proposedEnemy)
     {
-        return enemyStorage == null;
+        if (enemyStorage != null)
+            return false;
+
+        bool _allowed = false;
+        if(enemyWhitelist.Length > 0)
+        {
+            EnemyBase proposed = proposedEnemy.GetComponent<EnemyBase>();
+            foreach(GameObject type in enemyWhitelist)
+            {
+                if (type.GetComponent<EnemyBase>() == proposed)
+                    _allowed = true;
+            }
+
+            return (_allowed && enemyStorage == null);
+        }
+        else
+        {
+            return true;
+        }
     }
 
     private void ResetSpawnPoint()
