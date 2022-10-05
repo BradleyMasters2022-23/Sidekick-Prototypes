@@ -45,6 +45,10 @@ public class PlayerControllerRB : IDamagable
     [SerializeField] private bool grounded = true;
     private float defGrav;
 
+    //Animation
+    public Animator animator;
+
+
     protected override void Awake()
     {
         base.Awake();
@@ -79,6 +83,8 @@ public class PlayerControllerRB : IDamagable
             health = PlayerUpgradeManager.instance.currHealth;
             UpdateSlider();
         }
+        
+
     }
 
     public Transform GetGroundCheck()
@@ -113,6 +119,10 @@ public class PlayerControllerRB : IDamagable
         //playerBody.transform.LookAt(transform.position + direction);
         rb.MovePosition(transform.position + direction * playerSpeed * Time.deltaTime);
 
+        //Animation
+        animator.SetFloat("X Move", move.ReadValue<Vector2>().x);
+        animator.SetFloat("Y Move", move.ReadValue<Vector2>().y);
+
     }
 
     private void Update()
@@ -126,7 +136,9 @@ public class PlayerControllerRB : IDamagable
 
         if (jumpT < jumpCooldown)
             jumpT += Time.deltaTime;
-
+        
+        //Animation
+        animator.SetBool("Is Jumping", !grounded);
 
         // look left and right
         transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSpeed);
@@ -152,6 +164,7 @@ public class PlayerControllerRB : IDamagable
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
     }
 
     private void OnApplicationFocus(bool focus)
