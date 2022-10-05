@@ -207,6 +207,7 @@ MonoBehaviour:
   sectionIndex: 0
   sections: []
   sound: {fileID: 0}
+  deathVFX: {fileID: 0}
   playerSpeed: 10
   lookSpeed: 15
   angleClamp: {x: -85, y: 85}
@@ -382,6 +383,7 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 292
+  seeBuffer: 1.5
 --- !u!1 &118932248232581742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,6 +1141,7 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 292
+  seeBuffer: 1.5
 --- !u!1 &8919447734330336906
 GameObject:
   m_ObjectHideFlags: 0

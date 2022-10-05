@@ -11,6 +11,7 @@ public class SpawnManager : MonoBehaviour
     private Queue<GameObject> spawnQueue = new Queue<GameObject>();
     public int maxEnemies = 3;
     private int enemyCount = 0;
+    [SerializeField] private int waitingEnemies = 0;
     public Vector2 spawnDelay = new Vector2(0, 1);
     private bool spawning = false;
     private float spawnTimer;
@@ -18,8 +19,6 @@ public class SpawnManager : MonoBehaviour
     private bool wait = false;
     private Coroutine spawnRoutine;
     private Coroutine backupCheckRoutine;
-
-    //public int diff;
 
     private AudioSource s;
     public AudioClip sound;
@@ -40,7 +39,7 @@ public class SpawnManager : MonoBehaviour
             CompleteRoom();
             return;
         }
-        ActivateSpawner();
+        StartCoroutine(ActivateSpawner());
         s = gameObject.AddComponent<AudioSource>();
     }
 
@@ -49,8 +48,9 @@ public class SpawnManager : MonoBehaviour
         enemyCount++;
     }
 
-    public void ActivateSpawner()
+    public IEnumerator ActivateSpawner()
     {
+        yield return new WaitForSeconds(3f);
         ChooseWave();
     }
 
@@ -80,13 +80,13 @@ public class SpawnManager : MonoBehaviour
         foreach (GameObject enemy in chosenWave.allWaves[waveIndex].wave)
             spawnQueue.Enqueue(enemy);
 
-        //SpawnPoint lastSpawn = null;
+        // Continually decide spawnpoints to use
         SpawnPoint _spawnPoint;
-        while (spawnQueue.Count > 0)
+        while (spawnQueue.Count > 0 || waitingEnemies > 0)
         {
             int c = 0;
             // Only spawn if not past max
-            if (enemyCount < maxEnemies)
+            if ((enemyCount+waitingEnemies) < maxEnemies)
             {
                 // Spawn a new enemy with a randomized delay between the range, not choosing same point twice back to back
                 do
@@ -94,16 +94,16 @@ public class SpawnManager : MonoBehaviour
                     c++;
                     _spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
                     // Backup incase they get stuck
-                    if (c >= 1000)
-                        _spawnPoint.SetUsable();
+                    //if (c >= 1000)
+                    //    _spawnPoint.SetUsable();
 
                     yield return null;
 
-                } while (!_spawnPoint.Usable());
+                } while (!_spawnPoint.Open());
                 //lastSpawn = _spawnPoint;
 
                 if(spawnQueue.Count != 0)
-                    SpawnEnemy(spawnQueue.Dequeue(), _spawnPoint.Pos());
+                    SpawnEnemy(spawnQueue.Dequeue(), _spawnPoint);
             }
 
             // Delay. Done like this to take into account time freeze
@@ -118,10 +118,12 @@ public class SpawnManager : MonoBehaviour
         backupCheckRoutine = StartCoroutine(CheckCount());
     }
 
-    private void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint)
+
+
+    private void SpawnEnemy(GameObject enemyPrefab, SpawnPoint spawnPoint)
     {
-        Instantiate(enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-        enemyCount++;
+        spawnPoint.LoadSpawn(enemyPrefab);
+        waitingEnemies++;
     }
 
 
@@ -177,18 +179,16 @@ public class SpawnManager : MonoBehaviour
             StopCoroutine(spawnRoutine);
     }
 
-    
+
     public void DestroyEnemy()
     {
         enemyCount--;
-
         CheckWaveFinished();
-        
     }
 
     public void CheckWaveFinished()
     {
-        if (spawning)
+        if (spawning || waitingEnemies > 0)
             return;
 
         if ((enemyCount <= chosenWave.contThreshold && waveIndex < chosenWave.allWaves.Length - 1)
@@ -226,5 +226,17 @@ public class SpawnManager : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
+    }
+
+
+    public void SpawnedEnemy()
+    {
+        waitingEnemies--;
+        enemyCount++;
+    }
+    public void ReturnEnemy(GameObject enemy)
+    {
+        spawnQueue.Enqueue(enemy);
+        waitingEnemies--;
     }
 }
