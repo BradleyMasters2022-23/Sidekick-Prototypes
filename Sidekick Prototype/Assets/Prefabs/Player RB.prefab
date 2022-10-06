@@ -216,9 +216,12 @@ MonoBehaviour:
   startingSpeedPercentage: 0.3
   decelerationTime: 0.35
   airModifier: 0.2
-  sprintModifier: 0
+  sprintModifier: 1.2
+  sprinting: 0
   jumpForce: 25
   jumpCooldown: 0.2
+  disableFirstJumpOnFall: 0
+  jumpRedirectControl: 1
   maxJumps: 1
   gravityMultiplier: 2.4
   groundMask:
@@ -226,8 +229,6 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 118932247320974055}
   groundCheckRadius: 0.1
-  groundMaterial: {fileID: 13400000, guid: 15ad494db864f824cb9cde64528982e5, type: 2}
-  airMaterial: {fileID: 13400000, guid: 15ad494db864f824cb9cde64528982e5, type: 2}
 --- !u!114 &7060041542167350319
 MonoBehaviour:
   m_ObjectHideFlags: 0

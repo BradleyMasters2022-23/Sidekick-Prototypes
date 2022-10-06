@@ -17,6 +17,7 @@ public class PlayerControllerRB : IDamagable
     private InputAction mouse;
     private InputAction jump;
     private InputAction debugRestart;
+    private InputAction sprint;
 
     private float verticalLookRotation = 0f;
     private float horizontalLookRotation = 0f;
@@ -29,16 +30,22 @@ public class PlayerControllerRB : IDamagable
     [SerializeField] [Range(0, 1)] private float startingSpeedPercentage;
     [SerializeField] [Range(0, 1)] private float decelerationTime;
     [SerializeField] [Range(0, 1)] private float airModifier;
-    [SerializeField] private float sprintModifier;
+    [SerializeField] [Range(1, 3)] private float sprintModifier;
     private Vector3 direction;
     private Vector2 lastInput = new Vector2(0,0);
     private float currSpeed;
     private float accelerationTimer;
     private float decelerationTimer;
+    private bool sprinting;
 
     [Header("---Jumping---")]
     [SerializeField] private float jumpForce;
+    [Tooltip("Cooldown for both refreshing jumps and between jumps")]
     [SerializeField] private float jumpCooldown;
+    [Tooltip("Whether or not the player loses their first jump if falling off a ledge")]
+    [SerializeField] private bool disableFirstJumpOnFall;
+    [Tooltip("Whether or not the player can pivot movement when jumping")]
+    [SerializeField] private bool jumpRedirectControl;
     public int maxJumps = 1;
     private int remainingJumps = 0;
     private float jumpT;
@@ -51,8 +58,6 @@ public class PlayerControllerRB : IDamagable
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
-    [SerializeField] private PhysicMaterial groundMaterial;
-    [SerializeField] private PhysicMaterial airMaterial;
     private bool grounded = true;
 
 
@@ -82,6 +87,11 @@ public class PlayerControllerRB : IDamagable
         debugRestart.performed += DebugRestartScene;
         debugRestart.Enable();
 
+        sprint = controller.Player.Sprint;
+        sprint.started += ToggleSprint;
+        sprint.canceled += ToggleSprint;
+        sprint.Enable();
+
         verticalLookRotation = camPivotPoint.transform.localRotation.x;
 
         if (!sectionedHealth && PlayerUpgradeManager.instance.currHealth != 0)
@@ -104,11 +114,15 @@ public class PlayerControllerRB : IDamagable
 
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
-        if (grounded && jumpT >= jumpCooldown)
-        {
-            remainingJumps = maxJumps;
-        }
+        // Remove the first jump if they fall off
+        if (disableFirstJumpOnFall && !grounded && remainingJumps == maxJumps)
+            remainingJumps--;
 
+        // Restore jumps on ground
+        if (grounded && jumpT >= jumpCooldown)
+            remainingJumps = maxJumps;
+        
+        // Manage jump cooldown timer
         if (jumpT < jumpCooldown)
             jumpT += Time.deltaTime;
 
@@ -130,14 +144,14 @@ public class PlayerControllerRB : IDamagable
 
         // Lerp speed if accelerating or decelerating
         if (move.ReadValue<Vector2>() != Vector2.zero
-            && currSpeed != maxMoveSpeed)
+            && currSpeed < maxMoveSpeed)
         {
             accelerationTimer += Time.deltaTime;
 
             currSpeed = Mathf.Lerp(0, maxMoveSpeed, (accelerationTimer / accelerationTime));
         }
         else if (move.ReadValue<Vector2>() == Vector2.zero
-            && currSpeed != 0)
+            && currSpeed > 0)
         {
             decelerationTimer += Time.deltaTime;
 
@@ -156,17 +170,22 @@ public class PlayerControllerRB : IDamagable
         Vector2 currInput = move.ReadValue<Vector2>();
 
         Vector2 limitVel = new Vector2(rb.velocity.x, rb.velocity.z);
-        if(limitVel.magnitude > maxMoveSpeed)
+        
+        if(limitVel.magnitude > maxMoveSpeed && !sprinting)
         {
             limitVel = limitVel.normalized * maxMoveSpeed;
             rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.y);
         }
+        else if (limitVel.magnitude > (maxMoveSpeed * sprintModifier) && sprinting)
+        {
+            limitVel = limitVel.normalized * maxMoveSpeed * sprintModifier;
+            rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.y);
+        }
 
-
-        Vector3 temp;
         if (grounded)
         {
             // Calculate grounded movement
+            Vector3 temp;
             direction = transform.right * currInput.x + transform.forward * currInput.y;
 
             if (direction != Vector3.zero)
@@ -220,12 +239,45 @@ public class PlayerControllerRB : IDamagable
     {
         if(remainingJumps > 0 && jumpT >= jumpCooldown)
         {
+            if(jumpRedirectControl)
+            {
+                // Allow for redirection on jumps
+                Vector2 currInput = move.ReadValue<Vector2>();
+                Vector3 airDir = transform.right * currInput.x + transform.forward * currInput.y;
+                airDir = airDir.normalized * Mathf.Pow((maxMoveSpeed), 2) * Time.deltaTime;
+                airDir.y = 0;
+
+                Vector3 newVelocity = Vector3.zero + airDir;
+
+                // limit the speed
+                if (newVelocity.magnitude > maxMoveSpeed / 2)
+                {
+                    newVelocity = newVelocity.normalized * (maxMoveSpeed / 2);
+                    newVelocity.y = rb.velocity.y;
+                }
+                rb.velocity = newVelocity;
+            }
+            
             jumpT = 0;
             grounded = false;
             remainingJumps--;
             // reset vertical velocity before applying jump
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    private void ToggleSprint(InputAction.CallbackContext ctx)
+    {
+        sprinting = !sprinting;
+
+        if(sprinting)
+        {
+            currSpeed = maxMoveSpeed * sprintModifier;
+        }
+        else
+        {
+            currSpeed = maxMoveSpeed;
         }
     }
 
@@ -257,6 +309,7 @@ public class PlayerControllerRB : IDamagable
         mouse.Disable();
         jump.Disable();
         debugRestart.Disable();
+        sprint.Disable();
     }
 
     private void LoadSectionedHealth()
