@@ -383,7 +383,7 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 292
-  seeBuffer: 1.5
+  seeBuffer: 1.65
 --- !u!1 &118932248232581742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 292
-  seeBuffer: 1.5
+  seeBuffer: 1.65
 --- !u!1 &8919447734330336906
 GameObject:
   m_ObjectHideFlags: 0
