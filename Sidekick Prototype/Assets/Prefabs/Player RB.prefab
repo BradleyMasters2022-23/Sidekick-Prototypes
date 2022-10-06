@@ -212,12 +212,11 @@ MonoBehaviour:
   angleClamp: {x: -85, y: 85}
   camPivotPoint: {fileID: 118932248232581742}
   maxMoveSpeed: 25
-  accelerationTime: 0.22
+  accelerationTime: 0.21
   startingSpeedPercentage: 0.3
   decelerationTime: 0.35
   airModifier: 0.2
   sprintModifier: 1.2
-  sprinting: 0
   jumpForce: 25
   jumpCooldown: 0.2
   disableFirstJumpOnFall: 0
