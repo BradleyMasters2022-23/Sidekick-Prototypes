@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerControllerRB : IDamagable
 {
-    public float playerSpeed;
-    public float lookSpeed;
+    private Rigidbody rb;
 
-    public Vector2 angleClamp;
-
-    public GameObject cam;
-    public PlayerControls controller;
+    [Header("---Camera---")]
+    [SerializeField] private float lookSensitivity;
+    [SerializeField] private Vector2 angleClamp;
+    [SerializeField] private GameObject camPivotPoint;
+    private PlayerControls controller;
     private InputAction move;
     private InputAction mouse;
     private InputAction jump;
@@ -21,29 +21,40 @@ public class PlayerControllerRB : IDamagable
     private float verticalLookRotation = 0f;
     private float horizontalLookRotation = 0f;
 
+    
 
-    public GameObject playerBody;
-
-    private Rigidbody rb;
-
+    [Header("---Movement---")]
+    [SerializeField] private float maxMoveSpeed;
+    [SerializeField] [Range(0, 1)] private float accelerationTime;
+    [SerializeField] [Range(0, 1)] private float startingSpeedPercentage;
+    [SerializeField] [Range(0, 1)] private float decelerationTime;
+    [SerializeField] [Range(0, 1)] private float airModifier;
+    [SerializeField] private float sprintModifier;
     private Vector3 direction;
+    private Vector2 lastInput = new Vector2(0,0);
+    private float currSpeed;
+    private float accelerationTimer;
+    private float decelerationTimer;
 
-    [Header("Default Stuff")]
+    [Header("---Jumping---")]
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpCooldown;
     public int maxJumps = 1;
-    public int remainingJumps = 0;
-    public float jumpCooldown;
+    private int remainingJumps = 0;
     private float jumpT;
 
-    [Header("Gravity Stuff")]
-    [SerializeField] private float jumpForce;
+
+    [Header("---Gravity---")]
     [SerializeField] private float gravityMultiplier;
-    [SerializeField] private float maxFallVelocity;
-    [SerializeField] private float landVelocity;
+    //[SerializeField] private float maxFallVelocity;
+    //[SerializeField] private float landVelocity;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius;
-    [SerializeField] private bool grounded = true;
-    private float defGrav;
+    [SerializeField] private PhysicMaterial groundMaterial;
+    [SerializeField] private PhysicMaterial airMaterial;
+    private bool grounded = true;
+
 
     protected override void Awake()
     {
@@ -71,7 +82,7 @@ public class PlayerControllerRB : IDamagable
         debugRestart.performed += DebugRestartScene;
         debugRestart.Enable();
 
-        verticalLookRotation = cam.transform.localRotation.x;
+        verticalLookRotation = camPivotPoint.transform.localRotation.x;
 
         if (!sectionedHealth && PlayerUpgradeManager.instance.currHealth != 0)
         {
@@ -82,64 +93,18 @@ public class PlayerControllerRB : IDamagable
         {
             LoadSectionedHealth();
         }
-    }
 
-    private void LoadSectionedHealth()
-    {
-        health = PlayerUpgradeManager.instance.currHealth;
-        int sectionToHeal = (int)Mathf.Ceil(health / (float)healthPerSection);
-        health = sectionToHeal * healthPerSection;
-
-        sectionIndex = sectionToHeal-1;
-
-        for (int i  = numOfSections-1; i >= sectionToHeal; i--)
-        {
-            sections[i].value = 0;
-        }
-    }
-
-    public Transform GetGroundCheck()
-    {
-        return groundCheck;
-    }
-
-    public void DebugRestartScene(InputAction.CallbackContext ctx)
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        health = maxHealth;
-        if(sectionedHealth)
-            LoadSectionedHealth();
-        Time.timeScale = 1;
-    }
-
-    private void OnDisable()
-    {
-        if(PlayerUpgradeManager.instance != null)
-            PlayerUpgradeManager.instance.currHealth = health;
-
-        move.Disable();
-        mouse.Disable();
-        jump.Disable();
-        debugRestart.Disable();
-    }
-
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
-
-        // Player Movement
-        direction = transform.right * move.ReadValue<Vector2>().x + transform.forward * move.ReadValue<Vector2>().y;
-
-        //playerBody.transform.LookAt(transform.position + direction);
-        rb.MovePosition(transform.position + direction * playerSpeed * Time.deltaTime);
-
+        currSpeed = 0;
+        accelerationTimer = 0;
     }
 
     private void Update()
     {
+        ManageCamera();
+
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
 
-        if(grounded && jumpT >= jumpCooldown)
+        if (grounded && jumpT >= jumpCooldown)
         {
             remainingJumps = maxJumps;
         }
@@ -147,18 +112,108 @@ public class PlayerControllerRB : IDamagable
         if (jumpT < jumpCooldown)
             jumpT += Time.deltaTime;
 
+    }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+        
+        // Reset timers
+        if (lastInput == Vector2.zero)
+        {
+            accelerationTimer = accelerationTime * startingSpeedPercentage;
+        }
+        else
+        {
+            decelerationTimer = 0f;
+        }
+
+        // Lerp speed if accelerating or decelerating
+        if (move.ReadValue<Vector2>() != Vector2.zero
+            && currSpeed != maxMoveSpeed)
+        {
+            accelerationTimer += Time.deltaTime;
+
+            currSpeed = Mathf.Lerp(0, maxMoveSpeed, (accelerationTimer / accelerationTime));
+        }
+        else if (move.ReadValue<Vector2>() == Vector2.zero
+            && currSpeed != 0)
+        {
+            decelerationTimer += Time.deltaTime;
+
+            currSpeed = Mathf.Lerp(maxMoveSpeed, 0, (decelerationTimer / decelerationTime));
+        }
+
+
+        ManageMovement();
+        lastInput = move.ReadValue<Vector2>();
+    }
+
+    #region Player Movement
+
+    private void ManageMovement()
+    {
+        Vector2 currInput = move.ReadValue<Vector2>();
+
+        Vector2 limitVel = new Vector2(rb.velocity.x, rb.velocity.z);
+        if(limitVel.magnitude > maxMoveSpeed)
+        {
+            limitVel = limitVel.normalized * maxMoveSpeed;
+            rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.y);
+        }
+
+
+        Vector3 temp;
+        if (grounded)
+        {
+            // Calculate grounded movement
+            direction = transform.right * currInput.x + transform.forward * currInput.y;
+
+            if (direction != Vector3.zero)
+            {
+                temp = Mathf.Pow(currSpeed, 2) * Time.deltaTime * direction;
+            }
+            else
+            {
+                temp = Mathf.Pow(currSpeed, 2) * Time.deltaTime * rb.velocity.normalized;
+            }
+
+            temp.y = rb.velocity.y;
+            rb.velocity = temp;
+        }
+        else
+        {
+            // Calculate midair movement
+            if (airModifier != 0)
+            {
+                Vector3 airDir = transform.right * currInput.x + transform.forward * currInput.y;
+                airDir = airDir.normalized * Mathf.Pow((maxMoveSpeed * airModifier), 2) * Time.deltaTime;
+
+                airDir.y = 0;
+
+                Vector3 newVelocity = rb.velocity + airDir;
+
+                // limit the speed
+                if(newVelocity.magnitude > maxMoveSpeed/2)
+                {
+                    newVelocity = newVelocity.normalized * (maxMoveSpeed/2);
+                    newVelocity.y = rb.velocity.y;
+                }
+
+                rb.velocity = newVelocity;
+            }            
+        }
+    }
+
+    private void ManageCamera()
+    {
         // look left and right
-        transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSpeed);
-
-        //horizontalLookRotation += mouse.ReadValue<Vector2>().x * Time.deltaTime * lookSpeed;
-        //horizontalLookRotation %= 360;
+        transform.Rotate(new Vector3(0, mouse.ReadValue<Vector2>().x, 0) * Time.deltaTime * lookSensitivity);
 
         // look up and down
-        verticalLookRotation -= mouse.ReadValue<Vector2>().y * Time.deltaTime * lookSpeed;
+        verticalLookRotation -= mouse.ReadValue<Vector2>().y * Time.deltaTime * lookSensitivity;
         verticalLookRotation = Mathf.Clamp(verticalLookRotation, angleClamp.x, angleClamp.y);
-        cam.transform.localRotation = Quaternion.Euler(verticalLookRotation, 0f, 0f);
-        //cam.transform.localRotation = Quaternion.Euler(verticalLookRotation, horizontalLookRotation, 0f);
+        camPivotPoint.transform.localRotation = Quaternion.Euler(verticalLookRotation, 0f, 0f);
     }
 
     private void Jump(InputAction.CallbackContext c)
@@ -174,6 +229,51 @@ public class PlayerControllerRB : IDamagable
         }
     }
 
+    public Transform GetGroundCheck()
+    {
+        return groundCheck;
+    }
+
+    #endregion
+
+
+    #region Misc
+
+    public void DebugRestartScene(InputAction.CallbackContext ctx)
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        health = maxHealth;
+        if (sectionedHealth)
+            LoadSectionedHealth();
+        Time.timeScale = 1;
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerUpgradeManager.instance != null)
+            PlayerUpgradeManager.instance.currHealth = health;
+
+        move.Disable();
+        mouse.Disable();
+        jump.Disable();
+        debugRestart.Disable();
+    }
+
+    private void LoadSectionedHealth()
+    {
+        health = PlayerUpgradeManager.instance.currHealth;
+        int sectionToHeal = (int)Mathf.Ceil(health / (float)healthPerSection);
+        health = sectionToHeal * healthPerSection;
+
+        sectionIndex = sectionToHeal - 1;
+
+        for (int i = numOfSections - 1; i >= sectionToHeal; i--)
+        {
+            sections[i].value = 0;
+        }
+    }
+
+
     private void OnApplicationFocus(bool focus)
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -188,4 +288,6 @@ public class PlayerControllerRB : IDamagable
         Time.timeScale = 0;
         FindObjectOfType<GameOverScreen>().EnableDeathScreen();
     }
+
+    #endregion
 }

@@ -160,7 +160,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118932247525841240}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 15ad494db864f824cb9cde64528982e5, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -207,24 +207,27 @@ MonoBehaviour:
   sectionIndex: 0
   sections: []
   sound: {fileID: 0}
-  playerSpeed: 10
-  lookSpeed: 15
+  deathVFX: {fileID: 0}
+  lookSensitivity: 15
   angleClamp: {x: -85, y: 85}
-  cam: {fileID: 118932248232581742}
-  playerBody: {fileID: 8919447734330336906}
-  maxJumps: 1
-  remainingJumps: 0
-  jumpCooldown: 0.2
+  camPivotPoint: {fileID: 118932248232581742}
+  maxMoveSpeed: 25
+  accelerationTime: 0.22
+  startingSpeedPercentage: 0.3
+  decelerationTime: 0.35
+  airModifier: 0.2
+  sprintModifier: 0
   jumpForce: 25
+  jumpCooldown: 0.2
+  maxJumps: 1
   gravityMultiplier: 2.4
-  maxFallVelocity: 80
-  landVelocity: -2
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   groundCheck: {fileID: 118932247320974055}
   groundCheckRadius: 0.1
-  grounded: 0
+  groundMaterial: {fileID: 13400000, guid: 15ad494db864f824cb9cde64528982e5, type: 2}
+  airMaterial: {fileID: 13400000, guid: 15ad494db864f824cb9cde64528982e5, type: 2}
 --- !u!114 &7060041542167350319
 MonoBehaviour:
   m_ObjectHideFlags: 0

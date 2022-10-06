@@ -988,6 +988,14 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: accelerationSpeed
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: decelerationSpeed
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: sections.Array.size
       value: 1
       objectReference: {fileID: 0}
