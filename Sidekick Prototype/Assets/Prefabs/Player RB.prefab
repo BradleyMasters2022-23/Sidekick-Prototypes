@@ -217,6 +217,7 @@ MonoBehaviour:
   decelerationTime: 0.35
   airModifier: 0.2
   sprintModifier: 1.2
+  playerAnimator: {fileID: 0}
   jumpForce: 25
   jumpCooldown: 0.2
   disableFirstJumpOnFall: 0
@@ -385,6 +386,7 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 292
+  seeBuffer: 1.8
 --- !u!1 &118932248232581742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,6 +1144,7 @@ MonoBehaviour:
   layersToIgnore:
     serializedVersion: 2
     m_Bits: 292
+  seeBuffer: 1.8
 --- !u!1 &8919447734330336906
 GameObject:
   m_ObjectHideFlags: 0
