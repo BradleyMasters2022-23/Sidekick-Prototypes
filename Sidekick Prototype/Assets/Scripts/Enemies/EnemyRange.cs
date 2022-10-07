@@ -28,7 +28,7 @@ public class EnemyRange : EnemyBase
 
     [Header("======Move Information======")]
     [Tooltip("Movement speed of the enemy")]
-    [SerializeField][Range(0f, 1f)] float walkSpeed;
+    [SerializeField] float walkSpeed;
     [Tooltip("Rotation speed of the enemy")]
     [SerializeField][Range(0f, 1f)] private float rotationSpeed;
     [Tooltip("How much does this enemy overshoot its movement, such as rounding corners")]
