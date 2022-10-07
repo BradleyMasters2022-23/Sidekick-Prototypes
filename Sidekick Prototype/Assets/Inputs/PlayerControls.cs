@@ -100,6 +100,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""76fbcd69-61c1-4380-b6cc-7bf23e4d3882"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""TogglePlatformsDEBUG"",
                     ""type"": ""Button"",
                     ""id"": ""c9f0b839-177a-47fd-a7dc-4f2247c7fc10"",
@@ -372,6 +381,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ShootToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fce5bb21-454b-459a-91b1-9adf925ae1ec"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -388,6 +408,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_HoldSlow = m_Player.FindAction("HoldSlow", throwIfNotFound: true);
         m_Player_HealPlayer = m_Player.FindAction("HealPlayer", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_TogglePlatformsDEBUG = m_Player.FindAction("TogglePlatformsDEBUG", throwIfNotFound: true);
         m_Player_HealCheat = m_Player.FindAction("HealCheat", throwIfNotFound: true);
         m_Player_ShootToggle = m_Player.FindAction("ShootToggle", throwIfNotFound: true);
@@ -462,6 +483,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_HoldSlow;
     private readonly InputAction m_Player_HealPlayer;
+    private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_TogglePlatformsDEBUG;
     private readonly InputAction m_Player_HealCheat;
     private readonly InputAction m_Player_ShootToggle;
@@ -481,6 +503,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @HoldSlow => m_Wrapper.m_Player_HoldSlow;
         public InputAction @HealPlayer => m_Wrapper.m_Player_HealPlayer;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @TogglePlatformsDEBUG => m_Wrapper.m_Player_TogglePlatformsDEBUG;
         public InputAction @HealCheat => m_Wrapper.m_Player_HealCheat;
         public InputAction @ShootToggle => m_Wrapper.m_Player_ShootToggle;
@@ -521,6 +544,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HealPlayer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealPlayer;
                 @HealPlayer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealPlayer;
                 @HealPlayer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealPlayer;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @TogglePlatformsDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
@@ -570,6 +596,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HealPlayer.started += instance.OnHealPlayer;
                 @HealPlayer.performed += instance.OnHealPlayer;
                 @HealPlayer.canceled += instance.OnHealPlayer;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @TogglePlatformsDEBUG.started += instance.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.performed += instance.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.canceled += instance.OnTogglePlatformsDEBUG;
@@ -605,6 +634,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnHoldSlow(InputAction.CallbackContext context);
         void OnHealPlayer(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         void OnTogglePlatformsDEBUG(InputAction.CallbackContext context);
         void OnHealCheat(InputAction.CallbackContext context);
         void OnShootToggle(InputAction.CallbackContext context);
