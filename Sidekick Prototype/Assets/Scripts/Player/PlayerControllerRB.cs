@@ -22,8 +22,6 @@ public class PlayerControllerRB : IDamagable
     private float verticalLookRotation = 0f;
     private float horizontalLookRotation = 0f;
 
-    
-
     [Header("---Movement---")]
     [SerializeField] private float maxMoveSpeed;
     [SerializeField] [Range(0, 1)] private float accelerationTime;
@@ -31,6 +29,10 @@ public class PlayerControllerRB : IDamagable
     [SerializeField] [Range(0, 1)] private float decelerationTime;
     [SerializeField] [Range(0, 1)] private float airModifier;
     [SerializeField] [Range(1, 3)] private float sprintModifier;
+    [SerializeField] Animator playerAnimator;
+    /// <summary>
+    /// Direction the player is inputting
+    /// </summary>
     private Vector3 direction;
     private Vector2 lastInput = new Vector2(0,0);
     private float currSpeed;
@@ -167,20 +169,26 @@ public class PlayerControllerRB : IDamagable
 
     private void ManageMovement()
     {
+        // Get the player input
         Vector2 currInput = move.ReadValue<Vector2>();
 
+        // Limit the velocity when on the ground
         Vector2 limitVel = new Vector2(rb.velocity.x, rb.velocity.z);
-        
-        if(limitVel.magnitude > maxMoveSpeed && !sprinting)
+        if (grounded && limitVel.magnitude > maxMoveSpeed && !sprinting)
         {
             limitVel = limitVel.normalized * maxMoveSpeed;
             rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.y);
         }
-        else if (limitVel.magnitude > (maxMoveSpeed * sprintModifier) && sprinting)
+        else if (grounded && limitVel.magnitude > (maxMoveSpeed * sprintModifier) && sprinting)
         {
             limitVel = limitVel.normalized * maxMoveSpeed * sprintModifier;
             rb.velocity = new Vector3(limitVel.x, rb.velocity.y, limitVel.y);
         }
+
+        // Variables for animation 
+        float _xaxis = rb.velocity.x;
+        float _zaxis = rb.velocity.z;
+
 
         if (grounded)
         {
@@ -205,18 +213,23 @@ public class PlayerControllerRB : IDamagable
             // Calculate midair movement
             if (airModifier != 0)
             {
+                // Calculate new horizontal movement
                 Vector3 airDir = transform.right * currInput.x + transform.forward * currInput.y;
                 airDir = airDir.normalized * Mathf.Pow((maxMoveSpeed * airModifier), 2) * Time.deltaTime;
 
                 airDir.y = 0;
 
+                // Get new velocity
                 Vector3 newVelocity = rb.velocity + airDir;
+                Vector3 newXZVelocity = new Vector3(newVelocity.x, 0, newVelocity.z);
 
-                // limit the speed
-                if(newVelocity.magnitude > maxMoveSpeed/2)
+                // limit the horizontal speed, seperately from the vertical speed
+                if (newXZVelocity.magnitude > maxMoveSpeed / 2)
                 {
-                    newVelocity = newVelocity.normalized * (maxMoveSpeed/2);
+                    newXZVelocity = newXZVelocity.normalized * (maxMoveSpeed / 2);
                     newVelocity.y = rb.velocity.y;
+                    newVelocity.x = newXZVelocity.x;
+                    newVelocity.z = newXZVelocity.z;
                 }
 
                 rb.velocity = newVelocity;
