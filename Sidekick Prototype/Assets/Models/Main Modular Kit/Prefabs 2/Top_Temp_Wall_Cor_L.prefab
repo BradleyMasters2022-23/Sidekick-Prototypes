@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 2337252357556586951}
   - component: {fileID: 543635842519416077}
   - component: {fileID: 4016088517805206141}
+  - component: {fileID: -8942164027872933827}
   m_Layer: 3
   m_Name: Top_Temp_Wall_Cor_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1711452759377954402
 Transform:
@@ -98,3 +99,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7678884815166086203, guid: 282e6e34fea002d4d886b643c7015fa7, type: 3}
+--- !u!54 &-8942164027872933827
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056910944241818840}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

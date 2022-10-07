@@ -6,14 +6,16 @@ public class DoubleFireSlowUpgrade : IUpgrade
 {
     private bool loaded = false;
     public float firerateIncrease;
-    private PlayerGun gun;
+    private PlayerGun[] gun;
+    private PlayerGunHitscan[] gun2;
     private float originalFirerate;
     private bool addedFirerate = false;
 
     public override void LoadUpgrade(PlayerControllerRB player)
     {
-        gun = FindObjectOfType<PlayerGun>(); ;
-        originalFirerate = gun.fireDelay;
+        gun = FindObjectsOfType<PlayerGun>(true);
+        gun2 = FindObjectsOfType<PlayerGunHitscan>(true);
+        originalFirerate = gun[0].fireDelay;
         loaded = true;
     }
 
@@ -24,12 +26,28 @@ public class DoubleFireSlowUpgrade : IUpgrade
             if(TimeManager.worldTime <= 0.5f && !addedFirerate)
             {
                 addedFirerate = true;
-                gun.fireDelay = (originalFirerate / firerateIncrease);
+
+                foreach (PlayerGun t in gun)
+                {
+                    t.fireDelay = (originalFirerate / firerateIncrease);
+                }
+                foreach (PlayerGunHitscan t in gun2)
+                {
+                    t.fireDelay = (originalFirerate / firerateIncrease);
+                }
             }
             else if (TimeManager.worldTime > 0.5f && addedFirerate)
             {
                 addedFirerate = false;
-                gun.fireDelay = originalFirerate;
+
+                foreach (PlayerGun t in gun)
+                {
+                    t.fireDelay = originalFirerate;
+                }
+                foreach (PlayerGunHitscan t in gun2)
+                {
+                    t.fireDelay = originalFirerate;
+                }
             }
         }
     }

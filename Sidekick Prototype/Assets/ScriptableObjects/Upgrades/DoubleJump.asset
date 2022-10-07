@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a6a4c4ddc27054babcab43b507543f, type: 3}
   m_Name: DoubleJump
   m_EditorClassIdentifier: 
-  displayName: Double Jump
+  displayName: +1 Jump
   reearnable: 1
   upgradeType: 0
   upgradePrefab: {fileID: 5807501379440073531, guid: dad89b15afbd20a458752c0b10b2d93f, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7941653690043621303}
   - component: {fileID: 1218615395531591801}
   - component: {fileID: 3939033242277426923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_Gun1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,6 +297,13 @@ MonoBehaviour:
   healthSlider: {fileID: 3141991338758193914}
   comboHit: {fileID: 3141991339081854235}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sectionIndex: 0
+  sections: []
+  sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
+  deathVFX: {fileID: 8273445605695135385, guid: 62af963b4eaafd748a03b8ccb4313dd2, type: 3}
   state: 0
   turretPoint: {fileID: 8247517746467512097}
   shootPoints:
@@ -306,9 +313,10 @@ MonoBehaviour:
   rotationSpeed: 0.08
   shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
   shootTime: 0.5
-  attackRange: 100
+  attackRange: 999
   lastHit: {fileID: 0}
   lookRadius: 100
+  davidSound: {fileID: 0}
 --- !u!1 &3141991338758193916
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +877,7 @@ GameObject:
   - component: {fileID: 424572188202172252}
   - component: {fileID: 3672618178614072767}
   - component: {fileID: 2561111197131525476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295506054906347531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -981,7 +989,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8739162935224069125}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tip a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1020,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2833650466335413367}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tip b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1045,7 +1053,7 @@ GameObject:
   - component: {fileID: 3958009870166533436}
   - component: {fileID: 144577176245904403}
   - component: {fileID: 5166324973827725651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1140,7 @@ GameObject:
   - component: {fileID: 3497983039568319344}
   - component: {fileID: 8241024857331699387}
   - component: {fileID: 874459711185740446}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

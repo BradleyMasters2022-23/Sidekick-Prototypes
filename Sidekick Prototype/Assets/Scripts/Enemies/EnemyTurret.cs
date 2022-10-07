@@ -6,13 +6,8 @@ using UnityEngine.AI;
 /// <summary>
 /// this is enemy lmao
 /// </summary>
-public class EnemyTurret : IDamagable
+public class EnemyTurret : EnemyBase
 {
-    public enum EnemyState
-    {
-        Idle,
-        Attacking
-    }
 
     [SerializeField] private EnemyState state;
 
@@ -34,12 +29,21 @@ public class EnemyTurret : IDamagable
     private float currTime = 1;
     private GameObject p;
 
+    private AudioSource audipPlayer;
+    public AudioClip davidSound;
+
     // Start is called before the first frame update
     void Start()
     {
         currTime = TimeManager.worldTime;
         p = FindObjectOfType<PlayerControllerRB>().gameObject;
-        
+
+        if (davidSound == null)
+            return;
+        audipPlayer = gameObject.AddComponent<AudioSource>();
+        audipPlayer.loop = true;
+        audipPlayer.clip = davidSound;
+        audipPlayer.Play();
     }
 
     protected override void FixedUpdate()
@@ -81,7 +85,6 @@ public class EnemyTurret : IDamagable
 
         // Get direction of player, rotate towards them1
         
-
         Vector3 direction = (p.transform.position - turretPoint.transform.position);
         Quaternion rot = Quaternion.LookRotation(direction);
 
@@ -90,6 +93,21 @@ public class EnemyTurret : IDamagable
 
         turretPoint.transform.localRotation = Quaternion.Euler(nextXAng, 0, 0);
         transform.rotation = Quaternion.Euler(0, nextYAng, 0);
+    }
+
+    private void Update()
+    {
+        if(audipPlayer != null)
+        {
+            if (Time.timeScale == 0)
+            {
+                audipPlayer.Pause();
+            }
+            else
+            {
+                audipPlayer.UnPause();
+            }
+        }
     }
 
     /// <summary>

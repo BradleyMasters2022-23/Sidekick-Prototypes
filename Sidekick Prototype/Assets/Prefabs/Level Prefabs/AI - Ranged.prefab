@@ -551,7 +551,7 @@ Transform:
   m_GameObject: {fileID: 307714298938917574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 307714297805192117}
@@ -658,6 +658,13 @@ MonoBehaviour:
   healthSlider: {fileID: 307714298731810434}
   comboHit: {fileID: 307714298819025477}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sectionIndex: 0
+  sections: []
+  sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
+  deathVFX: {fileID: 8273445605695135385, guid: 62af963b4eaafd748a03b8ccb4313dd2, type: 3}
   state: 0
   rotationSpeed: 0.1
   walkSpeed: 8
@@ -916,18 +923,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8212575998517544746, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8212575998517544746, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8212575998517544746, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8212575998517544746, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -966,10 +961,6 @@ PrefabInstance:
     - target: {fileID: 8212575998517544746, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8212575998517544746, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8841479725382229392, guid: c4b012cbd935c0c4cb9080f34b2d8663, type: 3}
       propertyPath: m_Name

@@ -99,11 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 80
+  hitscan: 0
   damage: 15
   freezePlayerP: 1
   freezeSpawnDist: 1
+  hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
+  hitscanBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
   currTime: 0
   lifeTime: 5
+  sound: {fileID: 8300000, guid: dd08412aa7a4dbd418c55a8194cf2a4e, type: 3}
 --- !u!65 &3452771121024979335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -229,11 +233,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 80
+  hitscan: 0
   damage: 15
   freezePlayerP: 1
   freezeSpawnDist: 1
+  hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
+  hitscanBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
   currTime: 0
   lifeTime: 5
+  sound: {fileID: 8300000, guid: dd08412aa7a4dbd418c55a8194cf2a4e, type: 3}
 --- !u!65 &5654035424921443432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -361,11 +369,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 80
+  hitscan: 0
   damage: 15
   freezePlayerP: 1
   freezeSpawnDist: 1
+  hitVFX: {fileID: 8310898044211945277, guid: f4644971bdf420644a965710f6474782, type: 3}
+  hitscanBullet: {fileID: 430138431128962940, guid: 45d811b5472a4cb42a7dfcd0d14f11aa, type: 3}
   currTime: 0
   lifeTime: 5
+  sound: {fileID: 8300000, guid: dd08412aa7a4dbd418c55a8194cf2a4e, type: 3}
 --- !u!65 &5129266212509420641
 BoxCollider:
   m_ObjectHideFlags: 0

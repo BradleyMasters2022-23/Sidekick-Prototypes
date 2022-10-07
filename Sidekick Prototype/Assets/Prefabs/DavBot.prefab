@@ -521,6 +521,13 @@ MonoBehaviour:
   healthSlider: {fileID: 2290914486727934365}
   comboHit: {fileID: 2290914487117393532}
   comboCount: 0
+  sectionedHealth: 0
+  healthPerSection: 0
+  numOfSections: 0
+  sectionIndex: 0
+  sections: []
+  sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
+  deathVFX: {fileID: 8273445605695135385, guid: 62af963b4eaafd748a03b8ccb4313dd2, type: 3}
   state: 0
   turretPoint: {fileID: 134370354893473322}
   shootPoints:
@@ -533,6 +540,7 @@ MonoBehaviour:
   attackRange: 999
   lastHit: {fileID: 0}
   lookRadius: 999
+  davidSound: {fileID: 8300000, guid: f7c49131b7b323a40be83692a5cad77e, type: 3}
 --- !u!1 &2290914487117393533
 GameObject:
   m_ObjectHideFlags: 0

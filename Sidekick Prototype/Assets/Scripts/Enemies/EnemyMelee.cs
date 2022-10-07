@@ -6,13 +6,8 @@ using UnityEngine.AI;
 /// <summary>
 /// this is enemy lmao
 /// </summary>
-public class EnemyMelee : IDamagable
-{
-    public enum EnemyState
-    {
-        Moving,
-        Attacking
-    }
+public class EnemyMelee : EnemyBase
+{ 
 
     [SerializeField] private EnemyState state; 
 
@@ -57,6 +52,7 @@ public class EnemyMelee : IDamagable
         agent.speed = walkSpeed;
         agent.updateRotation = false;
         attackPrimed = true;
+        state = EnemyState.Moving;
     }
 
     protected override void FixedUpdate()
@@ -169,21 +165,6 @@ public class EnemyMelee : IDamagable
     public bool LineOfSight(GameObject target)
     {
         return attackHitbox.PlayerInRange();
-        //Vector3 direction = target.transform.position - (transform.position + Vector3.up);
-        
-        //// Set mask to ignore raycasts and enemy layer
-        //int lm = LayerMask.NameToLayer("Enemy");
-        //lm = (1 << lm);
-        //lm |= (1 << LayerMask.NameToLayer("Ignore Raycast"));
-
-        //// Try to get player
-        //RaycastHit hit;
-        //if (Physics.Raycast((transform.position + Vector3.up), direction, out hit, attackRange, ~lm))
-        //{
-        //    if (hit.transform.CompareTag("Player"))
-        //        return true;
-        //}
-        //return false;
     }
 
 

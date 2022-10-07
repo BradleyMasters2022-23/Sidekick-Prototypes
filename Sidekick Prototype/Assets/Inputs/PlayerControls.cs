@@ -91,18 +91,54 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RestartScene-DEBUG"",
+                    ""name"": ""HealPlayer"",
                     ""type"": ""Button"",
-                    ""id"": ""21715588-ab21-42ea-98ca-50e179668210"",
+                    ""id"": ""c0f17d82-b584-41de-92f2-c85f0034880c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ToggleUnlimitedSlow-DEBUG"",
+                    ""name"": ""Sprint"",
                     ""type"": ""Button"",
-                    ""id"": ""7ae9c858-74d3-4d0c-979a-181c367d80f9"",
+                    ""id"": ""76fbcd69-61c1-4380-b6cc-7bf23e4d3882"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TogglePlatformsDEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9f0b839-177a-47fd-a7dc-4f2247c7fc10"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HealCheat"",
+                    ""type"": ""Button"",
+                    ""id"": ""b602a078-23ae-4ec5-91d7-4fde0c163c1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ShootToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""2308c0f1-d2bf-4f97-be66-de8577c24be0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CamToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa92f886-28ec-4991-8de4-347e32949727"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -118,9 +154,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TogglePlatforms-DEBUG"",
+                    ""name"": ""ToggleUnlimitedSlow-DEBUG"",
                     ""type"": ""Button"",
-                    ""id"": ""25eca272-0dbc-4b6c-9a9c-83d2e264ea8e"",
+                    ""id"": ""7ae9c858-74d3-4d0c-979a-181c367d80f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RestartScene-DEBUG"",
+                    ""type"": ""Button"",
+                    ""id"": ""21715588-ab21-42ea-98ca-50e179668210"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -251,6 +296,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""2f8a6de1-2d4f-4030-b5fe-7e7a3855935c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HealPlayer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c6d2927-80a1-4f31-acc2-136c7ae4415f"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HealCheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4a88e36-815c-4fd4-9e5a-f8c12a6298bc"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TogglePlatformsDEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6616786f-6333-4e48-8882-88e18ce47102"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartScene-DEBUG"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""c726cc3e-e382-41f2-b341-eb1e5c765e11"",
                     ""path"": ""<Keyboard>/n"",
                     ""interactions"": """",
@@ -273,23 +362,34 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6616786f-6333-4e48-8882-88e18ce47102"",
-                    ""path"": ""<Keyboard>/y"",
+                    ""id"": ""0af50ef8-0d1a-4e14-b414-1277ae4cf42d"",
+                    ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RestartScene-DEBUG"",
+                    ""action"": ""CamToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3e4ea0c3-1a91-487d-94d4-e85b54b8f4c3"",
-                    ""path"": ""<Keyboard>/b"",
+                    ""id"": ""dddd5e08-95bb-4fad-b8bc-33cac4b0708d"",
+                    ""path"": ""<Keyboard>/k"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""TogglePlatforms-DEBUG"",
+                    ""action"": ""ShootToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fce5bb21-454b-459a-91b1-9adf925ae1ec"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -307,10 +407,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_HoldSlow = m_Player.FindAction("HoldSlow", throwIfNotFound: true);
-        m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
-        m_Player_ToggleUnlimitedSlowDEBUG = m_Player.FindAction("ToggleUnlimitedSlow-DEBUG", throwIfNotFound: true);
+        m_Player_HealPlayer = m_Player.FindAction("HealPlayer", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_TogglePlatformsDEBUG = m_Player.FindAction("TogglePlatformsDEBUG", throwIfNotFound: true);
+        m_Player_HealCheat = m_Player.FindAction("HealCheat", throwIfNotFound: true);
+        m_Player_ShootToggle = m_Player.FindAction("ShootToggle", throwIfNotFound: true);
+        m_Player_CamToggle = m_Player.FindAction("CamToggle", throwIfNotFound: true);
         m_Player_ToggleSlowDEBUG = m_Player.FindAction("ToggleSlow-DEBUG", throwIfNotFound: true);
-        m_Player_TogglePlatformsDEBUG = m_Player.FindAction("TogglePlatforms-DEBUG", throwIfNotFound: true);
+        m_Player_ToggleUnlimitedSlowDEBUG = m_Player.FindAction("ToggleUnlimitedSlow-DEBUG", throwIfNotFound: true);
+        m_Player_RestartSceneDEBUG = m_Player.FindAction("RestartScene-DEBUG", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -377,10 +482,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_HoldSlow;
-    private readonly InputAction m_Player_RestartSceneDEBUG;
-    private readonly InputAction m_Player_ToggleUnlimitedSlowDEBUG;
-    private readonly InputAction m_Player_ToggleSlowDEBUG;
+    private readonly InputAction m_Player_HealPlayer;
+    private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_TogglePlatformsDEBUG;
+    private readonly InputAction m_Player_HealCheat;
+    private readonly InputAction m_Player_ShootToggle;
+    private readonly InputAction m_Player_CamToggle;
+    private readonly InputAction m_Player_ToggleSlowDEBUG;
+    private readonly InputAction m_Player_ToggleUnlimitedSlowDEBUG;
+    private readonly InputAction m_Player_RestartSceneDEBUG;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -392,10 +502,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @HoldSlow => m_Wrapper.m_Player_HoldSlow;
-        public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
-        public InputAction @ToggleUnlimitedSlowDEBUG => m_Wrapper.m_Player_ToggleUnlimitedSlowDEBUG;
-        public InputAction @ToggleSlowDEBUG => m_Wrapper.m_Player_ToggleSlowDEBUG;
+        public InputAction @HealPlayer => m_Wrapper.m_Player_HealPlayer;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @TogglePlatformsDEBUG => m_Wrapper.m_Player_TogglePlatformsDEBUG;
+        public InputAction @HealCheat => m_Wrapper.m_Player_HealCheat;
+        public InputAction @ShootToggle => m_Wrapper.m_Player_ShootToggle;
+        public InputAction @CamToggle => m_Wrapper.m_Player_CamToggle;
+        public InputAction @ToggleSlowDEBUG => m_Wrapper.m_Player_ToggleSlowDEBUG;
+        public InputAction @ToggleUnlimitedSlowDEBUG => m_Wrapper.m_Player_ToggleUnlimitedSlowDEBUG;
+        public InputAction @RestartSceneDEBUG => m_Wrapper.m_Player_RestartSceneDEBUG;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -426,18 +541,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HoldSlow.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
                 @HoldSlow.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
                 @HoldSlow.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHoldSlow;
-                @RestartSceneDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
-                @ToggleUnlimitedSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
-                @ToggleUnlimitedSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
-                @ToggleUnlimitedSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
-                @ToggleSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
-                @ToggleSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
-                @ToggleSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @HealPlayer.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealPlayer;
+                @HealPlayer.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealPlayer;
+                @HealPlayer.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealPlayer;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @TogglePlatformsDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTogglePlatformsDEBUG;
+                @HealCheat.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealCheat;
+                @HealCheat.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealCheat;
+                @HealCheat.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHealCheat;
+                @ShootToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootToggle;
+                @ShootToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootToggle;
+                @ShootToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootToggle;
+                @CamToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
+                @CamToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
+                @CamToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamToggle;
+                @ToggleSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleUnlimitedSlowDEBUG;
+                @RestartSceneDEBUG.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartSceneDEBUG;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -463,18 +593,33 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @HoldSlow.started += instance.OnHoldSlow;
                 @HoldSlow.performed += instance.OnHoldSlow;
                 @HoldSlow.canceled += instance.OnHoldSlow;
-                @RestartSceneDEBUG.started += instance.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.performed += instance.OnRestartSceneDEBUG;
-                @RestartSceneDEBUG.canceled += instance.OnRestartSceneDEBUG;
-                @ToggleUnlimitedSlowDEBUG.started += instance.OnToggleUnlimitedSlowDEBUG;
-                @ToggleUnlimitedSlowDEBUG.performed += instance.OnToggleUnlimitedSlowDEBUG;
-                @ToggleUnlimitedSlowDEBUG.canceled += instance.OnToggleUnlimitedSlowDEBUG;
-                @ToggleSlowDEBUG.started += instance.OnToggleSlowDEBUG;
-                @ToggleSlowDEBUG.performed += instance.OnToggleSlowDEBUG;
-                @ToggleSlowDEBUG.canceled += instance.OnToggleSlowDEBUG;
+                @HealPlayer.started += instance.OnHealPlayer;
+                @HealPlayer.performed += instance.OnHealPlayer;
+                @HealPlayer.canceled += instance.OnHealPlayer;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
                 @TogglePlatformsDEBUG.started += instance.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.performed += instance.OnTogglePlatformsDEBUG;
                 @TogglePlatformsDEBUG.canceled += instance.OnTogglePlatformsDEBUG;
+                @HealCheat.started += instance.OnHealCheat;
+                @HealCheat.performed += instance.OnHealCheat;
+                @HealCheat.canceled += instance.OnHealCheat;
+                @ShootToggle.started += instance.OnShootToggle;
+                @ShootToggle.performed += instance.OnShootToggle;
+                @ShootToggle.canceled += instance.OnShootToggle;
+                @CamToggle.started += instance.OnCamToggle;
+                @CamToggle.performed += instance.OnCamToggle;
+                @CamToggle.canceled += instance.OnCamToggle;
+                @ToggleSlowDEBUG.started += instance.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.performed += instance.OnToggleSlowDEBUG;
+                @ToggleSlowDEBUG.canceled += instance.OnToggleSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.started += instance.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.performed += instance.OnToggleUnlimitedSlowDEBUG;
+                @ToggleUnlimitedSlowDEBUG.canceled += instance.OnToggleUnlimitedSlowDEBUG;
+                @RestartSceneDEBUG.started += instance.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.performed += instance.OnRestartSceneDEBUG;
+                @RestartSceneDEBUG.canceled += instance.OnRestartSceneDEBUG;
             }
         }
     }
@@ -488,9 +633,14 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnHoldSlow(InputAction.CallbackContext context);
-        void OnRestartSceneDEBUG(InputAction.CallbackContext context);
-        void OnToggleUnlimitedSlowDEBUG(InputAction.CallbackContext context);
-        void OnToggleSlowDEBUG(InputAction.CallbackContext context);
+        void OnHealPlayer(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
         void OnTogglePlatformsDEBUG(InputAction.CallbackContext context);
+        void OnHealCheat(InputAction.CallbackContext context);
+        void OnShootToggle(InputAction.CallbackContext context);
+        void OnCamToggle(InputAction.CallbackContext context);
+        void OnToggleSlowDEBUG(InputAction.CallbackContext context);
+        void OnToggleUnlimitedSlowDEBUG(InputAction.CallbackContext context);
+        void OnRestartSceneDEBUG(InputAction.CallbackContext context);
     }
 }

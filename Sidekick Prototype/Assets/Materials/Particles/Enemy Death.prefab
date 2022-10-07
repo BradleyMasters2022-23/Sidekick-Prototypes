@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 321703849140862809}
   - component: {fileID: 4158994352018684842}
   - component: {fileID: 6735050772019468414}
+  - component: {fileID: 1094743680407626100}
   m_Layer: 0
   m_Name: Enemy Death
   m_TagString: Untagged
@@ -48,7 +49,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4879,3 +4880,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1094743680407626100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8273445605695135385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbc227017489684c8049bb548ffe095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

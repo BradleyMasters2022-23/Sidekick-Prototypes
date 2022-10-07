@@ -6,24 +6,39 @@ public class PProjectile : MonoBehaviour
 {
     public float projectileSpeed;
 
+    public bool hitscan;
+
     public int damage;
 
     public bool freezePlayerP = false;
     public float freezeSpawnDist;
+
+    public GameObject hitVFX;
+    public GameObject hitscanBullet;
 
     public float currTime;
 
     public float lifeTime;
     private float t = 0;
 
+    private AudioSource s;
+    public AudioClip sound;
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         currTime = TimeManager.worldTime;
-
-        if(freezePlayerP && currTime == 0 && transform.parent == null)
+        s = gameObject.AddComponent<AudioSource>();
+        if (freezePlayerP && currTime <= .2 && transform.parent == null)
         {
             transform.position += transform.forward * freezeSpawnDist;
+        }
+
+        if (hitscan)
+        {
+            GameObject s = Instantiate(hitscanBullet, transform.position, transform.rotation);
+            s.GetComponent<FreezeHitscan>().PrepareBullet(damage, hitVFX);
+            Destroy(gameObject);
         }
     }
 
@@ -53,8 +68,31 @@ public class PProjectile : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             other.GetComponent<IDamagable>().TakeDamage(damage);
+            if (sound != null)
+                AudioSource.PlayClipAtPoint(sound, FindObjectOfType<PlayerControllerRB>().transform.position, 2.5f);
         }
 
-        Destroy(this.gameObject);
+        if (hitVFX != null)
+            Instantiate(hitVFX, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
+
+    //private void Fire()
+    //{
+    //    RaycastHit shot; 
+        
+    //    if(Physics.Raycast(transform.position, transform.forward, out shot, Mathf.Infinity, ~layersToIgnore))
+    //    {
+    //        IDamagable hitTar;
+
+    //        if (shot.collider.TryGetComponent<IDamagable>(out hitTar))
+    //            hitTar.TakeDamage(damage);
+
+    //        if (hitVFX != null)
+    //            Instantiate(hitVFX, shot.point, Quaternion.identity);
+    //    }
+
+    //    Destroy(gameObject);
+    //}
 }
