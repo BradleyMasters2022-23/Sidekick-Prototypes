@@ -8,31 +8,92 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyRange : EnemyBase
 {
-
-    [SerializeField] private EnemyState state; 
-
+    /// <summary>
+    /// Current state of the enemy
+    /// </summary>
+    private EnemyState state; 
+    /// <summary>
+    /// The navmesh component for the enemy
+    /// </summary>
     private NavMeshAgent agent;
+    /// <summary>
+    /// Current time, referenced by time manager
+    /// </summary>
+    private float currTime = 1;
+    /// <summary>
+    /// player gameobject
+    /// </summary>
+    private GameObject p;
+    
 
-    [Range(0f, 1f)]
-    public float rotationSpeed;
-    public float walkSpeed;
-    public GameObject shotPrefab;
-    public float shootTime;
+    [Header("======Move Information======")]
+    [Tooltip("Movement speed of the enemy")]
+    [SerializeField][Range(0f, 1f)] float walkSpeed;
+    [Tooltip("Rotation speed of the enemy")]
+    [SerializeField][Range(0f, 1f)] private float rotationSpeed;
+    [Tooltip("How much does this enemy overshoot its movement, such as rounding corners")]
+    [SerializeField] private float overshootMult;
 
+    [Tooltip("Range the enemy tries to stay in")]
+    [SerializeField] private float idealRange;
     [Tooltip("Range the enemy can attack from")]
-    public float attackRange;
-    [Tooltip("Range the enemy will try to stay around")]
-    public float idealRange;
-    [Tooltip("How close to the player before moving away")]
-    public float moveThreshold;
+    [SerializeField] private float attackRange;
+    [Tooltip("Distance tolerance before attempting to reposition")]
+    [SerializeField] private float moveThreshold;
+
+    [Tooltip("The movement modifier(%) when fleeing. Multiplies with attack move modifiers.")]
+    [SerializeField][Range(0, 2)] private float fleeMoveModifier = 1;
+
+    /// <summary>
+    /// Current distance between this enemy and player
+    /// </summary>
     private float currDist;
 
-    public int lookRadius;
+    [Header("======Attack Information======")]
+    [Header("---Core Info---")]
+    [Tooltip("Projectile that this enemy shoots")]
+    [SerializeField] private GameObject shotPrefab;
+    [Tooltip("How many shots the attack fire")]
+    [SerializeField][Range(0, 50)] private int numberOfShots;
+    [Tooltip("What is the radius of the cone this enemy can see in")]
+    [SerializeField] private int lookRadius;
 
-    private float time = 0;
-    private float currTime = 1;
-    private GameObject p;
-    public float overshootMult;
+    [Header("---Attack Stage Duration---")]
+    [Tooltip("How long this enemy waits while aiming")]
+    [SerializeField][Range(0, 10)] private float aimDuration;
+    [Tooltip("How long does each individual shot take")]
+    [SerializeField][Range(0, 10)] private float shootDuration;
+    [Tooltip("How long this enemy waits while reloading")]
+    [SerializeField][Range(0, 10)] private float reloadDuration;
+
+    [Header("---Attack Stage Movement---")]
+    [Tooltip("The movement modifier(%) when aiming")]
+    [SerializeField][Range(0, 2)] private float aimMoveModifier = 1;
+    [Tooltip("The movement modifier(%) when shooting")]
+    [SerializeField][Range(0, 2)] private float shootMoveModifier = 1;
+    [Tooltip("The movement modifier(%) when reload")]
+    [SerializeField][Range(0, 2)] private float reloadMoveModifier = 1;
+
+    [Header("---Attack Stage Rotation---")]
+    [Tooltip("The movement modifier(%) when aiming")]
+    [SerializeField][Range(0, 2)] private float aimRotModifier = 1;
+    [Tooltip("The movement modifier(%) when shooting")]
+    [SerializeField][Range(0, 2)] private float shootRotModifier = 1;
+    [Tooltip("The movement modifier(%) when reload")]
+    [SerializeField][Range(0, 2)] private float reloadRotModifier = 1;
+
+    [Header("---Attack Stage Special---")]
+    [Tooltip("Whether or not this enemy fires at the same point when shooting")]
+    [SerializeField] private bool lockAiming;
+    [Tooltip("Whether or not this enemy tries to flee while still attacking")]
+    [SerializeField] private bool fleeWhileAttacking;
+    [Tooltip("Strength of shot-leading from this enemy")]
+    [SerializeField] private Vector2 leadStrength;
+
+    /// <summary>
+    /// The current attack routine being triggered.
+    /// </summary>
+    private Coroutine attackRoutine;
 
     // Start is called before the first frame update
     void Start()
@@ -56,37 +117,39 @@ public class EnemyRange : EnemyBase
         currDist = Vector3.Distance(p.transform.position, transform.position);
         agent.speed = walkSpeed * currTime;
 
+        // Move towards player when out of range and out of threshold
+        if(Mathf.Abs(currDist - idealRange) > moveThreshold && currDist > idealRange)
+        {
+            agent.speed = walkSpeed * currTime;
+            agent.SetDestination(p.transform.position);
+        }
+        // flee from player when too close
+        else if (fleeWhileAttacking && Mathf.Abs(currDist - idealRange) > moveThreshold && currDist < idealRange)
+        {
+            Vector3 awayDir = ((transform.position + Vector3.up) - p.transform.position).normalized * walkSpeed * fleeMoveModifier;
+            agent.speed = walkSpeed * currTime;
+            agent.SetDestination(transform.position + awayDir);
+        }
+
+
         switch (state)
         {
             case EnemyState.Moving:
                 {
                     // Move towards player position
 
-                    agent.speed = walkSpeed * currTime;
-                    agent.SetDestination(p.transform.position);
+                    //agent.speed = walkSpeed * currTime;
+                    //agent.SetDestination(p.transform.position);
 
                     break;
                 }
             case EnemyState.Attacking:
                 {
-                    // Shoot every few seconds if in range
-                    if (time >= shootTime && InVision())
+                    
+                    // Attack if vision and not already attacking
+                    if(attackRoutine == null && InVision())
                     {
-                        Shoot();
-                        time = 0;
-                    }
-                    else if (time < shootTime)
-                    {
-                        time += Time.deltaTime * currTime;
-                    }
-
-                    // run away from player when too close
-                    if(Mathf.Abs(currDist - idealRange) > moveThreshold && currDist < idealRange)
-                    {
-                        time = 0;
-
-                        Vector3 awayDir = ((transform.position + Vector3.up) - p.transform.position).normalized * walkSpeed/2;
-                        agent.SetDestination(transform.position + awayDir);
+                        attackRoutine = StartCoroutine(Attack());
                     }
 
                     break;
@@ -126,11 +189,10 @@ public class EnemyRange : EnemyBase
                 }
             case EnemyState.Attacking:
                 {
-                    // Resume moving if outside of attack range or rounded corner
-                    if (!LineOfSight(p))
+                    // Resume moving if outside of attack range and not already attacking
+                    if (!LineOfSight(p) && attackRoutine == null)
                     {
                         state = EnemyState.Moving;
-                        time = shootTime/2;
                     }
 
                     break;
@@ -143,7 +205,7 @@ public class EnemyRange : EnemyBase
     /// </summary>
     /// <param name="target">target to check</param>
     /// <returns>Line of sight</returns>
-    public bool LineOfSight(GameObject target)
+    private bool LineOfSight(GameObject target)
     {
         Vector3 direction = target.transform.position - (transform.position + Vector3.up);
         
@@ -170,28 +232,102 @@ public class EnemyRange : EnemyBase
         return (Mathf.Abs(angle) <= lookRadius);
     }
 
-    private void Shoot()
+    private void Shoot(Vector3 targetPos)
     {
+        // Calculate shot to lead
+        IRangeAttack temp = shotPrefab.GetComponent<IRangeAttack>();
+        float projSpeed;
+
+        if (temp.GetAttackType() == IRangeAttack.AttackType.Projectile)
+        {
+            projSpeed = shotPrefab.GetComponent<EProjectile>().GetSpeed();
+        }
+        else
+        {
+            projSpeed = float.MaxValue;
+        }
+
+        float travelTime = (targetPos - transform.position).magnitude / projSpeed;
+        float strength = Random.Range(leadStrength.x, leadStrength.y);
+        Vector3 leadPos = p.transform.position + (p.GetComponent<Rigidbody>().velocity * travelTime * strength);
+
+        // Fire shot at target position
         GameObject o = Instantiate(shotPrefab, (transform.position + Vector3.up), shotPrefab.transform.rotation);
-        o.transform.LookAt(p.transform);
+        o.transform.LookAt(leadPos);
 
     }
 
-    protected override void Awake()
-    {
-        //GetComponent<Renderer>().material.color = Color.red;
-        base.Awake();
 
-        // If dummy cannot be killed, make sure to remove from pool
-        //if (invulnerable)
-        //    FindObjectOfType<DoorManager>().DestroyEnemy();
+    private IEnumerator Attack()
+    {
+        // Temp timer variables used for each substate
+        float attackTimer = 0;
+        float _originalMovement = walkSpeed;
+        float _originalRotation = rotationSpeed;
+
+        // Aim Substate
+        walkSpeed = (_originalMovement * aimMoveModifier);
+        rotationSpeed = _originalRotation * aimRotModifier;
+        while (attackTimer < aimDuration)
+        {
+            attackTimer += Time.deltaTime * TimeManager.worldTime;
+            yield return null;
+        }
+
+        // Get player position to target
+        Vector3 targetPos = p.transform.position;
+
+        // Shoot Substate
+        walkSpeed = (_originalMovement * shootMoveModifier);
+        rotationSpeed = _originalRotation * shootRotModifier;
+        for (int i = 0; i < numberOfShots; i++)
+        {
+            Shoot(targetPos);
+            attackTimer = 0;
+            while (attackTimer < shootDuration)
+            {
+                attackTimer += Time.deltaTime * TimeManager.worldTime;
+                yield return null;
+            }
+
+            // If not locked, update the target position
+            if (!lockAiming)
+                targetPos = p.transform.position;
+        }
+
+        // Recover/Reload Substate
+        attackTimer = 0;
+        walkSpeed = (_originalMovement * reloadMoveModifier);
+        rotationSpeed = _originalRotation * reloadRotModifier;
+        while (attackTimer < reloadDuration)
+        {
+            attackTimer += Time.deltaTime * TimeManager.worldTime;
+            yield return null;
+        }
+
+        // Return original values
+        rotationSpeed = _originalRotation;
+        walkSpeed = _originalMovement;
+
+        // Clear attack routine 
+        attackRoutine = null;
+        yield return null;
     }
 
 
     public override void Die()
     {
         base.Die();
-        //FindObjectOfType<DoorManager>().DestroyEnemy();
+
+        if (attackRoutine != null)
+            StopCoroutine(attackRoutine);
+
         FindObjectOfType<SpawnManager>().DestroyEnemy();
+    }
+
+    private void OnDisable()
+    {
+        if (attackRoutine != null)
+            StopCoroutine(attackRoutine);
     }
 }
