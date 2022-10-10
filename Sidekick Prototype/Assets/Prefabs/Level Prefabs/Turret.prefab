@@ -307,12 +307,10 @@ MonoBehaviour:
   state: 0
   turretPoint: {fileID: 8247517746467512097}
   shootPoints:
-  - {fileID: 8739162935224069125}
-  - {fileID: 2833650466335413367}
   - {fileID: 8295506054906347531}
-  rotationSpeed: 0.08
+  rotationSpeed: 0.025
   shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
-  shootTime: 0.5
+  shootTime: 0.2
   attackRange: 999
   lastHit: {fileID: 0}
   lookRadius: 100
