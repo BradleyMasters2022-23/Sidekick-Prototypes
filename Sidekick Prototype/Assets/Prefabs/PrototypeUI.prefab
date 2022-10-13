@@ -354,10 +354,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Move - WASD\nJump - Space\nShoot - L Mouse\nFreeze Time - R Mouse \nHeal
-    (if available) - Q\nPause - Escape\nReset - Y\nToggle Slow - M\nToggle Infinite
-    Time - N\nToggle Bullet Platform - B\nToggle Perspective - L\nToggle Hitscan
-    - K\nCheat Heal - P\n"
+  m_text: "Move - WASD\nSprint - Shift\nJump - Space\nShoot - L Mouse\nFreeze Time
+    - R Mouse \nHeal (if available) - Q\nPause - Escape\nReset - Y\nToggle Slow -
+    M\nToggle Infinite Time - N\nToggle Bullet Platform - B\nToggle Perspective -
+    L\nToggle Hitscan - K\nCheat Heal - P\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2577,8 +2577,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65.16348, y: -64.707855}
-  m_SizeDelta: {x: 151.8244, y: 155.7219}
+  m_AnchoredPosition: {x: -65.16348, y: -70.39824}
+  m_SizeDelta: {x: 151.8244, y: 167.1027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3190964566830974213
 CanvasRenderer:

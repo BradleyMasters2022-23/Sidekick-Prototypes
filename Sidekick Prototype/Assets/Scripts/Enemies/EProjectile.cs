@@ -17,10 +17,10 @@ public class EProjectile : IRangeAttack
         s = gameObject.AddComponent<AudioSource>();
 
         Vector3 dir = (FindObjectOfType<PlayerControllerRB>().transform.position - transform.position).normalized;
-        dir += Vector3.forward * (Vector3.Distance(FindObjectOfType<PlayerControllerRB>().transform.position, transform.position) / 2);
+        dir += Vector3.forward * (Vector3.Distance(FindObjectOfType<PlayerControllerRB>().transform.position, transform.position) * .9f);
 
         if (sound != null)
-            AudioSource.PlayClipAtPoint(sound, dir, 2f);
+            AudioSource.PlayClipAtPoint(sound, FindObjectOfType<PlayerControllerRB>().transform.position, 1f);
     }
 
     // Update is called once per frame
