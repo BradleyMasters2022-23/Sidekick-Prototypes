@@ -356,8 +356,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "=== Controls ===\nMove - WASD\nSprint - Shift\nJump - Space\nShoot - L
     Mouse\nFreeze Time - R Mouse \nHeal (if available) - Q\nPause - Escape\n\n===
-    Playtest Toggles ===\nToggle Slow - M\nToggle Infinite Time - N\nToggle Bullet
-    Platform - B\nToggle Perspective - L\nToggle Hitscan - K\n\n=== Cheats ===\nReset
+    Playtest Toggles ===\nToggle Slow - M\nToggle Bullet Platform - B\nToggle Perspective
+    - L\nToggle Hitscan - K\n\n=== Cheats ===\nToggle Infinite Timestop - N\nReset
     - Y\nCheat Heal - P"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

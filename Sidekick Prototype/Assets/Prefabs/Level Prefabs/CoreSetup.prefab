@@ -985,7 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: numOfSections
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: sectionedHealth
