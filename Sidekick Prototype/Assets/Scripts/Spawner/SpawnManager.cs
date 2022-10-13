@@ -29,11 +29,13 @@ public class SpawnManager : MonoBehaviour
     private SpawnPoint[] spawnPoints;
 
     private float currTime;
-    
+
+    private bool gaveUpgrade;
 
     private void Start()
     {
         currTime = TimeManager.worldTime;
+        gaveUpgrade = false;
 
         spawnPoints = FindObjectsOfType<SpawnPoint>();
         if(spawnPoints.Length <= 0)
@@ -85,9 +87,8 @@ public class SpawnManager : MonoBehaviour
 
         // Continually decide spawnpoints to use
         SpawnPoint _spawnPoint;
-        while (spawnQueue.Count > 0 || waitingEnemies > 0)
+        while (spawnQueue.Count > 0 || waitingEnemies > 0 || !SpawnpointsEmpty())
         {
-            
             int c = 0;
             // Only spawn if not past max
             if ((enemyCount+waitingEnemies) < maxEnemies)
@@ -151,6 +152,9 @@ public class SpawnManager : MonoBehaviour
     /// </summary>
     private void WaveFinished()
     {
+        if (gaveUpgrade)
+            return;
+
         Debug.Log("Wave Finished");
         spawnRoutine = null;
         waveIndex++;
@@ -168,6 +172,8 @@ public class SpawnManager : MonoBehaviour
 
     private void CompleteRoom()
     {
+        gaveUpgrade = true;
+
         if (sound != null)
             s.PlayOneShot(sound);
 
@@ -224,9 +230,10 @@ public class SpawnManager : MonoBehaviour
 
     private IEnumerator CheckCount()
     {
-        while(true)
+        while(!gaveUpgrade)
         {
             CheckWaveFinished();
+
 
             yield return new WaitForSeconds(1f);
         }
@@ -242,5 +249,17 @@ public class SpawnManager : MonoBehaviour
     {
         spawnQueue.Enqueue(enemy);
         waitingEnemies--;
+    }
+
+    private bool SpawnpointsEmpty()
+    {
+        foreach(SpawnPoint sp in spawnPoints)
+        {
+            if(sp.IsLoaded())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

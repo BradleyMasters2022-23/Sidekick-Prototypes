@@ -972,9 +972,17 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: airModifier
+      value: 0.294
+      objectReference: {fileID: 0}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 5859597341533200091}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: maxMoveSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: numOfSections
       value: 5
@@ -982,6 +990,14 @@ PrefabInstance:
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: sectionedHealth
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: accelerationTime
+      value: 0.453
+      objectReference: {fileID: 0}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: decelerationTime
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: healthPerSection
@@ -1003,6 +1019,10 @@ PrefabInstance:
       propertyPath: sections.Array.data[0]
       value: 
       objectReference: {fileID: 6261507908142933865}
+    - target: {fileID: 118932247525841197, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
+      propertyPath: startingSpeedPercentage
+      value: 0.166
+      objectReference: {fileID: 0}
     - target: {fileID: 118932247525841240, guid: c46b03a21d38aa947b6cf3ab8e994e34, type: 3}
       propertyPath: m_Name
       value: Player RB
@@ -1250,28 +1270,32 @@ PrefabInstance:
       value: Timestop Prototype
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: floorLength
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.size
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[0]
-      value: Room1
+      value: Room 5
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[1]
-      value: Room2
+      value: Room 6
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[2]
-      value: Room3
+      value: Room 7
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[3]
-      value: Room 4
+      value: Room 7
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[4]
-      value: Room 5
+      value: Room 6
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[5]

@@ -38,10 +38,15 @@ public class HealingSystem : MonoBehaviour
     {
         player = GetComponent<IDamagable>();
 
-        if (PlayerUpgradeManager.instance != null && PlayerUpgradeManager.instance.currHealthPacks != startingHeals)
+        if (PlayerUpgradeManager.instance != null && PlayerUpgradeManager.instance.currHealthPacks >= 0)
+        {
             currHeals = PlayerUpgradeManager.instance.currHealthPacks;
+        }
         else
+        {
             currHeals = startingHeals;
+        }
+            
 
         healing = false;
     }
