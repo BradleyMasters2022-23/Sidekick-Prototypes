@@ -11,7 +11,7 @@ public class UpgradeList : MonoBehaviour
     private int lastC = 0;
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         list = FindObjectOfType<PlayerUpgradeManager>().GetUpgrades();
 

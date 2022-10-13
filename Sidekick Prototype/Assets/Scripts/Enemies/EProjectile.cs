@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EProjectile : MonoBehaviour
+public class EProjectile : IRangeAttack
 {
-    public float projectileSpeed;
-    public int damage;
     float currTime;
-    public float lifeTime;
     float t = 0;
 
     private AudioSource s;
@@ -20,10 +17,10 @@ public class EProjectile : MonoBehaviour
         s = gameObject.AddComponent<AudioSource>();
 
         Vector3 dir = (FindObjectOfType<PlayerControllerRB>().transform.position - transform.position).normalized;
-        dir += Vector3.forward * (Vector3.Distance(FindObjectOfType<PlayerControllerRB>().transform.position, transform.position) / 2);
+        dir += Vector3.forward * (Vector3.Distance(FindObjectOfType<PlayerControllerRB>().transform.position, transform.position) * .9f);
 
         if (sound != null)
-            AudioSource.PlayClipAtPoint(sound, dir, 2f);
+            AudioSource.PlayClipAtPoint(sound, FindObjectOfType<PlayerControllerRB>().transform.position, 1f);
     }
 
     // Update is called once per frame
@@ -31,7 +28,7 @@ public class EProjectile : MonoBehaviour
     {
         currTime = TimeManager.worldTime;
 
-        transform.position += transform.forward * projectileSpeed * Time.deltaTime * currTime;
+        transform.position += transform.forward * speed * Time.deltaTime * currTime;
 
         if (t >= lifeTime)
         {
@@ -51,5 +48,10 @@ public class EProjectile : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 }
