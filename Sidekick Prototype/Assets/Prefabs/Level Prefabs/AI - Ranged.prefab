@@ -665,16 +665,28 @@ MonoBehaviour:
   sections: []
   sound: {fileID: 8300000, guid: 127b6f4bbc9e8de49935189d7df5adf1, type: 3}
   deathVFX: {fileID: 8273445605695135385, guid: 62af963b4eaafd748a03b8ccb4313dd2, type: 3}
-  state: 0
-  rotationSpeed: 0.1
   walkSpeed: 8
-  shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
-  shootTime: 0.5
-  attackRange: 40
-  idealRange: 20
-  moveThreshold: 10
-  lookRadius: 30
+  rotationSpeed: 0.1
   overshootMult: 3
+  idealRange: 20
+  attackRange: 40
+  moveThreshold: 10
+  fleeMoveModifier: 1
+  shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
+  numberOfShots: 3
+  lookRadius: 30
+  aimDuration: 0.8
+  shootDuration: 0.1
+  reloadDuration: 1.3
+  aimMoveModifier: 0
+  shootMoveModifier: 0
+  reloadMoveModifier: 0.2
+  aimRotModifier: 1
+  shootRotModifier: 0.5
+  reloadRotModifier: 0
+  lockAiming: 0
+  fleeWhileAttacking: 0
+  leadStrength: {x: 0, y: 0}
 --- !u!195 &307714298938917575
 NavMeshAgent:
   m_ObjectHideFlags: 0

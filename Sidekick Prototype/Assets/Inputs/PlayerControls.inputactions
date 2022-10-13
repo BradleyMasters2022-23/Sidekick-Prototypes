@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "76fbcd69-61c1-4380-b6cc-7bf23e4d3882",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "TogglePlatformsDEBUG",
                     "type": "Button",
                     "id": "c9f0b839-177a-47fd-a7dc-4f2247c7fc10",
@@ -348,6 +357,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShootToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fce5bb21-454b-459a-91b1-9adf925ae1ec",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
