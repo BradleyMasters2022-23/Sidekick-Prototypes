@@ -62,6 +62,11 @@ public class SpawnPoint : MonoBehaviour
             s.clip = spawnSound;
     }
 
+    public bool IsLoaded()
+    {
+        return enemyStorage != null;
+    }
+
     /// <summary>
     /// Load an enemy into this spawn point
     /// </summary>
