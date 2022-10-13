@@ -53,7 +53,7 @@ MonoBehaviour:
   enableHitscan: 0
   slider: {fileID: 0}
   unlimited: 0
-  maxGauge: 250
+  maxGauge: 150
   decreaseRate: 1
   refillRate: 0.6
   refillDelay: 1

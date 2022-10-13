@@ -243,8 +243,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeals: 3
   autoUse: 0
-  startingHeals: 0
-  healDelay: 1
+  startingHeals: 3
+  healDelay: 0
   currHeals: 0
 --- !u!1 &118932247851560548
 GameObject:

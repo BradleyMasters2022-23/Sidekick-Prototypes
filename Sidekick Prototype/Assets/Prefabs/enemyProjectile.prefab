@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 0
   speed: 60
-  damage: 3
+  damage: 2
   lifeTime: 5
   sound: {fileID: 8300000, guid: 5b266a3390fc9a64f90d65115b7ccc9d, type: 3}
 --- !u!114 &2377268864903310227
