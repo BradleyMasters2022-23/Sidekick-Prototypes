@@ -28,7 +28,10 @@ public class CamTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hitInfo, Mathf.Infinity, ~layersToIgnore))
+        // Offset to fire raycast infront of player
+        Vector3 firePoint = cam.transform.position + transform.forward * -transform.localPosition.z;
+
+        if(Physics.Raycast(firePoint, cam.transform.forward, out hitInfo, Mathf.Infinity, ~layersToIgnore))
         {
             targetPos = hitInfo.point;
         }

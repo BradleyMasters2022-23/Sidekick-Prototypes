@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4327794532322438487, guid: 9bc9c84d04426a144bb8701926cfd9c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc9c84d04426a144bb8701926cfd9c1, type: 3}
@@ -922,6 +922,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 563759430020826113, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 197.65002
+      objectReference: {fileID: 0}
+    - target: {fileID: 563759430020826113, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -27.589966
+      objectReference: {fileID: 0}
     - target: {fileID: 1000892793227481353, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
       propertyPath: waveOptions.Array.size
       value: 0
@@ -1026,6 +1034,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8543510064506168389, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 197.65002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543510064506168389, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -27.590027
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
 --- !u!1001 &561024537
@@ -1101,7 +1117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4327794532322438487, guid: 9bc9c84d04426a144bb8701926cfd9c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc9c84d04426a144bb8701926cfd9c1, type: 3}
@@ -2438,7 +2454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4327794532322438487, guid: 9bc9c84d04426a144bb8701926cfd9c1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc9c84d04426a144bb8701926cfd9c1, type: 3}
