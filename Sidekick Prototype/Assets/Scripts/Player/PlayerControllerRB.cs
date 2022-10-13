@@ -62,6 +62,9 @@ public class PlayerControllerRB : IDamagable
     [SerializeField] private float groundCheckRadius;
     private bool grounded = true;
 
+    //Animation
+    public Animator pennyAnimator;
+
 
     protected override void Awake()
     {
@@ -108,6 +111,7 @@ public class PlayerControllerRB : IDamagable
 
         currSpeed = 0;
         accelerationTimer = 0;
+
     }
 
     private void Update()
@@ -189,6 +193,8 @@ public class PlayerControllerRB : IDamagable
         float _xaxis = rb.velocity.x;
         float _zaxis = rb.velocity.z;
 
+        pennyAnimator.SetFloat("X Move", currInput.x);
+        pennyAnimator.SetFloat("Y Move", currInput.y);
 
         if (grounded)
         {
@@ -207,6 +213,9 @@ public class PlayerControllerRB : IDamagable
 
             temp.y = rb.velocity.y;
             rb.velocity = temp;
+
+            //Animation
+            pennyAnimator.SetBool("Is Jumping", false);
         }
         else
         {
@@ -233,6 +242,10 @@ public class PlayerControllerRB : IDamagable
                 }
 
                 rb.velocity = newVelocity;
+
+                //Animation
+                pennyAnimator.SetBool("Is Jumping", true);
+
             }            
         }
     }
