@@ -4232,6 +4232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -6073,6 +6077,10 @@ PrefabInstance:
     - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_Name
       value: Crate Variant (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
@@ -13013,6 +13021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15596,6 +15608,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoreSetup
       objectReference: {fileID: 0}
+    - target: {fileID: 1434157441336512201, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -52.194336
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434157441336512201, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -85.33496
+      objectReference: {fileID: 0}
     - target: {fileID: 1610784906916236248, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15663,6 +15683,14 @@ PrefabInstance:
     - target: {fileID: 5859597341617329341, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543510064506168389, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 197.65002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543510064506168389, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -27.590027
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2afa70c894868b4bb198ab9aa9443f0, type: 3}
@@ -16619,6 +16647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
       value: 42
@@ -16736,6 +16768,10 @@ PrefabInstance:
     - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_Name
       value: Crate Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
@@ -16920,6 +16956,10 @@ PrefabInstance:
     - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_Name
       value: Crate Variant (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
@@ -19823,6 +19863,10 @@ PrefabInstance:
     - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_Name
       value: Crate Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997607870816846615, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7662786684835355053, guid: 4c21d1864633ae94d88434b363dcd8b7, type: 3}
       propertyPath: m_RootOrder
