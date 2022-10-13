@@ -1271,23 +1271,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: floorLength
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
-      propertyPath: sceneNames.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
-      propertyPath: sceneNames.Array.data[0]
-      value: Room 4
+      propertyPath: sceneNames.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
-      propertyPath: sceneNames.Array.data[1]
+      propertyPath: sceneNames.Array.data[0]
       value: Room 5
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
-      propertyPath: sceneNames.Array.data[2]
+      propertyPath: sceneNames.Array.data[1]
       value: Room 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
+      propertyPath: sceneNames.Array.data[2]
+      value: Room 7
       objectReference: {fileID: 0}
     - target: {fileID: 2473921394480588195, guid: f943fa838db7ac4459ed84d278e71bbf, type: 3}
       propertyPath: sceneNames.Array.data[3]

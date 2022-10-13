@@ -19,6 +19,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     public int currHealthPacks;
 
+    private bool initializedHeals;
+
     private void Start()
     {
         if(instance == null)
@@ -32,7 +34,7 @@ public class PlayerUpgradeManager : MonoBehaviour
         }
 
         currHealth = 0;
-        currHealthPacks = 0;
+        currHealthPacks = -1;
         player = FindObjectOfType<PlayerControllerRB>();
         gun = FindObjectOfType<PlayerGun>();
         SceneManager.sceneLoaded += OnLevelLoad;
