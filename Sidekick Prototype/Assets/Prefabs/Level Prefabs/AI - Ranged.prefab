@@ -673,7 +673,7 @@ MonoBehaviour:
   moveThreshold: 10
   fleeMoveModifier: 1
   shotPrefab: {fileID: 641006163171135019, guid: 8c2ec98e375c5634f9b461eba4f4e09f, type: 3}
-  numberOfShots: 2
+  numberOfShots: 3
   lookRadius: 30
   aimDuration: 0.8
   shootDuration: 0.1
