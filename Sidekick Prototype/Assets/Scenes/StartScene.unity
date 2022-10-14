@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 10.6768}
+  m_AnchoredPosition: {x: 0, y: 10.676819}
   m_SizeDelta: {x: 524.0316, y: -139.5226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55271198
@@ -966,21 +966,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Disclaimer
-
-
-    Please view the Read Me included with the download for
-    this game. It contains controls, gameplay explanations, and known bugs and issues.
-
-
-    This
-    game is still early in development and has various bugs and player communication
-    issues. Everything displayed here is subject to change.
-
-
-
-    To play, press
-    continue below.'
+  m_text: "Disclaimer\n\nPlease view the Read Me included with the download for this
+    game. It contains controls, gameplay explanations, and known bugs and issues.
+    \n\nFurther details can be found in the \"Detailed Chronoclasm Overview\" document
+    also included in the download. \n\nThis game is still early in development and
+    has various bugs and player communication issues. Everything displayed here is
+    subject to change.\n\n\nTo play, press continue below."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
