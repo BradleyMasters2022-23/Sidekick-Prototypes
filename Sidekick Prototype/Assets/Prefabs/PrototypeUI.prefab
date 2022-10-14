@@ -356,9 +356,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "=== Controls ===\nMove - WASD\nSprint - Shift\nJump - Space\nShoot - L
     Mouse\nFreeze Time - R Mouse \nHeal (if available) - Q\nPause - Escape\n\n===
-    Playtest Toggles ===\nToggle Slow - M\nToggle Bullet Platform - B\nToggle Perspective
-    - L\nToggle Hitscan - K\n\n=== Cheats ===\nToggle Infinite Timestop - N\nReset
-    - Y\nCheat Heal - P"
+    Playtest Toggles ===\nToggle Slow Freeze - M\nToggle Solid Frozen Bullets - B\nToggle
+    Perspective - L\nToggle Player Hitscan - K\n\n=== Cheats ===\nToggle Infinite
+    Timestop - N\nReset - Y\nCheat Heal - P"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 5.7718964, y: 18.485985, z: 15.1487465, w: 6.9393616}
+  m_margin: {x: 4.050152, y: 18.485985, z: 11.705189, w: 6.9393616}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

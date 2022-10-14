@@ -30,7 +30,10 @@ public class HealthCounter : MonoBehaviour
 
     public void UpdateCounter()
     {
-        int i = (int)healthbar.GetHealth();
+
+        int i = 100;
+        if(healthbar != null)
+            i = (int)healthbar.GetHealth();
 
         if(i == 100)
         {
